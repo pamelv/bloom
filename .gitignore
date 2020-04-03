@@ -1,0 +1,9 @@
+# system
+.DS_Store
+
+# editor
+.vscode
+.git
+
+# project
+/node_modules
