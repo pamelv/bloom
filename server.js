@@ -1,13 +1,19 @@
 const express = require("express");
-const bodyparser = require("body-parser");
 const morgan = require("morgan");
 const pages = require("./routes/pages");
 const mongoose = require("mongoose");
 const Users = require("./models/users.models");
 const CheckIn = require("./models/checkin.models");
+const cors = require("cors");
+const Bcrypt = require("bcryptjs");
 
 /* constants */
 const PORT = process.env.PORT || 3001;
+
+const corsOptions = {
+  origin: true,
+  credentials: true
+};
 
 mongoose.connect("mongodb://localhost/bloom", {
   useNewUrlParser: true,
@@ -20,7 +26,9 @@ const app = express();
 app.use(morgan("dev")); // logging
 app.use(express.json());
 app.use("/", pages);
+app.options("*", cors(corsOptions));
 
+//remove once app is ready
 app.get("/api/ping", (req, res) => res.send("pong"));
 
 app
@@ -30,8 +38,14 @@ app
     res.json(users);
   })
   .post(async (req, res) => {
-    const result = await Users.create(req.body);
-    res.json(result);
+    try {
+      req.body.password = Bcrypt.hashSync(req.body.password, 10);
+      var user = new Users(req.body);
+      var result = await user.save();
+      res.send(result);
+    } catch (error) {
+      res.status(500).send(error);
+    }
   });
 
 app
@@ -52,16 +66,10 @@ app
     }
   });
 
-app
-  .route("/api/moods")
-  .get(async (req, res) => {
-    const moods = await CheckIn.find();
-    res.json(moods);
-  })
-  .post(async (req, res) => {
-    const result = await CheckIn.create(req.body);
-    res.json(result);
-  });
+app.route("/api/moods").get(async (req, res) => {
+  const moods = await CheckIn.find();
+  res.json(moods);
+});
 
 /* run our app */
 app.listen(PORT, () => {
