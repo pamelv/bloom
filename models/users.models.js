@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     type: Date
   },
   gender: {
-    type: Date
+    type: String
   },
   userCreated: {
     type: Date,
