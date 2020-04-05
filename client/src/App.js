@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
+import Recipe from "./pages/Recipe";
+
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LogIn />
+          </Route>
+          <Route path="/recipe">
+            <Recipe />
           </Route>
         </Switch>
       </div>
