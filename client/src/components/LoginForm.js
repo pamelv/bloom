@@ -1,12 +1,34 @@
 import React from "react";
+import API from "../utils/user.api";
 import { useForm } from "react-hook-form";
-
 import "./form.css";
+import { withRouter } from "react-router-dom";
 
-export default function SignUpForm() {
+const bcrypt = require("bcryptjs");
+
+const LogInForm = props => {
   const { register, handleSubmit, errors } = useForm();
+  const submitForm = data => {
+    API.getUser()
+      .then(res => {
+        const results = res.data;
+
+        results.forEach(result => {
+          if (
+            (data.email === result.email) &
+            bcrypt.compareSync(data.password, result.password)
+          ) {
+            //need to add code
+            console.log(result);
+          }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   const onSubmit = data => {
-    console.log(data);
+    submitForm(data);
   };
 
   return (
@@ -30,4 +52,6 @@ export default function SignUpForm() {
       <button>Log In</button>
     </form>
   );
-}
+};
+
+export default withRouter(LogInForm);
