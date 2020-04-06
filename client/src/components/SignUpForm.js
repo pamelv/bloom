@@ -2,7 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import API from "../utils/user.api";
 import "./form.css";
-// import Login from "../pages/Login";
+import history from "../history";
+import ReactDOM from "react-dom";
 
 export default function SignUpForm() {
   const { register, handleSubmit, errors } = useForm();
@@ -10,18 +11,26 @@ export default function SignUpForm() {
     API.addUser(data)
       .then(res => {
         console.log(res);
+        history.push("/profile");
       })
       .catch(error => {
         console.log(error);
+        userExist();
       });
   };
   const onSubmit = data => {
     console.log(data);
     submitForm(data);
   };
-
+  const userExist = props => {
+    ReactDOM.render(
+      <h4>A user with this email already exist. Please try to login.</h4>,
+      document.getElementById("msg")
+    );
+  };
   return (
     <div>
+      <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>First Name</label>
         <input

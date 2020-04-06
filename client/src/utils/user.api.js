@@ -8,5 +8,9 @@ export default {
   // Get user login
   getUser: function(data) {
     return axios.get("http://localhost:3001/api/users", data);
+  },
+  // Get user login
+  findUser: function(email) {
+    return axios.get("http://localhost:3001/api/users/" + email);
   }
 };
