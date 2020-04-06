@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Router, Route } from "react-router-dom";
 import history from "./history";
 import Signup from "./pages/Signup";
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/profile" component={UserProfile} />
+
       </div>
     </Router>
   );
