@@ -58,7 +58,7 @@ label {
 button[type="submit"],
 input[type="submit"] {
   background: #fba886;
-  color: white;
+  color: #333;
   text-transform: uppercase;
   border: none;
   margin-top: 40px;
@@ -138,4 +138,13 @@ h5 {
 #female,
 #other {
   width: auto;
+}
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: initial !important;
+  opacity: 100 !important;
+  pointer-events: painted !important;
+}
+.user-exist {
+  display: none;
 }

@@ -48,6 +48,11 @@ app
     }
   });
 
+app.route("/api/users/:email").get(async (req, res) => {
+  const user = await Users.findOne({ email: req.params.email });
+  res.json(user);
+});
+
 app
   .route("/api/users/:id/moods")
   .get(async (req, res) => {

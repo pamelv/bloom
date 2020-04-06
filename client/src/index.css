@@ -19,4 +19,5 @@ button {
 
 button:hover {
   background: #fba7868e;
+  cursor: pointer;
 }
