@@ -5,6 +5,7 @@ import history from "./history";
 import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
+import Playlist from "./pages/Playlist";
 import Poem from "./pages/Poem";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/profile" component={UserProfile} />
+        <Route exact path="/Playlist" component={Playlist} />
         <Route exact path="/api/recipe" component={Recipe} />
         <Route exact path="/api/poem/happy" component={Poem} />
       </div>
