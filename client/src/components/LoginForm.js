@@ -10,41 +10,44 @@ const bcrypt = require("bcryptjs");
 const LogInForm = props => {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = data => {
-    console.log(data);
     API.findUser(data.email)
       .then(res => {
+        var user;
         if (
           (data.email === res.data.email) &
           bcrypt.compareSync(data.password, res.data.password)
         ) {
           console.log(res);
+          user = res;
+          localStorage.setItem("id", res.data._id);
           history.push("/profile");
-        } else console.warn("invalid credentials");
-        invalidPassword();
+        } else errorMsg(user);
       })
       .catch(error => {
         console.log(error);
-        userDoesNotExist();
+        var user = "No user";
+        errorMsg(user);
       });
   };
   const onSubmit = data => {
     submitForm(data);
   };
 
-  const invalidPassword = props => {
-    ReactDOM.render(
-      <h4>Invalid password entered, please try again.</h4>,
-      document.getElementById("msg")
-    );
-  };
-
-  const userDoesNotExist = props => {
-    ReactDOM.render(
-      <h4>
-        No existing user with email entered. Please sign up for an account.
-      </h4>,
-      document.getElementById("msg")
-    );
+  const errorMsg = props => {
+    if (props === "No user") {
+      ReactDOM.render(
+        <h4>
+          No existing user with email entered. Please{" "}
+          <a href="/signup">sign up</a> for an account.
+        </h4>,
+        document.getElementById("msg")
+      );
+    } else if (props === undefined) {
+      ReactDOM.render(
+        <h4>Invalid password entered, please try again.</h4>,
+        document.getElementById("msg")
+      );
+    }
   };
 
   return (
@@ -53,7 +56,7 @@ const LogInForm = props => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Email</label>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
@@ -67,7 +70,7 @@ const LogInForm = props => {
           ref={register({ required: true, min: 6 })}
         />
         {errors.password && <p>Invalid password</p>}
-        <button>Log In</button>
+        <button type="button">Log In</button>
       </form>
     </div>
   );

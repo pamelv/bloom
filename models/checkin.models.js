@@ -8,12 +8,15 @@ const CheckInSchema = new Schema({
     required: true
   },
   emoji: {
-    type: Number,
+    type: String,
     required: true
   },
   emotionCreatedAt: {
     type: Date,
     default: Date.now()
+  },
+  comment: {
+    type: String
   }
 });
 
