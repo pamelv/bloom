@@ -53,8 +53,13 @@ app.route("/api/users/:email").get(async (req, res) => {
   res.json(user);
 });
 
+app.route("/api/user/:id").get(async (req, res) => {
+  const user = await Users.findById(req.params.id);
+  res.json(user);
+});
+
 app
-  .route("/api/users/:id/moods")
+  .route("/api/user/:id/moods")
   .get(async (req, res) => {
     const user = await Users.findById(req.params.id).populate("moods");
     res.json(user.moods);
@@ -63,7 +68,7 @@ app
     try {
       const mood = await CheckIn.create(req.body);
       const results = await Users.findByIdAndUpdate(req.params.id, {
-        $push: { moods: mood._id }
+        $push: { moods: { $each: [mood._id], $position: 0 } }
       });
       res.json(results);
     } catch (err) {

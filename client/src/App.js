@@ -12,7 +12,9 @@ function App() {
   return (
     <Router history={history}>
       <div className="App">
-        <h1>BLOOM</h1>
+        <h1>
+          <a href="/">BLOOM</a>
+        </h1>
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={LogIn} />

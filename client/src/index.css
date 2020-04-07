@@ -21,3 +21,26 @@ button:hover {
   background: #fba7868e;
   cursor: pointer;
 }
+
+.card .card-title {
+  font-size: 18px !important;
+}
+
+select {
+  display: block;
+}
+
+textarea {
+  width: 100%;
+  height: 8rem;
+  background-color: white;
+  border: solid 1px #fba886;
+}
+.modal {
+  background-color: transparent;
+  max-height: 100%;
+  width: 100%;
+}
+.modal .modal-content {
+  padding: 10px;
+}
