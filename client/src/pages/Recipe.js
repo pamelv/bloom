@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import RecipeForm from './RecipeForm';
 import API from "../utils/recipe.api";
 
 export default class Recipe extends Component {
@@ -21,19 +20,21 @@ export default class Recipe extends Component {
       });
   }
 
+
   render() {
     return (
       <div className="recipe">
         {this.state.recipes.map(recipe => {
           return (
-            <div>
+            <div key={recipe.id}>
               <h1>{recipe.title}</h1>
               <img src={recipe.image} alt="" />
               <ul>
-                <li>{recipe.readyInMinutes}</li>
-                <li>{recipe.servings}</li>
+                <li>PREP TIME: {recipe.readyInMinutes}</li>
+                <li>SERVINGS:{recipe.servings}</li>
               </ul>
-              <p>{recipe.summary}</p>
+              <h4>RECIPE INSTRUCTIONS</h4>
+              <p>{recipe.instructions}</p>
 
               <button type="submit">
                 <a href="/saved">BOOKMARK</a>

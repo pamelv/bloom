@@ -4,7 +4,7 @@ const axios = require('axios');
 router.get('/poem/:title', (req, res) => {
     console.log('hello');
     const title = req.params.title;
-    axios.get(`http://poetrydb.org/title/${title}/lines.json`)
+    axios.get(`http://poetrydb.org/title/${title}/title,author,lines.json`)
     .then(response => {
 
         // ==================to generate three random poems====================
