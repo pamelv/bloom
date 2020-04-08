@@ -22,9 +22,12 @@ mongoose.connect("mongodb://localhost/bloom", {
 
 const app = express();
 
+app.use(express.urlencoded( { extended: true }));
+app.use(express.json());
+
 /* set-up middlewares */
 app.use(morgan("dev")); // logging
-app.use(express.json());
+
 app.use("/", pages);
 app.options("*", cors(corsOptions));
 

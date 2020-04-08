@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/recipe.api";
-
+import RecipeForm from "../components/RecipeForm";
 export default class Recipe extends Component {
   state = {
     recipes: []
@@ -10,7 +10,7 @@ export default class Recipe extends Component {
     console.log("mounted");
     API.getRecipe()
       .then(response => {
-        console.log(response.data.recipes);
+        console.log("recipe:",response.data.recipes);
         this.setState({
           recipes: response.data.recipes
         });
@@ -19,30 +19,18 @@ export default class Recipe extends Component {
         console.log(error);
       });
   }
-
+   
+  handleFormSave = (recipe)=> {
+    API.saveRecipe(recipe).then(
+      response => {
+        console.log("success!");
+      }
+    )
+  }
 
   render() {
     return (
-      <div className="recipe">
-        {this.state.recipes.map(recipe => {
-          return (
-            <div key={recipe.id}>
-              <h1>{recipe.title}</h1>
-              <img src={recipe.image} alt="" />
-              <ul>
-                <li>PREP TIME: {recipe.readyInMinutes}</li>
-                <li>SERVINGS:{recipe.servings}</li>
-              </ul>
-              <h4>RECIPE INSTRUCTIONS</h4>
-              <p>{recipe.instructions}</p>
-
-              <button type="submit">
-                <a href="/saved">BOOKMARK</a>
-              </button>
-            </div>
-          );
-        })}
-      </div>
+      <RecipeForm recipes1 ={this.state.recipes} handleFormSave = {this.handleFormSave} />
     );
   }
 }
