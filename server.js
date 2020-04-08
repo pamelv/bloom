@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const pages = require("./routes/pages");
 const mongoose = require("mongoose");
 const Users = require("./models/users.models");
-const CheckIn = require("./models/checkin.models");
+const Moods = require("./models/moods.models");
 const cors = require("cors");
 const Bcrypt = require("bcryptjs");
 
@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 3001;
 
 const corsOptions = {
   origin: true,
-  credentials: true
+  credentials: true,
 };
 
 mongoose.connect("mongodb://localhost/bloom", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 const app = express();
@@ -53,10 +53,25 @@ app.route("/api/users/:email").get(async (req, res) => {
   res.json(user);
 });
 
-app.route("/api/user/:id").get(async (req, res) => {
-  const user = await Users.findById(req.params.id);
-  res.json(user);
-});
+app
+  .route("/api/user/:id")
+  .get(async (req, res) => {
+    const user = await Users.findById(req.params.id);
+    res.json(user);
+  })
+  .put(async (req, res) => {
+    req.body.password = Bcrypt.hashSync(req.body.password, 10);
+    console.log(req.body.password);
+    const results = await Users.updateOne(
+      { _id: req.params.id },
+      { $set: { password: req.body.password } },
+      { new: true },
+      (err, res) => {
+        if (err) console.log(err);
+      }
+    );
+    res.json(results);
+  });
 
 app
   .route("/api/user/:id/moods")
@@ -66,9 +81,9 @@ app
   })
   .post(async (req, res) => {
     try {
-      const mood = await CheckIn.create(req.body);
+      const mood = await Moods.create(req.body);
       const results = await Users.findByIdAndUpdate(req.params.id, {
-        $push: { moods: { $each: [mood._id], $position: 0 } }
+        $push: { moods: { $each: [mood._id], $position: 0 } },
       });
       res.json(results);
     } catch (err) {
@@ -77,7 +92,7 @@ app
   });
 
 app.route("/api/moods").get(async (req, res) => {
-  const moods = await CheckIn.find();
+  const moods = await Moods.find();
   res.json(moods);
 });
 

@@ -9,6 +9,7 @@ import Poem from "./pages/Poem";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
+import NewPassword from "./pages/NewPassword";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/forgotpassword" component={ForgotPassword} />
+        <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/recipe" component={Recipe} />
         <Route exact path="/api/poem/happy" component={Poem} />
       </div>

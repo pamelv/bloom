@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const CheckInSchema = new Schema({
+const MoodsSchema = new Schema({
   emotion: {
     type: String,
     required: true,
@@ -20,6 +20,6 @@ const CheckInSchema = new Schema({
   },
 });
 
-const CheckIn = mongoose.model("CheckIn", CheckInSchema);
+const Moods = mongoose.model("Moods", MoodsSchema);
 
-module.exports = CheckIn;
+module.exports = Moods;

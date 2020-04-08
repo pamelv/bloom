@@ -21,7 +21,7 @@ class Profile extends React.Component {
   }
 
   getUser() {
-    API.user(this.state.id).then((res) => {
+    API.activeUser(this.state.id).then((res) => {
       this.setState({ name: res.data.firstname });
       console.log(this.state.name);
     });

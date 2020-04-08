@@ -5,35 +5,35 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   firstname: {
     type: String,
-    required: true
+    required: true,
   },
   lastname: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     unique: true,
     required: true,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
   password: {
     type: String,
     trim: true,
     required: true,
-    minlength: 6
+    minlength: 6,
   },
   dateofBirth: {
-    type: Date
+    type: Date,
   },
   gender: {
-    type: String
+    type: String,
   },
   userCreated: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
-  moods: [{ type: Schema.Types.ObjectId, ref: "CheckIn" }]
+  moods: [{ type: Schema.Types.ObjectId, ref: "Moods" }],
 });
 
 const Users = mongoose.model("Users", UserSchema);
