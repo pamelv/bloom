@@ -1,9 +1,8 @@
 import React from "react";
 import API from "../utils/user.api";
-import EmotionCard from "../components/Profile";
+import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
 import AddMood from "../components/AddMood";
-import AddMoodForm from "../components/AddMoodForm";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class Profile extends React.Component {
     this.state = {
       id: localStorage.getItem("id"),
       name: "",
-      emotions: []
+      emotions: [],
     };
   }
   componentDidMount() {
@@ -22,19 +21,19 @@ class Profile extends React.Component {
   }
 
   getUser() {
-    API.user(this.state.id).then(res => {
+    API.user(this.state.id).then((res) => {
       this.setState({ name: res.data.firstname });
       console.log(this.state.name);
     });
   }
   userMood() {
     API.getMood(this.state.id)
-      .then(res => {
+      .then((res) => {
         var results = res.data;
         this.setState({ emotions: results });
         console.log(this.state.emotions);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -50,7 +49,7 @@ class Profile extends React.Component {
           <AddMood />
         </div>
 
-        {this.state.emotions.map(emotion => (
+        {this.state.emotions.map((emotion) => (
           <div className="col s12" key={emotion._id}>
             <EmotionCard
               date={
@@ -59,11 +58,11 @@ class Profile extends React.Component {
                 </Moment>
               }
               emotion={emotion.emotion}
+              emoji={emotion.emoji}
+              comment={emotion.comment}
             />
           </div>
         ))}
-
-        <AddMoodForm />
       </div>
     );
   }

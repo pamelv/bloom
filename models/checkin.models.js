@@ -5,19 +5,19 @@ const { Schema } = mongoose;
 const CheckInSchema = new Schema({
   emotion: {
     type: String,
-    required: true
+    required: true,
   },
   emoji: {
     type: String,
-    required: true
+    required: true,
   },
   emotionCreatedAt: {
     type: Date,
-    default: Date.now()
+    default: Date(),
   },
   comment: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 const CheckIn = mongoose.model("CheckIn", CheckInSchema);
