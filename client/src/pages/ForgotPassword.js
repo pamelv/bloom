@@ -1,6 +1,8 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import API from "../utils/user.api";
 import { useForm } from "react-hook-form";
+import history from "../history";
 
 export default function ForgotPassword() {
   const { register, handleSubmit, errors } = useForm();
@@ -8,13 +10,15 @@ export default function ForgotPassword() {
     console.log(data);
     API.findUser(data.email)
       .then((res) => {
-        console.log(
-          new Date(res.data.dateofBirth) === new Date(data.dateofBirth)
-        );
-        console.log(res);
-        if (new Date(data.dateofBirth) === new Date(res.data.dateofBirth)) {
+        if (
+          (data.email === res.data.email) &
+          (Date.parse(res.data.dateofBirth) === Date.parse(data.dateofBirth))
+        ) {
           console.log(res);
-        } else console.log("no match");
+          console.log("match");
+          localStorage.setItem("id", res.data._id);
+          history.push("/newpassword");
+        } else noMatch();
       })
       .catch((error) => {
         console.log(error);
@@ -23,8 +27,16 @@ export default function ForgotPassword() {
   const onSubmit = (data) => {
     submitForm(data);
   };
+
+  const noMatch = (props) => {
+    ReactDOM.render(
+      <h4>The email and date of birth entered does not match our records.</h4>,
+      document.getElementById("msg")
+    );
+  };
   return (
     <div>
+      <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Email</label>
         <input
@@ -41,7 +53,7 @@ export default function ForgotPassword() {
           ref={register({ required: true })}
         />
         {errors.dateofBirth && <p>Invalid date</p>}
-        <button>Log In</button>
+        <button>Next</button>
       </form>
     </div>
   );
