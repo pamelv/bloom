@@ -1,10 +1,13 @@
 import React from "react";
 import LogInForm from "../components/LoginForm";
- 
-const LogIn = props => (
-  <div>
-    <LogInForm />
-  </div>
-);
 
-export default LogIn;
+export default function LogIn() {
+  return (
+    <div>
+      <LogInForm />
+      <button>
+        <a href="/forgotpassword">Forgot Password</a>
+      </button>
+    </div>
+  );
+}

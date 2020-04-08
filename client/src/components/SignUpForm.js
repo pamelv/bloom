@@ -7,22 +7,23 @@ import ReactDOM from "react-dom";
 
 export default function SignUpForm() {
   const { register, handleSubmit, errors } = useForm();
-  const submitForm = data => {
+  const submitForm = (data) => {
     API.addUser(data)
-      .then(res => {
+      .then((res) => {
+        localStorage.setItem("id", res.data._id);
         console.log(res);
         history.push("/profile");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         userExist();
       });
   };
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.log(data);
     submitForm(data);
   };
-  const userExist = props => {
+  const userExist = (props) => {
     ReactDOM.render(
       <h4>A user with this email already exist. Please try to login.</h4>,
       document.getElementById("msg")
@@ -50,7 +51,7 @@ export default function SignUpForm() {
         {errors.lastname && <p>This field is required</p>}
         <label>Email</label>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
@@ -64,7 +65,7 @@ export default function SignUpForm() {
           ref={register({
             required: true,
             minLength: 6,
-            pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i
+            pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
         {errors.password && (
@@ -79,8 +80,9 @@ export default function SignUpForm() {
           type="date"
           placeholder="Date of Birth"
           name="dateofBirth"
-          ref={register}
+          ref={register({ required: true })}
         />
+        {errors.dateofBirth && <p>This field is required</p>}
         <label>Gender</label>
         <div className="flex">
           <input

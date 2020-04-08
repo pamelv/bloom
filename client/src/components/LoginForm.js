@@ -7,11 +7,11 @@ import ReactDOM from "react-dom";
 
 const bcrypt = require("bcryptjs");
 
-const LogInForm = props => {
+const LogInForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const submitForm = data => {
+  const submitForm = (data) => {
     API.findUser(data.email)
-      .then(res => {
+      .then((res) => {
         var user;
         if (
           (data.email === res.data.email) &
@@ -23,17 +23,17 @@ const LogInForm = props => {
           history.push("/profile");
         } else errorMsg(user);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         var user = "No user";
         errorMsg(user);
       });
   };
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     submitForm(data);
   };
 
-  const errorMsg = props => {
+  const errorMsg = (props) => {
     if (props === "No user") {
       ReactDOM.render(
         <h4>
@@ -67,10 +67,10 @@ const LogInForm = props => {
           type="password"
           placeholder="Password"
           name="password"
-          ref={register({ required: true, min: 6 })}
+          ref={register({ required: true, minLength: 6 })}
         />
         {errors.password && <p>Invalid password</p>}
-        <button type="button">Log In</button>
+        <button>Log In</button>
       </form>
     </div>
   );
