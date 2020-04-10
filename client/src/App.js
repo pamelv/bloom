@@ -6,7 +6,10 @@ import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
-import Quote from "./pages/Quote";
+
+import Playlist from "./pages/Playlist";
+import Motivation from "./pages/Motivation";
+import Quote from "./pages/Quote"
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -26,8 +29,11 @@ function App() {
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/recipe" component={Recipe} />
+        <Route exact path="/playlist" component={Playlist} />
+        <Route exact path="/motivation" component={Motivation} />
         <Route exact path="/poem/happy" component={Poem} />
-        <Route exact path= "/quote" component={Quote} />
+        <Route exact path="/quote" component={Quote} />
+
       </div>
     </Router>
   );

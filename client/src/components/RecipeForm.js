@@ -1,30 +1,32 @@
 import React from "react";
 
-export default function RecipeForm (props){
-    return (
-        <div className="recipe">
-          {props.recipes1.map(recipe => {
-            return (
-              <div key={recipe.id}>
-                <h1>{recipe.title}</h1>
-                <img src={recipe.image} alt="" />
-                <ul>
-                  <li>PREP TIME: {recipe.readyInMinutes}</li>
-                  <li>SERVINGS:{recipe.servings}</li>
-                </ul>
-                <h4>RECIPE INSTRUCTIONS</h4>
-                <p>{recipe.instructions}</p>
-  
-                <button type="submit"  onClick={
-                  () => {
-                    props.handleFormSave(recipe)
-                  }
-                 }>
-                             BOOKMARK
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      );
+export default function RecipeForm(props) {
+  return (
+    <div className="recipe">
+      {props.recipes1.map((recipe) => {
+        return (
+          <div key={recipe.id}>
+            <h1>{recipe.title}</h1>
+            <img src={recipe.image} alt="" />
+            <ul>
+              <li>PREP TIME: {recipe.readyInMinutes}</li>
+              <li>SERVINGS:{recipe.servings}</li>
+            </ul>
+            <h4>RECIPE INSTRUCTIONS</h4>
+            <p>{recipe.instructions}</p>
+
+            <button
+              type="submit"
+              onClick={() => {
+                props.handleFormSave(recipe);
+              }}
+            >
+              BOOKMARK
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
+
