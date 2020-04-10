@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import history from "../history";
 
 class App extends React.Component {
@@ -11,10 +10,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.loggedIn();
+    this.isLoggedIn();
   }
 
-  loggedIn() {
+  logIn() {
+    history.push("/login");
+  }
+
+  signUp() {
+    history.push("/signup");
+  }
+
+  isLoggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
     } else history.push("/profile");
@@ -23,11 +30,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button>
-          <Link to="/login">Log In</Link>
-        </button>
-        <button id="signup">
-          <Link to="/signup">Sign Up</Link>
+        <button onClick={this.logIn}>Log In</button>
+        <button id="signup" onClick={this.signUp}>
+          Sign Up
         </button>
       </div>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import API from "../utils/user.api";
 import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
-import AddMood from "../components/AddMood";
+import AddMood from "../components/AddMoodModal";
 import history from "../history";
 
 class Profile extends React.Component {
@@ -16,8 +16,6 @@ class Profile extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(this.state.id);
-    console.log(this.state.name);
     this.getUser();
   }
 

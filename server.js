@@ -62,7 +62,11 @@ app
       req.body.password = Bcrypt.hashSync(req.body.password, 10);
       var user = new Users(req.body);
       var result = await user.save();
-      res.send(result);
+      const userId = { user: user._id };
+      const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "1h",
+      });
+      res.json({ accessToken: accessToken });
     } catch (error) {
       res.status(500).send(error);
     }
