@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const axios = require('axios');
 const recipe = require('../../models/recipes.models')
+
 router.get('/recipe', (req, res) => {
     console.log('hello');
     axios.get('https://api.spoonacular.com/recipes/random?number=1&apiKey=fdf9083cd9394e03bd0600d6440be4b7')

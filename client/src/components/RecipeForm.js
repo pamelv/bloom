@@ -1,8 +1,5 @@
 import React from "react";
-// props={
-//     recipes1 : this.StaticRange.recipes
-//    handleFormsave: this.handleFormSave
-// }
+
 export default function RecipeForm (props){
     return (
         <div className="recipe">

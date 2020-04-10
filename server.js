@@ -17,7 +17,7 @@ const corsOptions = {
 
 mongoose.connect("mongodb://localhost/bloom", {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 
 const app = express();

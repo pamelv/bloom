@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  getPoem: function() {
-    return axios.get("http://localhost:3001/api/quote");
-  }
+    getQuote: function() {
+        return axios.get("/api/quote");
+    }
 };
