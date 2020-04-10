@@ -31,8 +31,8 @@ function App() {
         <Route exact path="/recipe" component={Recipe} />
         <Route exact path="/playlist" component={Playlist} />
         <Route exact path="/podcast" component={Podcast} />
-        <Route exact path="/api/poem/happy" component={Poem} />
-        <Route exact path="api/quote" component={Quote} />
+        <Route exact path="/poem/happy" component={Poem} />
+        <Route exact path="quote" component={Quote} />
       </div>
     </Router>
   );
