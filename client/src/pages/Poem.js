@@ -3,17 +3,20 @@ import API from "../utils/poem.api";
 
 export default class Poem extends Component {
   state = {
-    poems: []
+    poems: ""
   };
 
   componentDidMount() {
     console.log("mounted");
     API.getPoem()
       .then(response => {
-        console.log(response.data);
+    
+        // console.log(response.data);
         this.setState({
-          poem: response.data
+          poems: response.data
       });
+ 
+      console.log(this.state.poems.lines);
     })
       .catch(error => {
         console.log(error);
@@ -24,15 +27,13 @@ export default class Poem extends Component {
   render() {
     return (
         <div>
-            <div key={this.title}>
-              <h1>{this.title}</h1>
-              <h3>BY {this.author}</h3>
+            <div key={this.state.poems.title}>
+              <h4>{this.state.poems.title}</h4>
+              <p>By {this.state.poems.author}</p>
               
-              <p>{this.lines}</p>
+              <p>{this.state.poems.lines}</p>
 
-              <button type="submit">
-                <a href="/saved">BOOKMARK</a>
-              </button>
+              <button type="submit">BOOKMARK</button>
             </div>
         </div>
           );
