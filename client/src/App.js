@@ -6,9 +6,10 @@ import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
+
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
-import Quote from "./components/Quote";
+import Quote from "./pages/Quote";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
