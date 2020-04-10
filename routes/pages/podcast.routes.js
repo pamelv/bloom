@@ -2,7 +2,7 @@ const router = require("express").Router();
 const unirest = require("unirest");
 require("dotenv").config();
 
-router.get("/motivation", (req, res) => {
+router.get("/podcasts", (req, res) => {
   console.log("hello");
 
   unirest
