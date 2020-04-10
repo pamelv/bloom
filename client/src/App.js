@@ -6,6 +6,13 @@ import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
+<<<<<<< HEAD
+=======
+
+import Playlist from "./pages/Playlist";
+import Podcast from "./pages/Podcast";
+import Quote from "./pages/Quote";
+>>>>>>> master
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -25,7 +32,14 @@ function App() {
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/recipe" component={Recipe} />
+<<<<<<< HEAD
         <Route exact path="/api/poem/happy" component={Poem} />
+=======
+        <Route exact path="/playlist" component={Playlist} />
+        <Route exact path="/podcast" component={Podcast} />
+        <Route exact path="/poem/happy" component={Poem} />
+        <Route exact path="quote" component={Quote} />
+>>>>>>> master
       </div>
     </Router>
   );
