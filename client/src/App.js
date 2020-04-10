@@ -7,7 +7,7 @@ import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
 import Playlist from "./pages/Playlist";
-import Motivation from "./pages/Motivation";
+import Podcast from "./pages/Podcast";
 import Quote from "./components/Quote";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/recipe" component={Recipe} />
         <Route exact path="/playlist" component={Playlist} />
-        <Route exact path="/motivation" component={Motivation} />
+        <Route exact path="/podcast" component={Podcast} />
         <Route exact path="/api/poem/happy" component={Poem} />
         <Route exact path="api/quote" component={Quote} />
       </div>

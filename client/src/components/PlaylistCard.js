@@ -3,11 +3,8 @@ import React from "react";
 export default function PlaylistCard(props) {
   return (
     <div key={props.id}>
-      <h1>{props.name}</h1>
-      {/* {(props.images = []) && props.images.length > 0 && (
-        <img src={props.images[0].url} alt="" />
-      )} */}
-      <img src="" alt="" />
+      <img src={props.url} alt="" />
+      <h3>{props.name}</h3>
       <ul>
         <li>Description: {props.description}</li>
         <li>Tracks: {props.tracks.total}</li>
