@@ -5,27 +5,18 @@ import "./form.css";
 import history from "../history";
 import ReactDOM from "react-dom";
 
-const bcrypt = require("bcryptjs");
-
 const LogInForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
-    API.findUser(data.email)
+    API.findUser(data)
       .then((res) => {
-        var user;
-        if (
-          (data.email === res.data.email) &
-          bcrypt.compareSync(data.password, res.data.password)
-        ) {
-          console.log(res);
-          user = res;
-          localStorage.setItem("id", res.data._id);
-          history.push("/profile");
-        } else errorMsg(user);
+        localStorage.setItem("token", res.data.accessToken);
+        history.push("/profile");
       })
       .catch((error) => {
-        console.log(error);
-        var user = "No user";
+        if (error === 500) {
+          var user = "No user";
+        }
         errorMsg(user);
       });
   };

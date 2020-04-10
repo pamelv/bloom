@@ -8,30 +8,34 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: localStorage.getItem("id"),
+      token: localStorage.getItem("token"),
       name: "",
+      id: "",
       emotions: [],
     };
   }
   componentDidMount() {
     console.log(this.state.id);
-    this.userMood();
     console.log(this.state.name);
     this.getUser();
   }
 
   getUser() {
-    API.activeUser(this.state.id).then((res) => {
+    console.log(this.state.token);
+    API.getUser(this.state.token).then((res) => {
       this.setState({ name: res.data.firstname });
+      localStorage.setItem("id", res.data._id);
+      this.setState({ id: res.data._id });
       console.log(this.state.name);
+      console.log(this.state.id);
+      this.userMood(this.state.id);
     });
   }
-  userMood() {
-    API.getMood(this.state.id)
+  userMood(id) {
+    API.getMood(id)
       .then((res) => {
         var results = res.data;
         this.setState({ emotions: results });
-        console.log(this.state.emotions);
       })
       .catch((error) => {
         console.log(error);

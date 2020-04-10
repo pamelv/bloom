@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const pages = require("./routes/pages");
@@ -6,6 +7,7 @@ const Users = require("./models/users.models");
 const Moods = require("./models/moods.models");
 const cors = require("cors");
 const Bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 /* constants */
 const PORT = process.env.PORT || 3001;
@@ -22,7 +24,7 @@ mongoose.connect("mongodb://localhost/bloom", {
 
 const app = express();
 
-app.use(express.urlencoded( { extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 /* set-up middlewares */
@@ -31,14 +33,27 @@ app.use(morgan("dev")); // logging
 app.use("/", pages);
 app.options("*", cors(corsOptions));
 
-//remove once app is ready
-app.get("/api/ping", (req, res) => res.send("pong"));
+app.route("/users").get(async (req, res) => {
+  const user = await Users.find();
+  res.json(user);
+});
+
+app.route("/login").post(async (req, res) => {
+  const user = await Users.findOne({
+    email: req.body.email,
+  });
+  if (Bcrypt.compareSync(req.body.password, user.password)) {
+    const userId = { user: user._id };
+    const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET);
+    res.json({ accessToken: accessToken });
+  } else res.send(401);
+});
 
 app
   .route("/api/users")
-  .get(async (req, res) => {
-    const users = await Users.find();
-    res.json(users);
+  .get(authenticateToken, async (req, res) => {
+    const user = await Users.findById({ _id: req.userId.user });
+    res.json(user);
   })
   .post(async (req, res) => {
     try {
@@ -59,12 +74,11 @@ app.route("/api/users/:email").get(async (req, res) => {
 app
   .route("/api/user/:id")
   .get(async (req, res) => {
-    const user = await Users.findById(req.params.id);
+    const user = await Users.findById(req.body.id);
     res.json(user);
   })
   .put(async (req, res) => {
     req.body.password = Bcrypt.hashSync(req.body.password, 10);
-    console.log(req.body.password);
     const results = await Users.updateOne(
       { _id: req.params.id },
       { $set: { password: req.body.password } },
@@ -98,6 +112,18 @@ app.route("/api/moods").get(async (req, res) => {
   const moods = await Moods.find();
   res.json(moods);
 });
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, userId) => {
+    if (err) return res.sendStatus(403);
+    req.userId = userId;
+    next();
+  });
+}
 
 /* run our app */
 app.listen(PORT, () => {

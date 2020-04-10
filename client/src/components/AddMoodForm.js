@@ -33,28 +33,29 @@ export default function AddMoodForm() {
           style={{ width: "auto" }}
           name="emoji"
           type="radio"
-          // eslint-disable-next-line
+          eslint-disable-next-line
           value="&#128513;"
           ref={register({ required: true })}
         />
+        {/* eslint-disable-next-line */}
         <h2>&#128513;</h2>
         <input
           style={{ width: "auto" }}
           name="emoji"
           type="radio"
-          // eslint-disable-next-line
           value="&#128528;"
           ref={register({ required: true })}
         />
+        {/* eslint-disable-next-line */}
         <h2>&#128528;</h2>
         <input
           style={{ width: "auto" }}
           name="emoji"
           type="radio"
-          // eslint-disable-next-line
           value="&#128577;"
           ref={register({ required: true })}
         />
+        {/* eslint-disable-next-line */}
         <h2>&#128577;</h2>
       </div>
       {errors.emoji && <p>This field is required</p>}
