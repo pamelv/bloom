@@ -44,7 +44,9 @@ app.route("/login").post(async (req, res) => {
   });
   if (Bcrypt.compareSync(req.body.password, user.password)) {
     const userId = { user: user._id };
-    const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET);
+    const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: "1h",
+    });
     res.json({ accessToken: accessToken });
   } else res.send(401);
 });

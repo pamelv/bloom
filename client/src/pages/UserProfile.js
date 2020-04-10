@@ -3,6 +3,7 @@ import API from "../utils/user.api";
 import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
 import AddMood from "../components/AddMood";
+import history from "../history";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -22,14 +23,18 @@ class Profile extends React.Component {
 
   getUser() {
     console.log(this.state.token);
-    API.getUser(this.state.token).then((res) => {
-      this.setState({ name: res.data.firstname });
-      localStorage.setItem("id", res.data._id);
-      this.setState({ id: res.data._id });
-      console.log(this.state.name);
-      console.log(this.state.id);
-      this.userMood(this.state.id);
-    });
+    API.getUser(this.state.token)
+      .then((res) => {
+        this.setState({ name: res.data.firstname });
+        localStorage.setItem("id", res.data._id);
+        this.setState({ id: res.data._id });
+        console.log(this.state.name);
+        console.log(this.state.id);
+        this.userMood(this.state.id);
+      })
+      .catch((error) => {
+        history.push("/login");
+      });
   }
   userMood(id) {
     API.getMood(id)
