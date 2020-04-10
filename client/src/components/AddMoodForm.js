@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import API from "../utils/user.api";
+import history from "../history";
 
 export default function AddMoodForm() {
   const id = localStorage.getItem("id");
@@ -11,11 +12,12 @@ export default function AddMoodForm() {
       .then((res) => {
         console.log(data);
         console.log(res);
+        localStorage.setItem("mood", data.emoji);
+        history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
       });
-    window.location.reload();
   };
 
   return (

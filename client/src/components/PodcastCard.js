@@ -10,7 +10,11 @@ export default function PodcastCard(props) {
         <a href={props.audio} className="btn btn-primary">
           Audio
         </a>
-        <a href="" className="btn btn-primary" style={{ marginLeft: "1rem" }}>
+        <a
+          href={props.link}
+          className="btn btn-primary"
+          style={{ marginLeft: "1rem" }}
+        >
           BOOKMARK
         </a>
       </div>
