@@ -17,10 +17,14 @@ const corsOptions = {
   credentials: true,
 };
 
-mongoose.connect("mongodb://localhost/bloom", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    `mongodb://bloom:${process.env.DB_PASSWORD}@ds263248.mlab.com:63248/heroku_m4bk3m41`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const app = express();
 
@@ -45,7 +49,7 @@ app.route("/login").post(async (req, res) => {
   if (Bcrypt.compareSync(req.body.password, user.password)) {
     const userId = { user: user._id };
     const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1hr",
     });
     res.json({ accessToken: accessToken });
   } else res.send(401);
