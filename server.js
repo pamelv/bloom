@@ -37,9 +37,9 @@ app.use(express.static("client/build"));
 app.use(morgan("dev")); // logging
 
 app.use("/", pages);
-app.get("*", (req, res) =>
-  res.sendFile(path.resolve("client", "build", "index.html"))
-);
+// app.get("*", (req, res) =>
+//   res.sendFile(path.resolve("client", "build", "index.html"))
+// );
 app.options("*", cors(corsOptions));
 
 app.route("/users").get(async (req, res) => {

@@ -10,6 +10,7 @@ export default function AddMoodForm() {
     console.log(data);
     API.addMood(id, data)
       .then((res) => {
+        console.log("mood added");
         console.log(data);
         console.log(res);
         localStorage.setItem("mood", data.emoji);
