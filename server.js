@@ -36,7 +36,7 @@ app.use(express.static("client/build"));
 /* set-up middlewares */
 app.use(morgan("dev")); // logging
 
-app.use("/", pages);
+app.use(pages);
 
 app.options("*", cors(corsOptions));
 
@@ -138,6 +138,10 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("client", "build", "index.html"))
+);
 
 /* run our app */
 app.listen(PORT, () => {

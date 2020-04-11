@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/api/recipe" component={Recipe} />
+        <Route exact path="/recipe" component={Recipe} />
         <Route exact path="/playlist" component={Playlist} />
         <Route exact path="/podcast" component={Podcast} />
         <Route exact path="/poem/happy" component={Poem} />
