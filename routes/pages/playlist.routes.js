@@ -7,11 +7,52 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
-router.get("/playlists", (req, res) => {
+
+router.get("/happy/playlists", (req, res) => {
+
   console.log("hello");
   spotify
     .request(
-      "https://api.spotify.com/v1/search?q=%22mood%22&type=playlist&limit=5"
+      "https://api.spotify.com/v1/search?q=%22mood%20happy%22&type=playlist&limit=10"
+    )
+    .then(function (data) {
+      res.json(data.playlists.items);
+    })
+    .catch(function (err) {
+      console.error("Error occurred: " + err);
+    });
+});
+router.get("/bleh/playlists", (req, res) => {
+  console.log("hello");
+  spotify
+    .request(
+      "https://api.spotify.com/v1/search?q=%22calm%22&type=playlist&limit=10"
+    )
+    .then(function (data) {
+      res.json(data.playlists.items);
+    })
+    .catch(function (err) {
+      console.error("Error occurred: " + err);
+    });
+});
+router.get("/sad/playlists", (req, res) => {
+  spotify
+    .request(
+      "https://api.spotify.com/v1/search?q=%22Sad%22&type=playlist&limit=10"
+    )
+    .then(function (data) {
+      res.json(data.playlists.items);
+    })
+    .catch(function (err) {
+      console.error("Error occurred: " + err);
+    });
+});
+router.get("/:mood/playlists/:subMood", (req, res) => {
+  var paramSearch = req.params.subMood;
+  var subMoodSearch = paramSearch.split("-").join("%20");
+  spotify
+    .request(
+      `https://api.spotify.com/v1/search?q=%22${subMoodSearch}%22&type=playlist&limit=10`
     )
     .then(function (data) {
       res.json(data.playlists.items);
