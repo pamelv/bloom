@@ -37,7 +37,7 @@ class Profile extends React.Component {
   userMood(id) {
     API.getMood(id)
       .then((res) => {
-        var results = res.data;
+        var results = res.data || [];
         this.setState({ emotions: results });
       })
       .catch((error) => {
@@ -56,7 +56,7 @@ class Profile extends React.Component {
           <AddMood />
         </div>
 
-        {/* {this.state.emotions.map((emotion) => (
+        {this.state.emotions.map((emotion) => (
           <div className="col s12" key={emotion._id}>
             <EmotionCard
               date={
@@ -69,7 +69,7 @@ class Profile extends React.Component {
               comment={emotion.comment}
             />
           </div>
-        ))} */}
+        ))}
       </div>
     );
   }
