@@ -31,7 +31,8 @@ class Profile extends React.Component {
         this.userMood(this.state.id);
       })
       .catch((error) => {
-        history.push("/login");
+        console.log(error);
+        // history.push("/login");
       });
   }
   userMood(id) {
