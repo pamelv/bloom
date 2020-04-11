@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
+const path = require("path");
 const pages = require("./routes/pages");
 const mongoose = require("mongoose");
 const Users = require("./models/users.models");
