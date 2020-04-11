@@ -63,6 +63,7 @@ app.route("/api/login").post(async (req, res) => {
 app
   .route("/api/users")
   .get(authenticateToken, async (req, res) => {
+    console.log("api users call");
     const user = await Users.findById({ _id: req.userId.user });
     res.json(user);
   })
