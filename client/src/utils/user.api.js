@@ -5,16 +5,17 @@ export default {
   addUser: function (data) {
     return axios.post("/api/users", data);
   },
-  // Get user login
-  getUser: function (data) {
-    return axios.get("/api/users", data);
+  getUser: function (token) {
+    return axios.get("/api/users", {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  // Get user login
-  findUser: function (email) {
-    return axios.get("/api/users/" + email);
+  // Get user token
+  findUser: function (data) {
+    return axios.post("/login", data);
   },
   getMood: function (id) {
-    return axios.get("/api/user/" + id + "/moods");
+    return axios.get(`/api/user/${id}/moods`);
   },
   activeUser: function (id) {
     return axios.get("/api/user/" + id);

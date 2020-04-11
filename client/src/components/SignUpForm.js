@@ -10,8 +10,7 @@ export default function SignUpForm() {
   const submitForm = (data) => {
     API.addUser(data)
       .then((res) => {
-        localStorage.setItem("id", res.data._id);
-        console.log(res);
+        localStorage.setItem("token", res.data.accessToken);
         history.push("/profile");
       })
       .catch((error) => {

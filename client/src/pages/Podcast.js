@@ -39,6 +39,9 @@ export default class Podcast extends Component {
               podcast_title_original={podcast.podcast_title_original}
               audio_length_sec={podcast.audio_length_sec}
               audio={podcast.audio}
+
+              link="#"
+
             />
           </div>
         ))}

@@ -15,6 +15,7 @@ router.get("/podcasts", (req, res) => {
       //   res.send(JSON.stringify(response.body.results, null, 4));
     });
 });
+
 router.get("/podcasts/:search", (req, res) => {
   console.log("hello");
   var paramSearch = req.params.search;
@@ -31,5 +32,6 @@ router.get("/podcasts/:search", (req, res) => {
       //   res.send(JSON.stringify(response.body.results, null, 4));
     });
 });
+
 
 module.exports = router;

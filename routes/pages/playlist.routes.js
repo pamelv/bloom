@@ -7,7 +7,9 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
+
 router.get("/happy/playlists", (req, res) => {
+
   console.log("hello");
   spotify
     .request(
