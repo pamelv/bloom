@@ -47,7 +47,7 @@ app.route("/users").get(async (req, res) => {
   res.json(user);
 });
 
-app.route("/login").post(async (req, res) => {
+app.route("/api/login").post(async (req, res) => {
   const user = await Users.findOne({
     email: req.body.email,
   });

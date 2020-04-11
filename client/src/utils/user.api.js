@@ -12,7 +12,7 @@ export default {
   },
   // Get user token
   findUser: function (data) {
-    return axios.post("/login", data);
+    return axios.post("/api/login", data);
   },
   getMood: function (id) {
     return axios.get(`/api/user/${id}/moods`);
