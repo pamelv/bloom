@@ -11,7 +11,7 @@ export default {
     });
   },
   // Get user token
-  findUser: function (data) {
+  getToken: function (data) {
     return axios.post("/api/login", data);
   },
   findUserByEmail: function (email) {
@@ -19,9 +19,6 @@ export default {
   },
   getMood: function (id) {
     return axios.get(`/api/user/${id}/moods`);
-  },
-  activeUser: function (id) {
-    return axios.get("/api/user/" + id);
   },
   addMood: function (id, data) {
     return axios.post("/api/user/" + id + "/moods", data);
