@@ -14,6 +14,9 @@ export default {
   findUser: function (data) {
     return axios.post("/api/login", data);
   },
+  findUserByEmail: function (email) {
+    return axios.get("/api/users/" + email);
+  },
   getMood: function (id) {
     return axios.get(`/api/user/${id}/moods`);
   },

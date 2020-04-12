@@ -33,7 +33,7 @@ class Profile extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        // history.push("/login");
+        history.push("/login");
       });
   }
   userMood(id) {

@@ -8,7 +8,7 @@ export default function ForgotPassword() {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
     console.log(data);
-    API.findUser(data.email)
+    API.findUserByEmail(data.email)
       .then((res) => {
         if (
           (data.email === res.data.email) &
