@@ -8,7 +8,9 @@ import Recipe from "./pages/Recipes/Recipe";
 import RecipeHappy from "./pages/Recipes/RecipeHappy";
 import RecipeSad from "./pages/Recipes/RecipeSad";
 import RecipeBleh from "./pages/Recipes/RecipeBleh";
-import Poem from "./pages/Poem";
+import PoemSad from "./pages/Poem/PoemSad";
+import PoemHappy from "./pages/Poem/PoemHappy";
+import PoemBleh from "./pages/Poem/PoemBleh";
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
 import Quote from "./pages/Quote";
@@ -41,7 +43,9 @@ function App() {
         <Route exact path="/recipe/bleh" component={RecipeBleh} />
         <Route exact path="/playlist" component={Playlist} />
         <Route exact path="/podcast" component={Podcast} />
-        <Route exact path="/poem/happy" component={Poem} />
+        <Route exact path="/poem/happy" component={PoemHappy} />
+        <Route exact path="/poem/hope" component={PoemSad} />
+        <Route exact path="/poem/life" component={PoemBleh} />
         <Route exact path="/quote" component={Quote} />
       </div>
     </Router>

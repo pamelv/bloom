@@ -8,13 +8,13 @@ router.get('/poem/:title', (req, res) => {
     .then(response => {
 
         // ==================to generate three random poems====================
-        // const newArr = [];
-        // for( let i=0; i<3;i++) {
-        //     const outerIndex =  Math.floor(Math.random() * response.data.length);    
-        //     newArr.push(response.data[outerIndex]);
-        // }
-        // console.log(response.data);
-        // res.json(newArr);
+        const newArr = [];
+        for( let i=0 ; i < 4; i++ ) {
+            const outerIndex =  Math.floor(Math.random() * response.data.length);    
+            newArr.push(response.data[outerIndex]);
+        }
+        console.log(response.data);
+        res.json(newArr);
 
 
         // ====================to generate only one poem=====================

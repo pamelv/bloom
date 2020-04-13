@@ -4,12 +4,13 @@ import Parser from 'html-react-parser';
 export default function RecipeForm(props) {
   return (
     <div>
+      <h1>RECIPES FOR YOU</h1>
       {props.recipes.map((recipe) => {
         return (
           <div className="card recipe">
           <div className="card-body">
           <div key={recipe.id}>
-            <h1>{recipe.title}</h1>
+            <h4>{recipe.title}</h4>
             <img src={recipe.image} alt="" />
             <ul>
               <li>PREP TIME: {recipe.readyInMinutes}</li>
