@@ -17,7 +17,7 @@ export default class Poem extends Component {
     
         console.log("poems:", response.data);
         this.setState({
-          poems: response.data,
+          poems: response.data
       });
  
       console.log(this.state.poems);
@@ -27,15 +27,11 @@ export default class Poem extends Component {
       });
   }
 
-
   render() {
     return (
         
             <PoemForm
               poems={this.state.poems}
-              // title={this.state.poems.title}
-              // author={this.state.poems.author}
-              // lines={this.state.poems.lines}
             />
       
     )}

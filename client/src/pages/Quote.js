@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import API from "../utils/quote.api";
+import QuoteForm from "../components/QuoteForm";
 
 
 
 export default class Quote extends Component {
-    state = {
-        quotes:""
-    };
+        constructor(props) {
+          super(props);
+          this.state = {
+            quotes: "",
+          };
+        }
     
 
     componentDidMount(){
         console.log("mounted");
         API.getQuote()
             .then(response => {
-                // const quoteData = response.data;
-                // console.log( response.data);
+            
+                console.log( response.data);
                 this.setState({
                     quotes: response.data
                     
@@ -22,11 +26,7 @@ export default class Quote extends Component {
                 // console.log(quoteData);
                 console.log(this.state.quotes.quoteText);
             
-            }
-            
-
-            )
-            
+            })
             .catch(error => {
                 console.log(error);
             });
@@ -34,17 +34,16 @@ export default class Quote extends Component {
 
         render() {
             return(
-                
-                <div>
-                     <div key={this.state.quotes.quoteLink}>
-                        <p>{this.state.quotes.quoteText}</p>
-                        <p>By {this.state.quotes.quoteAuthor}</p> 
-
-                    <button type="submit">BOOKMARK</button>
-                    </div>
-                </div>
+             
+                <QuoteForm 
+                    quoteText={this.state.quotes.quoteText}
+                    quoteAuthor={this.state.quotes.quoteAuthor}
+                    quoteLink={this.state.quotes.quoteLink}
+            
+                    
+                />    
             );
         }
-    }
+ }
 
 
