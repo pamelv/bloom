@@ -1,18 +1,76 @@
 const router = require("express").Router();
 const axios = require("axios");
+require("dotenv").config();
+const apiKey = process.env.API_KEY;
+
+
+// to save to our database
 const recipe = require("../../models/recipes.models");
 
+
+// =================5 RANDOM RECIPES=====================
 router.get("/recipe", (req, res) => {
-  console.log("hello");
+  // console.log("hello", apiKey);
+
   axios
     .get(
-      "https://api.spoonacular.com/recipes/random?number=1&apiKey=fdf9083cd9394e03bd0600d6440be4b7"
+     `https://api.spoonacular.com/recipes/random?number=5&apiKey=${apiKey}`
     )
     .then((response) => {
       console.log(response.data);
       res.json(response.data);
     });
 });
+
+
+// ===================5 HAPPY RECIPES=====================
+
+router.get("/recipe/happy", (req, res) => {
+  // console.log("hello", apiKey);
+
+  axios
+    .get(
+     `https://api.spoonacular.com/recipes/random?number=5&tags=salad&apiKey=${apiKey}`
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.json(response.data);
+    });
+});
+
+
+// =============5 SAD/ANGRY RECIPES===================
+
+router.get("/recipe/sad", (req, res) => {
+  // console.log("hello", apiKey);
+
+  axios
+    .get(
+     `https://api.spoonacular.com/recipes/random?number=5&tags=dinner&apiKey=${apiKey}`
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.json(response.data);
+    });
+});
+
+
+// =================5 BLEH RECIPES=====================
+
+router.get("/recipe/bleh", (req, res) => {
+  // console.log("hello", apiKey);
+
+  axios
+    .get(
+     `https://api.spoonacular.com/recipes/random?number=5&tags=fingerfood&apiKey=${apiKey}`
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.json(response.data);
+    });
+});
+
+// ================================================
 
 router.post("/recipe", (req, res) => {
   const newRecipe = req.body;
@@ -23,15 +81,6 @@ router.post("/recipe", (req, res) => {
 });
 module.exports = router;
 
-// ===================TO GENERATE THREE RANDOM RECIPES==================
-// router.get('/recipe', (req, res) => {
-//     console.log('hello');
-//     axios.get('https://api.spoonacular.com/recipes/random?number=3&apiKey=fdf9083cd9394e03bd0600d6440be4b7')
-//     .then(response => {
-//         console.log(response.data);
-//         res.json(response.data);
-//     })
-// })
 
 // =====================GET BACK ALL RECIPES======================
 // router.get("/recipe", async (req, res) => {

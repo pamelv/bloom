@@ -4,7 +4,10 @@ import { Router, Route } from "react-router-dom";
 import history from "./history";
 import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
-import Recipe from "./pages/Recipe";
+import Recipe from "./pages/Recipes/Recipe";
+import RecipeHappy from "./pages/Recipes/RecipeHappy";
+import RecipeSad from "./pages/Recipes/RecipeSad";
+import RecipeBleh from "./pages/Recipes/RecipeBleh";
 import Poem from "./pages/Poem";
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
@@ -33,10 +36,13 @@ function App() {
         <Route exact path="/newpassword" component={NewPassword} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/recipe" component={Recipe} />
+        <Route exact path="/recipe/happy" component={RecipeHappy} />
+        <Route exact path="/recipe/sad" component={RecipeSad} />
+        <Route exact path="/recipe/bleh" component={RecipeBleh} />
         <Route exact path="/playlist" component={Playlist} />
         <Route exact path="/podcast" component={Podcast} />
         <Route exact path="/poem/happy" component={Poem} />
-        <Route exact path="quote" component={Quote} />
+        <Route exact path="/quote" component={Quote} />
       </div>
     </Router>
   );

@@ -9,16 +9,16 @@ export default class Poem extends Component {
   componentDidMount() {
     console.log("mounted");
     API.getPoem()
-      .then(response => {
+      .then((response) => {
     
-        // console.log(response.data);
+        console.log("poems:", response.data);
         this.setState({
-          poems: response.data
+          poems: response.data,
       });
  
       console.log(this.state.poems.lines);
     })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -27,6 +27,7 @@ export default class Poem extends Component {
   render() {
     return (
         <div>
+          <div>POEM OF THE DAY</div>
             <div key={this.state.poems.title}>
               <h4>{this.state.poems.title}</h4>
               <p>By {this.state.poems.author}</p>

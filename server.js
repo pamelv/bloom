@@ -20,7 +20,7 @@ const corsOptions = {
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-    `mongodb://bloom:${process.env.DB_PASSWORD}@ds263248.mlab.com:63248/heroku_m4bk3m41`,
+    `mongodb://localhost/bloom`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

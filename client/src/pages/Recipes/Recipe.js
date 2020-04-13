@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API from "../utils/recipe.api";
-import RecipeForm from "../components/RecipeForm";
+import API from "../../utils/recipe.api";
+import RecipeForm from "../../components/RecipeForm";
 export default class Recipe extends Component {
   state = {
     recipes: [],
@@ -29,7 +29,7 @@ export default class Recipe extends Component {
   render() {
     return (
       <RecipeForm
-        recipes1={this.state.recipes}
+        recipes={this.state.recipes}
         handleFormSave={this.handleFormSave}
       />
     );
