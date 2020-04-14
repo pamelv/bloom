@@ -11,7 +11,7 @@ const LogInForm = (props) => {
     API.getToken(data)
       .then((res) => {
         localStorage.setItem("token", res.data.accessToken);
-        history.push("/quote");
+        history.push("/welcome");
         window.location.reload();
       })
       .catch((error) => {

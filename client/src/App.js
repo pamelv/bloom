@@ -14,6 +14,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
 import LogOut from "./components/Logoutbutton";
+import LogMood from "./pages/LogMood";
 
 class App extends React.Component {
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={LogIn} />
+          <Route exact path="/welcome" component={LogMood} />
           <Route exact path="/profile" component={UserProfile} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/newpassword" component={NewPassword} />
