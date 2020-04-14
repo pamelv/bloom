@@ -36,7 +36,7 @@ class App extends React.Component {
           <Route exact path="/playlist" component={Playlist} />
           <Route exact path="/podcast" component={Podcast} />
           <Route exact path="/poem/happy" component={Poem} />
-          <Route exact path="quote" component={Quote} />
+          <Route exact path="/quote" component={Quote} />
         </div>
       </Router>
     );

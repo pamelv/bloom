@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../utils/user.api";
+import QUOTE from "../utils/quote.api";
 import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
 import AddMood from "../components/AddMoodModal";
@@ -13,11 +14,26 @@ class Profile extends React.Component {
       name: "",
       id: "",
       emotions: [],
+      quotes: "",
     };
   }
 
   componentDidMount() {
     this.getUser();
+    this.getQuote();
+  }
+
+  getQuote() {
+    QUOTE.getQuote()
+      .then((response) => {
+        this.setState({
+          quotes: response.data,
+        });
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   getUser() {
@@ -57,6 +73,14 @@ class Profile extends React.Component {
         >
           <h2>Hello {this.state.name}!</h2>
           <AddMood />
+        </div>
+
+        <div key={this.state.quotes.quoteLink}>
+          <h4>{this.state.quotes.quoteText}</h4>
+          <h6>
+            <i>{this.state.quotes.quoteAuthor}</i>
+          </h6>
+          <br></br>
         </div>
 
         {this.state.emotions.map((emotion) => (
