@@ -11,7 +11,7 @@ export default function SignUpForm() {
     API.addUser(data)
       .then((res) => {
         localStorage.setItem("token", res.data.accessToken);
-        history.push("/profile");
+        history.push("/welcome");
         window.location.reload();
       })
       .catch((error) => {
