@@ -12,6 +12,7 @@ const LogInForm = (props) => {
       .then((res) => {
         localStorage.setItem("token", res.data.accessToken);
         history.push("/profile");
+        window.location.reload();
       })
       .catch((error) => {
         if (error === 500) {

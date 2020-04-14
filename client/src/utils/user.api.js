@@ -3,10 +3,10 @@ import axios from "axios";
 export default {
   // Add user
   addUser: function (data) {
-    return axios.post("/api/users", data);
+    return axios.post("/api/user", data);
   },
   getUser: function (token) {
-    return axios.get("/api/users", {
+    return axios.get("/api/user", {
       headers: { Authorization: "Bearer " + token },
     });
   },
