@@ -15,6 +15,7 @@ class Profile extends React.Component {
       emotions: [],
     };
   }
+
   componentDidMount() {
     this.getUser();
   }

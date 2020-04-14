@@ -1,15 +1,44 @@
 import React from "react";
 import history from "../history";
 
-export default function Logout() {
-  const clearToken = () => {
+class LogOut extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem("token"),
+      isLoggedIn: false,
+    };
+  }
+
+  componentDidMount() {
+    this.hasToken();
+    console.log(this.state.token);
+  }
+
+  hasToken() {
+    if (this.state.token !== null) {
+      this.setState({ isLoggedIn: true });
+    }
+  }
+
+  clearToken() {
     localStorage.clear();
     history.push("/");
     window.location.reload();
-  };
-  return (
-    <button onClick={clearToken} style={{ float: "right" }}>
-      Log Out
-    </button>
-  );
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    console.log(this.state.isLoggedIn);
+    return (
+      <button
+        onClick={this.clearToken}
+        style={{ float: "right", display: isLoggedIn ? "block" : "none" }}
+      >
+        Log Out
+      </button>
+    );
+  }
 }
+
+export default LogOut;
