@@ -1,23 +1,52 @@
 import React, { Component } from "react";
 import API from "../utils/recipe.api";
 import RecipeForm from "../components/RecipeForm";
+
 export default class Recipe extends Component {
-  state = {
-    recipes: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem("token"),
+      currentMood: localStorage.getItem("current_mood"),
+      recipes: [],
+    };
+  }
 
   componentDidMount() {
-    console.log("mounted");
-    API.getRecipe()
-      .then((response) => {
-        console.log("recipe:", response.data.recipes);
-        this.setState({
-          recipes: response.data.recipes,
+    if (this.state.currentMood === "Happy") {
+      API.getRecipeHappy()
+        .then((response) => {
+          console.log("recipe:", response.data.recipes);
+          this.setState({
+            recipes: response.data.recipes,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (this.state.currentMood === "Bleh") {
+      API.getRecipeBleh()
+        .then((response) => {
+          console.log("recipe:", response.data.recipes);
+          this.setState({
+            recipes: response.data.recipes,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (this.state.currentMood === "Sad") {
+      API.getRecipeSad()
+        .then((response) => {
+          console.log("recipe:", response.data.recipes);
+          this.setState({
+            recipes: response.data.recipes,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else console.log("no mood available");
   }
 
   handleFormSave = (recipe) => {

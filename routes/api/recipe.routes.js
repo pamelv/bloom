@@ -5,6 +5,7 @@ const apiKey = process.env.API_KEY;
 // to save to our database
 const recipe = require("../../models/recipes.models");
 const user = require("../../models/users.models");
+
 // =================5 RANDOM RECIPES=====================
 router.get("/recipe", (req, res) => {
   // console.log("hello", apiKey);
