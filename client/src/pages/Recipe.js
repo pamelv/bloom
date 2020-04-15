@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/recipe.api";
 import RecipeForm from "../components/RecipeForm";
+import history from "../history";
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class Recipe extends Component {
   }
 
   componentDidMount() {
+    this.loggedIn();
     if (this.state.currentMood === "Happy") {
       API.getRecipeHappy()
         .then((response) => {
@@ -55,12 +57,22 @@ export default class Recipe extends Component {
     });
   };
 
+  loggedIn() {
+    // eslint-disable-next-line
+    if (this.state.token == undefined) {
+      history.push("/login");
+    }
+  }
+
   render() {
     return (
-      <RecipeForm
-        recipes1={this.state.recipes}
-        handleFormSave={this.handleFormSave}
-      />
+      <div>
+        <h3>Recipes</h3>
+        <RecipeForm
+          recipes1={this.state.recipes}
+          handleFormSave={this.handleFormSave}
+        />
+      </div>
     );
   }
 }

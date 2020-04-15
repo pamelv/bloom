@@ -29,7 +29,6 @@ class LogOut extends React.Component {
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
-    console.log(this.state.isLoggedIn);
     return (
       <button
         onClick={this.clearToken}
