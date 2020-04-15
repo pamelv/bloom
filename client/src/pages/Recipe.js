@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/recipe.api";
 import RecipeForm from "../components/RecipeForm";
+
 import history from "../history";
+
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ export default class Recipe extends Component {
 
   componentDidMount() {
     this.loggedIn();
+
     if (this.state.currentMood === "Happy") {
       API.getRecipeHappy()
         .then((response) => {
@@ -48,6 +51,8 @@ export default class Recipe extends Component {
         .catch((error) => {
           console.log(error);
         });
+
+
     } else console.log("no mood available");
   }
 

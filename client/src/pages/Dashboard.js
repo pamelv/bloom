@@ -27,6 +27,7 @@ class App extends React.Component {
     const happy = "😁";
     const bleh = "😐";
     const sad = "🙁";
+
     switch (this.state.moodParam) {
       case happy:
         this.setState({ currentMood: "Happy" });
