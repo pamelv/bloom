@@ -6,5 +6,3 @@ router.use("/api", require("./quote.routes"));
 router.use("/api", require("./playlist.routes"));
 router.use("/api", require("./podcast.routes"));
 module.exports = router;
-
-

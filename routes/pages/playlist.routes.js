@@ -7,9 +7,7 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
-
-router.get("/happy/playlists", (req, res) => {
-
+router.get("/playlists/happy", (req, res) => {
   console.log("hello");
   spotify
     .request(
@@ -22,7 +20,7 @@ router.get("/happy/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/bleh/playlists", (req, res) => {
+router.get("/playlists/bleh", (req, res) => {
   console.log("hello");
   spotify
     .request(
@@ -35,7 +33,7 @@ router.get("/bleh/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/sad/playlists", (req, res) => {
+router.get("/playlists/sad", (req, res) => {
   spotify
     .request(
       "https://api.spotify.com/v1/search?q=%22Sad%22&type=playlist&limit=10"
@@ -47,7 +45,7 @@ router.get("/sad/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/:mood/playlists/:subMood", (req, res) => {
+router.get("/playlists/:subMood", (req, res) => {
   var paramSearch = req.params.subMood;
   var subMoodSearch = paramSearch.split("-").join("%20");
   spotify
