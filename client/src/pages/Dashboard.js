@@ -27,13 +27,19 @@ class App extends React.Component {
     const happy = "😁";
     const bleh = "😐";
     const sad = "🙁";
-    if (this.state.moodParam === happy) {
-      this.setState({ currentMood: "Happy" });
-      console.log(this.state.currentMood);
-    } else if (this.state.moodParam === bleh) {
-      this.setState({ currentMood: "Bleh" });
-    } else if (this.state.moodParam === sad) {
-      this.setState({ currentMood: "Sad" });
+
+    switch (this.state.moodParam) {
+      case happy:
+        this.setState({ currentMood: "Happy" });
+        break;
+      case bleh:
+        this.setState({ currentMood: "Bleh" });
+        break;
+      case sad:
+        this.setState({ currentMood: "Sad" });
+        break;
+      default:
+        console.warn("No mood entered");
     }
   }
   render() {
@@ -42,6 +48,10 @@ class App extends React.Component {
       <div>
         <h2>Dashboard</h2>
         <h3>{this.state.currentMood}</h3>
+        <a href="/recipe">Recipe</a>
+        <a href="/podcast">Podcast</a>
+        <a href="/playlist">Playlist</a>
+        <a href="/poem">Poem</a>
       </div>
     );
   }
