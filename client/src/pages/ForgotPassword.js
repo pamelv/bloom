@@ -69,14 +69,14 @@ export default function ForgotPassword() {
             name="email"
             ref={register({ required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email && <p>Invalid email</p>}
+          {errors.email && <p className="error">Invalid email</p>}
           <label>Date of Birth</label>
           <input
             type="date"
             name="dateofBirth"
             ref={register({ required: true })}
           />
-          {errors.dateofBirth && <p>Invalid date</p>}
+          {errors.dateofBirth && <p className="error">Invalid date</p>}
           <button>Next</button>
         </form>
       </div>

@@ -50,7 +50,7 @@ export default function PlaylistCard(props) {
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
   return (
-    <div className="mb-5">
+    <div>
       <Card className={cx(styles.root, shadowStyles.root)} key={props.id}>
         <CardMedia
           className={cx(styles.media, mediaStyles.root)}
@@ -64,7 +64,9 @@ export default function PlaylistCard(props) {
             heading={props.name}
             body={props.description}
           />
-          <div style={{ float: "right", minWidth: "5px" }}>
+          <div
+            style={{ float: "right", minWidth: "150px", marginBottom: "10px" }}
+          >
             <ButtonGroup
               size="small"
               style={{ color: "#9CCED5" }}

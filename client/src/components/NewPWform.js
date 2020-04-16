@@ -61,7 +61,7 @@ export default function ForgotPassword(props) {
           })}
         />
         {errors.password && (
-          <p>
+          <p className="error">
             Password must have 8 characters and contain at least: one upper case
             letter, one lower case letter, one numerical digit, one special
             character.
@@ -78,7 +78,7 @@ export default function ForgotPassword(props) {
             pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
-        {errors.dateofBirth && <p>Invalid entry</p>}
+        {errors.dateofBirth && <p className="error">Invalid entry</p>}
         <div className="flex">
           <button>Submit</button> <div id="login-btn"></div>
         </div>

@@ -55,7 +55,7 @@ const LogInForm = (props) => {
             name="email"
             ref={register({ required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email && <p>Invalid email</p>}
+          {errors.email && <p className="error">Invalid email</p>}
           <label>Password</label>
           <input
             type="password"
@@ -63,7 +63,7 @@ const LogInForm = (props) => {
             name="password"
             ref={register({ required: true, minLength: 6 })}
           />
-          {errors.password && <p>Invalid password</p>}
+          {errors.password && <p className="error">Invalid password</p>}
           <button>Log In</button>
         </form>
       </div>

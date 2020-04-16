@@ -29,7 +29,7 @@ export default function AddMoodForm() {
         name="emotion"
         ref={register({ required: true })}
       />
-      {errors.emotion && <p>This field is required</p>}
+      {errors.emotion && <p className="error">This field is required</p>}
       <label>Select an emoji:</label>
       <div className="flex">
         <input
@@ -61,7 +61,7 @@ export default function AddMoodForm() {
         {/* eslint-disable-next-line */}
         <h2>&#128577;</h2>
       </div>
-      {errors.emoji && <p>This field is required</p>}
+      {errors.emoji && <p className="error">This field is required</p>}
       <label>Comments:</label>
       <textarea name="comment" ref={register} />
       <input type="submit" />
