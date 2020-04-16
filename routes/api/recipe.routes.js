@@ -6,6 +6,7 @@ const apiKey = process.env.API_KEY;
 
 // to save to our database
 const recipe = require("../../models/recipes.models");
+const user = require("../../models/users.models");
 
 
 // =================5 RANDOM RECIPES=====================
@@ -70,68 +71,26 @@ router.get("/recipe/bleh", (req, res) => {
     });
 });
 
-// ================================================
+// ================SAVE TO DATABASE================================
 
 router.post("/recipe", (req, res) => {
   const newRecipe = req.body;
   console.log(newRecipe);
-  recipe.create(newRecipe).then((response) => {
-    res.json(response);
+  recipe.create(newRecipe)
+//   .then((response) => {
+//     res.json(response);
+//   });
+  .then(function(recipe){
+    return user.findOneAndUpdate({}, { $push:{ recipes: recipe._id } }, { new: true });
+  })
+  .then(function(dbUser){
+    res.json(dbUser);
+  })
+  .catch(function(err) {
+    res.json(err);
   });
 });
 module.exports = router;
 
 
-// =====================GET BACK ALL RECIPES======================
-// router.get("/recipe", async (req, res) => {
-//     try{
-//         const recipes = await Recipe.find();
-//         res.json.apply(recipes);
-//     }
-//     catch(err) {
-//         res.json({ message:err })
-//     }
-// });
 
-// // ===============GET BACK A SPECIFIC RECIPE======================
-// router.get("/:recipeId", async (req, res) => {
-//     try{
-//         const recipe = await Recipe.findById(req.params.recipeId);
-//         res.json(recipe);
-//     }
-//     catch(err) {
-//         res.json({ message:err });
-//     }
-// });
-
-// // =====================DELETE A RECIPE=============================
-// router.delete("/:recipeId", async(req, res) => {
-//     try{
-//         const removedRecipe = await Recipe.deleteOne({_id: req.params.recipeId});
-//         res.json(removedRecipe);
-//     }
-//     catch(err) {
-//         res.json({ message:err });
-//     }
-// });
-
-// // ==============SAVE RECIPE TO MONGODB===========================
-// router.post("/",async (req, res) => {
-//     const recipe = new Recipe ({
-//         title: req.body.title,
-//         image: req.body.image,
-//         readyInMinutes: req.body.readyInMinutes,
-//         servings: req.body.servings,
-//         instructions: req.body.instructions
-//     });
-
-//     try{
-//         const savedRecipe = await recipe.save()
-//             res.json(savedRecipe);
-//     }
-//     catch(err){
-//         res.json({ message:err });
-//     }
-// });
-
-// module.exports = router;

@@ -8,10 +8,11 @@ import ReactDOM from "react-dom";
 const LogInForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
-    API.findUser(data)
+    API.getToken(data)
       .then((res) => {
         localStorage.setItem("token", res.data.accessToken);
-        history.push("/profile");
+        history.push("/welcome");
+        window.location.reload();
       })
       .catch((error) => {
         if (error === 500) {

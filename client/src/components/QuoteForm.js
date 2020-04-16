@@ -1,19 +1,26 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 export default function QuoteForm(props){
  
     return (
         <div>
-            <h1>DAILY AFFIRMATION</h1>
-                <div className="card quote">
-                    <div className="card-body">
+            <Card className="card quote text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
+                <h5 className="text-center">DAILY INSPIRATION</h5>
+                <Card.Body>
                         <div key={props.quoteLink}>
-                            <h4>{props.quoteText}</h4>
+                            <Card.Title className="my-3">{props.quoteText}</Card.Title>
                             <h6>By {props.quoteAuthor}</h6> 
 
+                            <div className="wrapper mt-5">
+                            <button className="m-auto" type="submit" onClick={() =>
+                                props.getAnotherQuote()}>
+                                    NEW QUOTE
+                            </button>{' '}
+                            </div>
                         </div>
-                    </div>        
-                </div>
+                </Card.Body>        
+            </Card>        
         </div>
     )   
 }

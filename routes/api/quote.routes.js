@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
-// const quote = require("../../models");
+
 
 router.get("/quote", (req, res) => {
     console.log("hello");

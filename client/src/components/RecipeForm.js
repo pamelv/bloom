@@ -4,10 +4,9 @@ import Parser from 'html-react-parser';
 export default function RecipeForm(props) {
   return (
     <div>
-      <h1>RECIPES FOR YOU</h1>
       {props.recipes.map((recipe) => {
         return (
-          <div className="card recipe">
+          <div className="card recipe card poem text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
           <div className="card-body">
           <div key={recipe.id}>
             <h4>{recipe.title}</h4>
@@ -31,7 +30,7 @@ export default function RecipeForm(props) {
             <>{ Parser( recipe.instructions ) }</>
             
 
-            <button type="submit" className="text-center" onClick={() => {
+            <button type="submit" className="m-auto" onClick={() => {
                 props.handleFormSave(recipe);
               }}>
                 BOOKMARK

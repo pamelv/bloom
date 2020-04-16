@@ -4,6 +4,7 @@ import QuoteForm from "../components/QuoteForm";
 
 
 
+
 export default class Quote extends Component {
         constructor(props) {
           super(props);
@@ -12,11 +13,20 @@ export default class Quote extends Component {
           };
         }
     
+        getAnotherQuote =() => {
+            API.getQuote().then((response) => {
+                console.log(response.data);
+                this.setState({
+                    quotes: response.data
+                });
+            });
+        }
+
 
     componentDidMount(){
         console.log("mounted");
         API.getQuote()
-            .then(response => {
+            .then((response) => {
             
                 console.log( response.data);
                 this.setState({
@@ -32,6 +42,9 @@ export default class Quote extends Component {
             });
         }
 
+        
+
+
         render() {
             return(
              
@@ -39,7 +52,8 @@ export default class Quote extends Component {
                     quoteText={this.state.quotes.quoteText}
                     quoteAuthor={this.state.quotes.quoteAuthor}
                     quoteLink={this.state.quotes.quoteLink}
-            
+
+                    getAnotherQuote={this.getAnotherQuote}
                     
                 />    
             );
