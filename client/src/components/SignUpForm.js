@@ -5,7 +5,7 @@ import "./form.css";
 import history from "../history";
 import ReactDOM from "react-dom";
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
     API.addUser(data)
@@ -30,7 +30,7 @@ export default function SignUpForm() {
     );
   };
   return (
-    <div>
+    <div className={props.className}>
       <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>First Name</label>
