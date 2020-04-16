@@ -49,8 +49,11 @@ class App extends React.Component {
         <h2>Dashboard</h2>
         <h3>{this.state.currentMood}</h3>
         <a href="/recipe">Recipe</a>
+        <br></br>
         <a href="/podcast">Podcast</a>
+        <br></br>
         <a href="/playlist">Playlist</a>
+        <br></br>
         <a href="/poem">Poem</a>
       </div>
     );

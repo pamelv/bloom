@@ -148,3 +148,9 @@ h5 {
 .user-exist {
   display: none;
 }
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}

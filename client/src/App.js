@@ -5,7 +5,6 @@ import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
-import Quote from "./pages/Quote";
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
 import Home from "./pages/Home";
@@ -15,21 +14,6 @@ import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
 import LogOut from "./components/Logoutbutton";
 import LogMood from "./pages/LogMood";
-<<<<<<< HEAD
-
-class App extends React.Component {
-  render() {
-    return (
-      <Router history={history}>
-        <div className="App">
-          <LogOut />
-          <h1>
-            <a href="/">BLOOM</a>
-          </h1>
-
-
-<Route exact path="/" component={Home} />
-=======
 
 class App extends React.Component {
   render() {
@@ -42,7 +26,6 @@ class App extends React.Component {
           </h1>
 
           <Route exact path="/" component={Home} />
->>>>>>> master
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/welcome" component={LogMood} />
@@ -53,12 +36,7 @@ class App extends React.Component {
           <Route exact path="/recipe" component={Recipe} />
           <Route exact path="/playlist" component={Playlist} />
           <Route exact path="/podcast" component={Podcast} />
-<<<<<<< HEAD
           <Route exact path="/poem" component={Poem} />
-          <Route exact path="/quote" component={Quote} />
-=======
-          <Route exact path="/poem/happy" component={Poem} />
->>>>>>> master
         </div>
       </Router>
     );
