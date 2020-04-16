@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
@@ -64,7 +65,27 @@ export default function PlaylistCard(props) {
             body={props.description}
           />
           <div style={{ float: "right", minWidth: "5px" }}>
-            <Button
+            <ButtonGroup
+              size="small"
+              style={{ color: "#9CCED5" }}
+              aria-label="outlined secondary button group"
+            >
+              <Button
+                href={props.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Brower
+              </Button>
+              <Button
+                href={props.app}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                App
+              </Button>
+            </ButtonGroup>
+            {/* <LinkButton
               variant="outlined"
               style={{ color: "#FBA886" }}
               href={props.href}
@@ -72,8 +93,8 @@ export default function PlaylistCard(props) {
               rel="noopener noreferrer"
             >
               Open in Browser
-            </Button>
-            <Button
+            </LinkButton>
+            <LinkButton
               variant="outlined"
               style={{ color: "#9CCED5" }}
               href={props.app}
@@ -81,7 +102,7 @@ export default function PlaylistCard(props) {
               rel="noopener noreferrer"
             >
               Open in App
-            </Button>
+            </LinkButton> */}
             <StyledButton
               type="submit"
               className="m-auto"

@@ -78,7 +78,7 @@ export default class Playlist extends Component {
           }}
         >
           {this.state.playlists.map((playlist) => (
-            <div className="col s12" value="mood" key={playlist.id}>
+            <div className="s12" value="mood" key={playlist.id}>
               <PlaylistCard
                 id={playlist.id}
                 name={playlist.name}
