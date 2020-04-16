@@ -22,9 +22,9 @@ class App extends React.Component {
       <Router history={history}>
         <div className="App">
           <LogOut />
-          <h1>
+          {/* <h1>
             <a href="/">BLOOM</a>
-          </h1>
+          </h1> */}
 
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
