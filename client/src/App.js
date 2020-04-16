@@ -5,9 +5,9 @@ import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
+import Quote from "./pages/Quote";
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
-import Quote from "./pages/Quote";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -38,7 +38,6 @@ class App extends React.Component {
           <Route exact path="/playlist" component={Playlist} />
           <Route exact path="/podcast" component={Podcast} />
           <Route exact path="/poem/happy" component={Poem} />
-          <Route exact path="/quote" component={Quote} />
         </div>
       </Router>
     );

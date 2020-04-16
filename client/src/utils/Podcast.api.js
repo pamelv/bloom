@@ -10,4 +10,7 @@ export default {
   getPodcastSad: function () {
     return axios.get("/api/podcasts/sad");
   },
+  savePodcast:function(podcast){
+    return axios.post("/api/podcast", podcast);
+  }
 };

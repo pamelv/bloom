@@ -1,39 +1,63 @@
 import React, { Component } from "react";
 import API from "../utils/quote.api";
+import QuoteForm from "../components/QuoteForm";
+
+
+
 
 export default class Quote extends Component {
-  state = {
-    quotes: "",
-  };
+        constructor(props) {
+          super(props);
+          this.state = {
+            quotes: "",
+          };
+        }
+    
+        getAnotherQuote =() => {
+            API.getQuote().then((response) => {
+                console.log(response.data);
+                this.setState({
+                    quotes: response.data
+                });
+            });
+        }
 
-  componentDidMount() {
-    console.log("mounted");
-    API.getQuote()
-      .then((response) => {
-        // const quoteData = response.data;
-        // console.log( response.data);
-        this.setState({
-          quotes: response.data,
-        });
-        // console.log(quoteData);
-        console.log(this.state.quotes.quoteText);
-      })
 
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    componentDidMount(){
+        console.log("mounted");
+        API.getQuote()
+            .then((response) => {
+            
+                console.log( response.data);
+                this.setState({
+                    quotes: response.data
+                    
+                });
+                // console.log(quoteData);
+                console.log(this.state.quotes.quoteText);
+            
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
 
-  render() {
-    return (
-      <div>
-        <div key={this.state.quotes.quoteLink}>
-          <h4>{this.state.quotes.quoteText}</h4>
-          <h6>
-            <i>{this.state.quotes.quoteAuthor}</i>
-          </h6>
-        </div>
-      </div>
-    );
-  }
-}
+        
+
+
+        render() {
+            return(
+             
+                <QuoteForm 
+                    quoteText={this.state.quotes.quoteText}
+                    quoteAuthor={this.state.quotes.quoteAuthor}
+                    quoteLink={this.state.quotes.quoteLink}
+
+                    getAnotherQuote={this.getAnotherQuote}
+                    
+                />    
+            );
+        }
+ }
+
+

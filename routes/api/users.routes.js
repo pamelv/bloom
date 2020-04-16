@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const Users = require("../../models/users.models");
 const Moods = require("../../models/moods.models");
 
+//get all users
 router.get("/users", async (req, res) => {
   const user = await Users.find();
   res.json(user);
@@ -103,4 +104,8 @@ function authenticateToken(req, res, next) {
   });
 }
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> master

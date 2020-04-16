@@ -1,41 +1,85 @@
 import React, { Component } from "react";
 import API from "../utils/poem.api";
+import PoemForm from "../components/PoemForm";
+import history from "../history";
+
 
 export default class Poem extends Component {
-  state = {
-    poems: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem("token"),
+      currentMood: localStorage.getItem("current_mood"),
+      poems: [],
+    };
+  }
 
   componentDidMount() {
-    console.log("mounted");
-    API.getPoem()
-      .then(response => {
-    
-        // console.log(response.data);
+    this.loggedIn();
+
+    if (this.state.currentMood === "Happy") {
+    API.getPoemHappy()
+      .then((response) => {
+        console.log("poems:", response.data);
         this.setState({
           poems: response.data
       });
- 
-      console.log(this.state.poems.lines);
     })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-  }
+  } else if (this.state.currentMood === "Bleh") {
+    API.getPoemBleh()
+    .then((response) => {
+      console.log("poems:", response.data);
+      this.setState({
+        poems: response.data
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  } else if (this.state.currentMood === "Sad") {
+    API.getPoemSad()
+    .then((response) => {
+      console.log("poems:", response.data);
+      this.setState({
+        poems: response.data
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
+  } else console.log("no mood available");
+}
+
+    handleFormSave = (poem) => {
+    API.savePoem(poem).then((response) => {
+      console.log("success!");
+    });
+  };
+
+  loggedIn() {
+    // eslint-disable-next-line
+    if (this.state.token == undefined) {
+      history.push("/login");
+    }
+  }
 
   render() {
     return (
+      <div>
         <div>
-            <div key={this.state.poems.title}>
-              <h4>{this.state.poems.title}</h4>
-              <p>By {this.state.poems.author}</p>
-              
-              <p>{this.state.poems.lines}</p>
-
-              <button type="submit">BOOKMARK</button>
-            </div>
+          <h5 className="text-center my-5">DAILY POEMS CURATED JUST FOR YOU</h5>
         </div>
-          );
-        }    
+       
+            <PoemForm
+              poems={this.state.poems}
+              handleFormSave={this.handleFormSave}
+            /> 
+     </div> 
+    );
   }
+}
+  
