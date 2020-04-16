@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="App">
-          <LogOut />
+          {/* <LogOut /> */}
           {/* <h1>
             <a href="/">BLOOM</a>
           </h1> */}

@@ -31,7 +31,8 @@ class LogOut extends React.Component {
     return (
       <button
         onClick={this.clearToken}
-        style={{ float: "right", display: isLoggedIn ? "block" : "none" }}
+        style={{ display: isLoggedIn ? "block" : "none" }}
+        // style={{ float: "right", display: isLoggedIn ? "block" : "none" }}
       >
         Log Out
       </button>

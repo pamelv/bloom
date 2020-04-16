@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import Logout from "./Logoutbutton";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
@@ -73,10 +74,11 @@ export default function DrawerMenu() {
       <Divider />
       <List>
         <ListItem button key="logout">
-          <ListItemIcon>
+          <Logout />
+          {/* <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>
-          <ListItemText>Logout</ListItemText>
+          <ListItemText>Logout</ListItemText> */}
         </ListItem>
       </List>
     </div>
