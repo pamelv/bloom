@@ -3,6 +3,7 @@ import { Router, Route } from "react-router-dom";
 import history from "./history";
 import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
+import Exercise from "./pages/Exercise";
 import Recipe from "./pages/Recipe";
 import Poem from "./pages/Poem";
 import Playlist from "./pages/Playlist";
@@ -33,6 +34,7 @@ class App extends React.Component {
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/newpassword" component={NewPassword} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/exercise" component={Exercise} />
           <Route exact path="/recipe" component={Recipe} />
           <Route exact path="/playlist" component={Playlist} />
           <Route exact path="/podcast" component={Podcast} />

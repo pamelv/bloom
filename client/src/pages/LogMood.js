@@ -93,14 +93,25 @@ class LogMood extends React.Component {
             <img style={{ width: "30%" }} src={blue} alt="Bloom" />
             <img style={{ width: "30%" }} src={orange} alt="Bloom" />
           </div>
-          <h2 style={{ fontSize: "1.5em" }}>Hello {this.state.name}!</h2>
-          <AddMood />
-          <div key={this.state.quotes.quoteLink}>
+          <div style={{ position: "absolute", top: "20%" }}>
+            <h2 style={{ fontSize: "1.5em" }}>Hello {this.state.name}!</h2>
+            <AddMood />
+          </div>
+          <div
+            key={this.state.quotes.quoteLink}
+            style={{
+              fontSize: "1.2em",
+              margin: "30px",
+              position: "absolute",
+              top: "50%",
+              lineHeight: 2,
+              textAlign: "center",
+            }}
+          >
             <h4>{this.state.quotes.quoteText}</h4>
-            <h6>
+            <h6 style={{ fontSize: "1em", fontWeight: 400 }}>
               <i>{this.state.quotes.quoteAuthor}</i>
             </h6>
-            <br></br>
           </div>
         </div>
       </div>

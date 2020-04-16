@@ -5,7 +5,7 @@ export default function QuoteForm(props){
  
     return (
         <div>
-            <Card className="card quote text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
+            <Card className="card text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
                 <h5 className="text-center">DAILY INSPIRATION</h5>
                 <Card.Body>
                         <div key={props.quoteLink}>

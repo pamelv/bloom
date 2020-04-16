@@ -6,7 +6,7 @@ export default function RecipeForm(props) {
     <div>
       {props.recipes.map((recipe) => {
         return (
-          <div className="card recipe card poem text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
+          <div className="card text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
           <div className="card-body">
           <div key={recipe.id}>
             <h4>{recipe.title}</h4>
