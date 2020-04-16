@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/poem.api";
 import PoemForm from "../components/PoemForm";
 import history from "../history";
+import Navbar from "../components/Navbar";
 
 export default class Poem extends Component {
   constructor(props) {
@@ -79,7 +80,7 @@ export default class Poem extends Component {
             }}
           >
             {this.state.poems.map((poem) => (
-              <div className="s12" value="mood" key={playlist.id}>
+              <div className="s12" value="mood" key={poem.title}>
                 <PoemForm
                   title={poem.title}
                   lines={poem.lines}
