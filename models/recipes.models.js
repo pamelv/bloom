@@ -20,7 +20,7 @@ const RecipeSchema = new Schema({
   instructions: {
     type: String,
     required: true,
-  },
+  }
 });
 const Recipe = mongoose.model("Recipe", RecipeSchema);
 module.exports = Recipe;

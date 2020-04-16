@@ -5,7 +5,7 @@ export default function PoemForm(props) {
     <div>
       {props.poems.map((poem) => {
         return (
-          <div className="card poem text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
+          <div className="card text-center shadow-lg p-3 mb-5 bg-white rounded-lg">
             <div className="card-body">
               <div key={poem.title}>
                 <h5 className="my-5">
