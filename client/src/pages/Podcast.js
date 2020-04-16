@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../utils/podcast.api";
+import API from "../utils/Podcast.api";
 import PodcastCard from "../components/PodcastCard";
 import history from "../history";
 
