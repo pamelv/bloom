@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 const peomLine = {
   fontSize: "1em",
   lineHeight: 1,
+  color: "black",
 };
 
 export default function PoemForm(props) {

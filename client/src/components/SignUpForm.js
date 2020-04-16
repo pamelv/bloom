@@ -49,7 +49,7 @@ export default function SignUpForm(props) {
           id="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
-        {errors.firstname && <p>This field is required</p>}
+        {errors.firstname && <p className="error">This field is required</p>}
 
         <label for="lastname">Last Name</label>
         <input
@@ -59,7 +59,7 @@ export default function SignUpForm(props) {
           id="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
-        {errors.lastname && <p>This field is required</p>}
+        {errors.lastname && <p className="error">This field is required</p>}
 
         <label for="email">Email</label>
         <input
@@ -69,7 +69,7 @@ export default function SignUpForm(props) {
           id="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email && <p>This field is required</p>}
+        {errors.email && <p className="error">This field is required</p>}
 
         <label for="password">Password</label>
         <input
@@ -84,7 +84,7 @@ export default function SignUpForm(props) {
           })}
         />
         {errors.password && (
-          <p>
+          <p className="error">
             Password must have 8 characters and contain at least: one upper case
             letter, one lower case letter, one numerical digit, one special
             character.
@@ -99,7 +99,7 @@ export default function SignUpForm(props) {
           id="dateofBirth"
           ref={register({ required: true })}
         />
-        {errors.dateofBirth && <p>This field is required</p>}
+        {errors.dateofBirth && <p className="error">This field is required</p>}
 
         <label for="gender">Gender</label>
         <div className="flex">
