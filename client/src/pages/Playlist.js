@@ -36,7 +36,6 @@ export default class Playlist extends Component {
         })
         .catch((error) => {
           console.log(error);
-<<<<<<< HEAD
         });
     } else if (this.state.currentMood === "Sad") {
       API.getPlaylistSad()
@@ -52,30 +51,6 @@ export default class Playlist extends Component {
     } else console.log("no mood available");
   }
 
-  handleFormSave = (playlist) => {
-    API.savePlaylist(playlist).then((response) => {
-      console.log("success!");
-    });
-  };
-
-
-=======
-        });
-    } else if (this.state.currentMood === "Sad") {
-      API.getPlaylistSad()
-        .then((response) => {
-          console.log("playlist:", response.data);
-          this.setState({
-            playlists: response.data,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else console.log("no mood available");
-  }
-
->>>>>>> master
   loggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
@@ -87,7 +62,9 @@ export default class Playlist extends Component {
     return (
       <div>
         <div>
-          <h5 className="text-center my-5">DAILY PLAYLISTS CURATED JUST FOR YOU</h5>
+          <h5 className="text-center my-5">
+            DAILY PLAYLISTS CURATED JUST FOR YOU
+          </h5>
         </div>
 
         {this.state.playlists.map((playlist) => (
@@ -99,7 +76,6 @@ export default class Playlist extends Component {
               description={playlist.description}
               tracks={playlist.tracks.total}
               href={playlist.href}
-
               handleFormSave={this.handleFormSave}
             />
           </div>
