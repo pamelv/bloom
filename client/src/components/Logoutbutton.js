@@ -40,4 +40,8 @@ class LogOut extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 export default LogOut;
+=======
+export default LogOut;
+>>>>>>> master

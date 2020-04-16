@@ -73,4 +73,8 @@ class LogMood extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 export default LogMood;
+=======
+export default LogMood;
+>>>>>>> master
