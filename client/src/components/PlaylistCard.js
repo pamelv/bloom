@@ -69,7 +69,7 @@ export default function PlaylistCard(props) {
           >
             <ButtonGroup
               size="small"
-              style={{ color: "#9CCED5" }}
+              style={{ color: "#9CCED5", marginRight: "5px" }}
               aria-label="outlined secondary button group"
             >
               <Button

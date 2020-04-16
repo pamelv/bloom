@@ -68,14 +68,28 @@ export default class Poem extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h5 className="text-center my-5">DAILY POEMS CURATED JUST FOR YOU</h5>
+        <div style={{ width: "100%", boxSizing: "border-box" }}>
+          <Navbar title="Poem" />
+          <div
+            style={{
+              columnCount: "1",
+              columnGap: "1em",
+              padding: "0.7em",
+              height: "100%",
+            }}
+          >
+            {this.state.poems.map((poem) => (
+              <div className="s12" value="mood" key={playlist.id}>
+                <PoemForm
+                  title={poem.title}
+                  lines={poem.lines}
+                  author={poem.author}
+                  handleFormSave={this.handleFormSave}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-
-        <PoemForm
-          poems={this.state.poems}
-          handleFormSave={this.handleFormSave}
-        />
       </div>
     );
   }
