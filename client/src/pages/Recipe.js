@@ -1,62 +1,65 @@
 import React, { Component } from "react";
-import API from "../utils/playlist.api";
-import PlaylistCard from "../components/PlaylistCard";
+import API from "../utils/recipe.api";
+import RecipeForm from "../components/RecipeForm";
 import history from "../history";
 
-export default class Playlist extends Component {
+
+export default class Recipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
       currentMood: localStorage.getItem("current_mood"),
-      playlists: [],
+      recipes: [],
     };
   }
 
   componentDidMount() {
     this.loggedIn();
+
     if (this.state.currentMood === "Happy") {
-      API.getPlaylistHappy()
+      API.getRecipeHappy()
         .then((response) => {
-          console.log("playlist:", response.data);
+          console.log("recipe:", response.data.recipes);
           this.setState({
-            playlists: response.data,
+            recipes: response.data.recipes,
           });
         })
         .catch((error) => {
           console.log(error);
         });
     } else if (this.state.currentMood === "Bleh") {
-      API.getPlaylistBleh()
+      API.getRecipeBleh()
         .then((response) => {
-          console.log("playlist:", response.data);
+          console.log("recipe:", response.data.recipes);
           this.setState({
-            playlists: response.data,
+            recipes: response.data.recipes,
           });
         })
         .catch((error) => {
           console.log(error);
         });
     } else if (this.state.currentMood === "Sad") {
-      API.getPlaylistSad()
+      API.getRecipeSad()
         .then((response) => {
-          console.log("playlist:", response.data);
+          console.log("recipe:", response.data.recipes);
           this.setState({
-            playlists: response.data,
+            recipes: response.data.recipes,
           });
         })
         .catch((error) => {
           console.log(error);
         });
+
+
     } else console.log("no mood available");
   }
 
-  handleFormSave = (playlist) => {
-    API.savePlaylist(playlist).then((response) => {
+  handleFormSave = (recipe) => {
+    API.saveRecipe(recipe).then((response) => {
       console.log("success!");
     });
   };
-
 
   loggedIn() {
     // eslint-disable-next-line
@@ -69,23 +72,12 @@ export default class Playlist extends Component {
     return (
       <div>
         <div>
-          <h5 className="text-center my-5">DAILY PLAYLISTS CURATED JUST FOR YOU</h5>
+        <h5 className="text-center my-5">DAILY RECIPES CURATED JUST FOR YOU</h5>
+        <RecipeForm
+          recipes={this.state.recipes}
+          handleFormSave={this.handleFormSave}
+        />
         </div>
-
-        {this.state.playlists.map((playlist) => (
-          <div className="col s12" value="mood" key={playlist.id}>
-            <PlaylistCard
-              id={playlist.id}
-              name={playlist.name}
-              url={playlist.images[0].url}
-              description={playlist.description}
-              tracks={playlist.tracks.total}
-              href={playlist.href}
-
-              handleFormSave={this.handleFormSave}
-            />
-          </div>
-        ))}
       </div>
     );
   }

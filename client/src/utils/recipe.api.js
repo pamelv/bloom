@@ -18,6 +18,6 @@ export default {
   },
 
   saveRecipe:function(recipe){
-    return axios.post("/api/recipe",recipe)
+    return axios.post("/api/recipe", recipe)
   }
 };

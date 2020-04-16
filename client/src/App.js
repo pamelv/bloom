@@ -1,55 +1,49 @@
 import React from "react";
-
 import { Router, Route } from "react-router-dom";
 import history from "./history";
 import Signup from "./pages/Signup";
 import LogIn from "./pages/Login";
-import Recipe from "./pages/Recipes/Recipe";
-import RecipeHappy from "./pages/Recipes/RecipeHappy";
-import RecipeSad from "./pages/Recipes/RecipeSad";
-import RecipeBleh from "./pages/Recipes/RecipeBleh";
-import PoemSad from "./pages/Poem/PoemSad";
-import PoemHappy from "./pages/Poem/PoemHappy";
-import PoemBleh from "./pages/Poem/PoemBleh";
+import Recipe from "./pages/Recipe";
+import Poem from "./pages/Poem";
+import Quote from "./pages/Quote";
 import Playlist from "./pages/Playlist";
 import Podcast from "./pages/Podcast";
-import Quote from "./pages/Quote";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
 import LogOut from "./components/Logoutbutton";
+import LogMood from "./pages/LogMood";
 
-function App() {
-  return (
-    <Router history={history}>
-      <div className="App">
-        <LogOut />
-        <h1>
-          <a href="/">BLOOM</a>
-        </h1>
+class App extends React.Component {
+  render() {
+    return (
+      <Router history={history}>
+        <div className="App">
+          <LogOut />
+          <h1>
+            <a href="/">BLOOM</a>
+          </h1>
 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={LogIn} />
-        <Route exact path="/profile" component={UserProfile} />
-        <Route exact path="/forgotpassword" component={ForgotPassword} />
-        <Route exact path="/newpassword" component={NewPassword} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/recipe" component={Recipe} />
-        <Route exact path="/recipe/happy" component={RecipeHappy} />
-        <Route exact path="/recipe/sad" component={RecipeSad} />
-        <Route exact path="/recipe/bleh" component={RecipeBleh} />
-        <Route exact path="/playlist" component={Playlist} />
-        <Route exact path="/podcast" component={Podcast} />
-        <Route exact path="/poem/happy" component={PoemHappy} />
-        <Route exact path="/poem/hope" component={PoemSad} />
-        <Route exact path="/poem/life" component={PoemBleh} />
-        <Route exact path="/quote" component={Quote} />
-      </div>
-    </Router>
-  );
+
+<Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/welcome" component={LogMood} />
+          <Route exact path="/profile" component={UserProfile} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route exact path="/newpassword" component={NewPassword} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/recipe" component={Recipe} />
+          <Route exact path="/playlist" component={Playlist} />
+          <Route exact path="/podcast" component={Podcast} />
+          <Route exact path="/poem" component={Poem} />
+          <Route exact path="/quote" component={Quote} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

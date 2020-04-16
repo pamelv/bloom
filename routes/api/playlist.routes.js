@@ -7,9 +7,11 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
+// to save to our database
+const playlist = require("../../models/playlists.models");
+const user = require("../../models/users.models");
 
-router.get("/happy/playlists", (req, res) => {
-
+router.get("/playlists/happy", (req, res) => {
   console.log("hello");
   spotify
     .request(
@@ -22,7 +24,7 @@ router.get("/happy/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/bleh/playlists", (req, res) => {
+router.get("/playlists/bleh", (req, res) => {
   console.log("hello");
   spotify
     .request(
@@ -35,7 +37,7 @@ router.get("/bleh/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/sad/playlists", (req, res) => {
+router.get("/playlists/sad", (req, res) => {
   spotify
     .request(
       "https://api.spotify.com/v1/search?q=%22Sad%22&type=playlist&limit=10"
@@ -47,7 +49,7 @@ router.get("/sad/playlists", (req, res) => {
       console.error("Error occurred: " + err);
     });
 });
-router.get("/:mood/playlists/:subMood", (req, res) => {
+router.get("/playlists/:subMood", (req, res) => {
   var paramSearch = req.params.subMood;
   var subMoodSearch = paramSearch.split("-").join("%20");
   spotify
@@ -60,6 +62,27 @@ router.get("/:mood/playlists/:subMood", (req, res) => {
     .catch(function (err) {
       console.error("Error occurred: " + err);
     });
+});
+
+// ==========to save to our db=====================
+router.post("/playlist", (req, res) => {
+  const newPlaylist = req.body;
+  playlist.create(newPlaylist)
+//   .then((response) => {
+//     res.json(response);
+//   });
+  .then(function(playlist){
+    console.log("this is" + playlist);
+    return user.findOneAndUpdate({}, { $push:{ playlists: playlist._id } }, { new: true });
+  })
+  .then(function(dbUser){
+    console.log(dbUser);
+    res.json(dbUser);
+    
+  })
+  .catch(function(err) {
+    res.json(err);
+  });
 });
 
 module.exports = router;

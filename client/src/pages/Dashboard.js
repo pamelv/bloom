@@ -25,21 +25,33 @@ class App extends React.Component {
 
   currentMood() {
     const happy = "😁";
-    const blah = "😐";
+    const bleh = "😐";
     const sad = "🙁";
-    if (this.state.moodParam === happy) {
-      this.setState({ currentMood: "happy" });
-    } else if (this.state.moodParam === blah) {
-      this.setState({ currentMood: "Blahhhh" });
-    } else if (this.state.moodParam === sad) {
-      this.setState({ currentMood: "Sad" });
+
+    switch (this.state.moodParam) {
+      case happy:
+        this.setState({ currentMood: "Happy" });
+        break;
+      case bleh:
+        this.setState({ currentMood: "Bleh" });
+        break;
+      case sad:
+        this.setState({ currentMood: "Sad" });
+        break;
+      default:
+        console.warn("No mood entered");
     }
   }
   render() {
+    localStorage.setItem("current_mood", this.state.currentMood);
     return (
       <div>
         <h2>Dashboard</h2>
         <h3>{this.state.currentMood}</h3>
+        <a href="/recipe">Recipe</a>
+        <a href="/podcast">Podcast</a>
+        <a href="/playlist">Playlist</a>
+        <a href="/poem">Poem</a>
       </div>
     );
   }

@@ -11,5 +11,9 @@ export default {
 
   getPoemBleh: function() {
     return axios.get("/api/poem/life");
+  },
+
+  savePoem:function(poem){
+    return axios.post("/api/poem",poem);
   }
 };
