@@ -15,6 +15,8 @@ export default function PodcastCard(props) {
           href={props.link}
           className="btn btn-primary"
           style={{ marginLeft: "1rem" }}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           BOOKMARK
         </a>

@@ -39,7 +39,6 @@ class Profile extends React.Component {
     console.log(this.state.token);
     API.getUser(this.state.token)
       .then((res) => {
-        console.log(res.data);
         this.setState({ name: res.data.firstname });
         localStorage.setItem("id", res.data._id);
         this.setState({ id: res.data._id });

@@ -71,7 +71,8 @@ export default class Playlist extends Component {
               url={playlist.images[0].url}
               description={playlist.description}
               tracks={playlist.tracks.total}
-              href={playlist.href}
+              href={playlist.external_urls.spotify}
+              app={playlist.uri}
             />
           </div>
         ))}
