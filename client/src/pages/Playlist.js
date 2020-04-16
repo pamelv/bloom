@@ -51,6 +51,14 @@ export default class Playlist extends Component {
     } else console.log("no mood available");
   }
 
+  handleFormSave = (playlist) => {
+    API.savePlaylist(playlist).then((response) => {
+      console.log("success!");
+    });
+  };
+
+
+
   loggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
@@ -61,7 +69,9 @@ export default class Playlist extends Component {
   render() {
     return (
       <div>
-        <div>Playlist</div>
+        <div>
+          <h5 className="text-center my-5">DAILY PLAYLISTS CURATED JUST FOR YOU</h5>
+        </div>
 
         {this.state.playlists.map((playlist) => (
           <div className="col s12" value="mood" key={playlist.id}>
@@ -73,6 +83,8 @@ export default class Playlist extends Component {
               tracks={playlist.tracks.total}
               href={playlist.external_urls.spotify}
               app={playlist.uri}
+
+              handleFormSave={this.handleFormSave}
             />
           </div>
         ))}

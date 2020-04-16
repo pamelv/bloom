@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/recipe.api";
 import RecipeForm from "../components/RecipeForm";
-
 import history from "../history";
 
 
@@ -72,11 +71,13 @@ export default class Recipe extends Component {
   render() {
     return (
       <div>
-        <h3>Recipes</h3>
+        <div>
+        <h5 className="text-center my-5">DAILY RECIPES CURATED JUST FOR YOU</h5>
         <RecipeForm
-          recipes1={this.state.recipes}
+          recipes={this.state.recipes}
           handleFormSave={this.handleFormSave}
         />
+        </div>
       </div>
     );
   }
