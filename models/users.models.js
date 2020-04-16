@@ -37,7 +37,8 @@ const UserSchema = new Schema({
   recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
   poems: [{ type: Schema.Types.ObjectId, ref: "Poems" }],
   podcasts: [{ type: Schema.Types.ObjectId, ref: "Podcasts" }],
-  playlists: [{ type: Schema.Types.ObjectId, ref: "Playlists" }]
+  playlists: [{ type: Schema.Types.ObjectId, ref: "Playlists" }],
+  exercises: [{ type: Schema.Types.ObjectId, ref: "Exercises" }]
 });
 
 const Users = mongoose.model("Users", UserSchema);
