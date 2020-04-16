@@ -40,18 +40,16 @@ input {
   border-radius: 4px;
   border: 1px solid white;
   padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 1em;
+  height: 2rem;
 }
 
 label {
-  line-height: 2;
   text-align: left;
   display: block;
-  margin-bottom: 13px;
   margin-top: 20px;
   color: #333;
-  font-size: 14px;
+  font-size: 0.8em;
   font-weight: 200;
 }
 
@@ -61,8 +59,8 @@ input[type="submit"] {
   color: #333;
   text-transform: uppercase;
   border: none;
-  margin-top: 40px;
-  padding: 20px;
+  margin-top: 10px;
+  padding: 5px;
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
@@ -128,6 +126,9 @@ button {
 }
 .flex {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 h5 {
   color: #333;
@@ -146,5 +147,11 @@ h5 {
   pointer-events: painted !important;
 }
 .user-exist {
+  display: none;
+}
+.show {
+  display: block;
+}
+.hide {
   display: none;
 }

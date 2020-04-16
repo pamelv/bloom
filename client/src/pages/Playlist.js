@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/playlist.api";
 import PlaylistCard from "../components/PlaylistCard";
+import Navbar from "../components/Navbar";
 import history from "../history";
 
 export default class Playlist extends Component {
@@ -51,6 +52,12 @@ export default class Playlist extends Component {
     } else console.log("no mood available");
   }
 
+  handleFormSave = (playlist) => {
+    API.savePlaylist(playlist).then((response) => {
+      console.log("success!");
+    });
+  };
+
   loggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
@@ -60,27 +67,53 @@ export default class Playlist extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h5 className="text-center my-5">
-            DAILY PLAYLISTS CURATED JUST FOR YOU
-          </h5>
+      <div style={{ width: "100%", boxSizing: "border-box" }}>
+        <Navbar title="Playlist" />
+        <div
+          style={{
+            columnCount: "2",
+            columnGap: "1em",
+            padding: "0.7em",
+            height: "100%",
+          }}
+        >
+          {this.state.playlists.map((playlist) => (
+            <div className="col s12" value="mood" key={playlist.id}>
+              <PlaylistCard
+                id={playlist.id}
+                name={playlist.name}
+                url={playlist.images[0].url}
+                description={playlist.description}
+                extraInfo={`Total Tracks: ${playlist.tracks.total}`}
+                href={playlist.external_urls.spotify}
+                app={playlist.uri}
+                handleFormSave={this.handleFormSave}
+              />
+            </div>
+          ))}
         </div>
+      </div>
+      // <div>
+      //   <h5 className="text-center my-5">
+      //     DAILY PLAYLISTS CURATED JUST FOR YOU
+      //   </h5>
+      // </div>
 
-        {this.state.playlists.map((playlist) => (
+      /* {this.state.playlists.map((playlist) => (
           <div className="col s12" value="mood" key={playlist.id}>
             <PlaylistCard
               id={playlist.id}
               name={playlist.name}
               url={playlist.images[0].url}
               description={playlist.description}
-              tracks={playlist.tracks.total}
-              href={playlist.href}
+              extraInfo={`Total Tracks: ${playlist.tracks.total}`}
+              href={playlist.external_urls.spotify}
+              app={playlist.uri}
               handleFormSave={this.handleFormSave}
             />
           </div>
         ))}
-      </div>
+      </div> */
     );
   }
 }

@@ -7,13 +7,10 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
-<<<<<<< HEAD:routes/api/playlist.routes.js
 // to save to our database
 const playlist = require("../../models/playlists.models");
 const user = require("../../models/users.models");
 
-=======
->>>>>>> master:routes/pages/playlist.routes.js
 router.get("/playlists/happy", (req, res) => {
   console.log("hello");
   spotify
@@ -70,22 +67,26 @@ router.get("/playlists/:subMood", (req, res) => {
 // ==========to save to our db=====================
 router.post("/playlist", (req, res) => {
   const newPlaylist = req.body;
-  playlist.create(newPlaylist)
-//   .then((response) => {
-//     res.json(response);
-//   });
-  .then(function(playlist){
-    console.log("this is" + playlist);
-    return user.findOneAndUpdate({}, { $push:{ playlists: playlist._id } }, { new: true });
-  })
-  .then(function(dbUser){
-    console.log(dbUser);
-    res.json(dbUser);
-    
-  })
-  .catch(function(err) {
-    res.json(err);
-  });
+  playlist
+    .create(newPlaylist)
+    //   .then((response) => {
+    //     res.json(response);
+    //   });
+    .then(function (playlist) {
+      console.log("this is" + playlist);
+      return user.findOneAndUpdate(
+        {},
+        { $push: { playlists: playlist._id } },
+        { new: true }
+      );
+    })
+    .then(function (dbUser) {
+      console.log(dbUser);
+      res.json(dbUser);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 });
 
 module.exports = router;

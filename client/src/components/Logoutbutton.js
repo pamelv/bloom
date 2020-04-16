@@ -12,7 +12,6 @@ class LogOut extends React.Component {
 
   componentDidMount() {
     this.hasToken();
-    console.log(this.state.token);
   }
 
   hasToken() {

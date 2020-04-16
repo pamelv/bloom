@@ -4,8 +4,16 @@ import API from "../utils/user.api";
 import "./form.css";
 import history from "../history";
 import ReactDOM from "react-dom";
+const inputStyle = {
+  fontSize: "1em",
+};
+const radioStyle = {
+  fontSize: "1.2em",
+  marginLeft: "5px",
+  marginRight: "10px",
+};
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
     API.addUser(data)
@@ -30,38 +38,45 @@ export default function SignUpForm() {
     );
   };
   return (
-    <div>
+    <div className={props.className}>
       <div id="msg"></div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>First Name</label>
+      <form onSubmit={handleSubmit(onSubmit)} style={inputStyle}>
+        <label for="firstname">First Name</label>
         <input
           type="text"
           placeholder="First name"
           name="firstname"
+          id="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
         {errors.firstname && <p>This field is required</p>}
-        <label>Last Name</label>
+
+        <label for="lastname">Last Name</label>
         <input
           type="text"
           placeholder="Last name"
           name="lastname"
+          id="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
         {errors.lastname && <p>This field is required</p>}
-        <label>Email</label>
+
+        <label for="email">Email</label>
         <input
           type="email"
           placeholder="Email"
           name="email"
+          id="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
         {errors.email && <p>This field is required</p>}
-        <label>Password</label>
+
+        <label for="password">Password</label>
         <input
           type="password"
           placeholder="Password"
           name="password"
+          id="password"
           ref={register({
             required: true,
             minLength: 6,
@@ -75,15 +90,18 @@ export default function SignUpForm() {
             character.
           </p>
         )}
-        <label>Date of Birth</label>
+
+        <label for="dateofBirth">Date of Birth</label>
         <input
           type="date"
           placeholder="Date of Birth"
           name="dateofBirth"
+          id="dateofBirth"
           ref={register({ required: true })}
         />
         {errors.dateofBirth && <p>This field is required</p>}
-        <label>Gender</label>
+
+        <label for="gender">Gender</label>
         <div className="flex">
           <input
             name="gender"
@@ -92,7 +110,7 @@ export default function SignUpForm() {
             value="Male"
             ref={register}
           />
-          <h5>Male</h5>
+          <h5 style={radioStyle}>Male</h5>
 
           <input
             name="gender"
@@ -101,7 +119,7 @@ export default function SignUpForm() {
             value=" Female"
             ref={register}
           />
-          <h5>Female</h5>
+          <h5 style={radioStyle}>Female</h5>
           <input
             name="gender"
             id="other"
@@ -109,7 +127,7 @@ export default function SignUpForm() {
             value=" Other"
             ref={register}
           />
-          <h5>Other</h5>
+          <h5 style={radioStyle}>Other</h5>
         </div>
         <input type="submit" />
       </form>

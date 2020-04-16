@@ -55,7 +55,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //for forgot password
-router.post("/user/:id", async (req, res) => {
+router.put("/user/:id", async (req, res) => {
   req.body.password = Bcrypt.hashSync(req.body.password, 10);
   const results = await Users.updateOne(
     { _id: req.params.id },
@@ -104,8 +104,4 @@ function authenticateToken(req, res, next) {
   });
 }
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> master

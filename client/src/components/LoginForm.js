@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 
 const LogInForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
+
   const submitForm = (data) => {
     API.getToken(data)
       .then((res) => {
@@ -45,25 +46,27 @@ const LogInForm = (props) => {
   return (
     <div>
       <div id="msg"></div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-        />
-        {errors.email && <p>Invalid email</p>}
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          ref={register({ required: true, minLength: 6 })}
-        />
-        {errors.password && <p>Invalid password</p>}
-        <button>Log In</button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+          />
+          {errors.email && <p>Invalid email</p>}
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            ref={register({ required: true, minLength: 6 })}
+          />
+          {errors.password && <p>Invalid password</p>}
+          <button>Log In</button>
+        </form>
+      </div>
     </div>
   );
 };

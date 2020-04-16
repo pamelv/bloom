@@ -51,6 +51,12 @@ export default class Podcast extends Component {
     } else console.log("no mood available");
   }
 
+  handleFormSave = (podcast) => {
+    API.savePodcast(podcast).then((response) => {
+      console.log("success!");
+    });
+  };
+
   loggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
@@ -76,7 +82,9 @@ export default class Podcast extends Component {
               podcast_title_original={podcast.podcast_title_original}
               audio_length_sec={podcast.audio_length_sec}
               audio={podcast.audio}
-              link="#"
+              // link="#"
+
+              handleFormSave={this.handleFormSave}
             />
           </div>
         ))}
