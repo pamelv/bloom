@@ -2,10 +2,16 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+<<<<<<< HEAD
 const API= require("./routes/api");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+=======
+const API = require("./routes/api");
+const mongoose = require("mongoose");
+const cors = require("cors");
+>>>>>>> master
 
 /* constants */
 const PORT = process.env.PORT || 3001;
@@ -39,11 +45,17 @@ app.use(API);
 
 app.options("*", cors(corsOptions));
 
+<<<<<<< HEAD
 // app.use("/", pages);
 app.get("*", (req, res) =>
   res.sendFile(path.resolve("client", "build", "index.html"))
 );
 
+=======
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("client", "build", "index.html"))
+);
+>>>>>>> master
 
 /* run our app */
 app.listen(PORT, () => {

@@ -8,5 +8,3 @@ router.use("/api", require("./podcast.routes"));
 router.use("/api", require("./users.routes"));
 
 module.exports = router;
-
-

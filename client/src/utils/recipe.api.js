@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  getRecipe: function() {
+  getRecipe: function () {
     return axios.get("/api/recipe");
   },
 

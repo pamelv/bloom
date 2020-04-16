@@ -7,10 +7,13 @@ var spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET,
 });
 
+<<<<<<< HEAD:routes/api/playlist.routes.js
 // to save to our database
 const playlist = require("../../models/playlists.models");
 const user = require("../../models/users.models");
 
+=======
+>>>>>>> master:routes/pages/playlist.routes.js
 router.get("/playlists/happy", (req, res) => {
   console.log("hello");
   spotify

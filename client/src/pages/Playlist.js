@@ -36,6 +36,7 @@ export default class Playlist extends Component {
         })
         .catch((error) => {
           console.log(error);
+<<<<<<< HEAD
         });
     } else if (this.state.currentMood === "Sad") {
       API.getPlaylistSad()
@@ -58,6 +59,23 @@ export default class Playlist extends Component {
   };
 
 
+=======
+        });
+    } else if (this.state.currentMood === "Sad") {
+      API.getPlaylistSad()
+        .then((response) => {
+          console.log("playlist:", response.data);
+          this.setState({
+            playlists: response.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else console.log("no mood available");
+  }
+
+>>>>>>> master
   loggedIn() {
     // eslint-disable-next-line
     if (this.state.token == undefined) {
