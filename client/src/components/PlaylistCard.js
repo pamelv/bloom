@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
   textContent: {
     marginBottom: 0,
     lineHeight: 1,
+    color: "firebrick",
   },
 }));
 export default function PlaylistCard(props) {

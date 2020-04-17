@@ -64,9 +64,7 @@ export default function PodcastCard(props) {
             heading={props.title_original}
             body={props.podcast_title_original}
           />
-          <div
-            style={{ float: "right", minWidth: "150px", marginBottom: "10px" }}
-          >
+          <div style={{ float: "right", marginBottom: "10px" }}>
             <ButtonGroup
               size="small"
               style={{ color: "#9CCED5", marginRight: "5px" }}

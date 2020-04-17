@@ -53,24 +53,30 @@ export default function DrawerMenu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button key="user-profile" href="/profile">
-          <ListItemIcon>
-            <FaceIcon />
-          </ListItemIcon>
-          <ListItemText>Profile</ListItemText>
-        </ListItem>
-        <ListItem button key="bookmark">
-          <ListItemIcon>
-            <BookIcon />
-          </ListItemIcon>
-          <ListItemText>Bookmark</ListItemText>
-        </ListItem>
-        <ListItem button key="user-mood">
-          <ListItemIcon>
-            <MoodIcon />
-          </ListItemIcon>
-          <ListItemText>Mood</ListItemText>
-        </ListItem>
+        <a href="/profile">
+          <ListItem button key="user-profile">
+            <ListItemIcon>
+              <FaceIcon />
+            </ListItemIcon>
+            <ListItemText>Profile</ListItemText>
+          </ListItem>
+        </a>
+        <a href="">
+          <ListItem button key="bookmark">
+            <ListItemIcon>
+              <BookIcon />
+            </ListItemIcon>
+            <ListItemText>Bookmark</ListItemText>
+          </ListItem>
+        </a>
+        <a href="">
+          <ListItem button key="user-mood">
+            <ListItemIcon>
+              <MoodIcon />
+            </ListItemIcon>
+            <ListItemText>Mood</ListItemText>
+          </ListItem>
+        </a>
         <a href="/dashboard">
           <ListItem button key="user-mood">
             <ListItemIcon>

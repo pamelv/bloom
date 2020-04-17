@@ -73,10 +73,10 @@ export default class Poem extends Component {
           margin: "0px",
           padding: "0px",
           width: "100vw",
-          height: "100vh",
           position: "fixed",
           background:
             "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
+          backgroundSize: "cover",
         }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
