@@ -97,14 +97,14 @@ export default class Recipe extends Component {
         }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
-          <Navbar title="Recipe" />
+          <Navbar title="Recipe" currentMood={this.state.currentMood} />
           <div
             style={{
               columnCount: "1",
               columnGap: "1em",
               padding: "0.7em",
               height: "100%",
-              marginBottom: "55px",
+              paddingBottom: "55px",
             }}
           >
             <div
