@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import Logout from "./Logoutbutton";
@@ -16,6 +16,34 @@ import BookIcon from "@material-ui/icons/Book";
 import MoodIcon from "@material-ui/icons/Mood";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 // import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Modal from "react-bootstrap/Modal";
+import AddMoodForm from "./AddMoodForm";
+
+// export default function AddMood() {
+//   const [show, setShow] = useState(false);
+
+//   const handleClose = () => {
+//     setShow(false);
+//   };
+//   const handleShow = () => setShow(true);
+
+//   return (
+//     <div>
+//       <button type="button" onClick={handleShow} style={{ marginTop: "5px" }}>
+//         Log your mood
+//       </button>
+
+//       <Modal show={show} onHide={handleClose}>
+//         <Modal.Header>
+//           <Modal.Title>Tell us how you are feeling</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>
+//           <AddMoodForm />
+//         </Modal.Body>
+//       </Modal>
+//     </div>
+//   );
+// }
 
 const useStyles = makeStyles({
   list: {
@@ -28,9 +56,16 @@ const useStyles = makeStyles({
 
 export default function DrawerMenu() {
   const classes = useStyles();
+
   const [state, setState] = React.useState({
     left: false,
   });
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => setShow(true);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -68,7 +103,12 @@ export default function DrawerMenu() {
           <ListItemText>Bookmark</ListItemText>
         </ListItem>
 
-        <ListItem button key="user-mood" component={Link} to="/mood">
+        <ListItem
+          button
+          key="user-mood"
+          onClick={handleShow}
+          style={{ marginTop: "5px" }}
+        >
           <ListItemIcon>
             <MoodIcon />
           </ListItemIcon>
@@ -85,15 +125,16 @@ export default function DrawerMenu() {
       <Divider />
       <List>
         <Logout />
-
-        {/* <ListItem button key="logout">
-         
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText>Logout</ListItemText>
-        </ListItem> */}
       </List>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Tell us how you are feeling</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddMoodForm />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 
