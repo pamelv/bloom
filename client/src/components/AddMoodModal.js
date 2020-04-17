@@ -12,7 +12,7 @@ export default function AddMood() {
 
   return (
     <div>
-      <button type="button" onClick={handleShow}>
+      <button type="button" onClick={handleShow} style={{ marginTop: "5px" }}>
         Log your mood
       </button>
 
