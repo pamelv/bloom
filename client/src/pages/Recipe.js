@@ -5,6 +5,7 @@ import RecipeCard from "../components/RecipeCollapse";
 import history from "../history";
 import Navbar from "../components/Navbar";
 import Parser from "html-react-parser";
+import CategoryNavigation from "../components/CategoryNavigation";
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -106,6 +107,7 @@ export default class Recipe extends Component {
               </div>
             ))}
           </div>
+          <CategoryNavigation currentPage="recipe" />
         </div>
       </div>
     );

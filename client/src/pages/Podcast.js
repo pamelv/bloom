@@ -3,6 +3,7 @@ import API from "../utils/Podcast.api";
 import PodcastCard from "../components/PodcastCard";
 import Navbar from "../components/Navbar";
 import history from "../history";
+import CategoryNavigation from "../components/CategoryNavigation";
 
 export default class Podcast extends Component {
   constructor(props) {
@@ -93,6 +94,7 @@ export default class Podcast extends Component {
             </div>
           ))}
         </div>
+        <CategoryNavigation currentPage="podcast" />
       </div>
     );
   }

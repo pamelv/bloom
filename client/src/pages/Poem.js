@@ -3,6 +3,7 @@ import API from "../utils/poem.api";
 import PoemForm from "../components/PoemForm";
 import history from "../history";
 import Navbar from "../components/Navbar";
+import CategoryNavigation from "../components/CategoryNavigation";
 
 export default class Poem extends Component {
   constructor(props) {
@@ -100,6 +101,7 @@ export default class Poem extends Component {
               </div>
             ))}
           </div>
+          <CategoryNavigation currentPage="poem" />
         </div>
       </div>
     );
