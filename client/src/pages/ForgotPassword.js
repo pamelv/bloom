@@ -25,6 +25,7 @@ export default function ForgotPassword() {
       })
       .catch((error) => {
         console.log(error);
+        noMatch();
       });
   };
   const onSubmit = (data) => {
@@ -33,7 +34,9 @@ export default function ForgotPassword() {
 
   const noMatch = (props) => {
     ReactDOM.render(
-      <h4>The email and date of birth entered does not match our records.</h4>,
+      <h4>
+        The email and/or date of birth entered does not match our records.
+      </h4>,
       document.getElementById("msg")
     );
   };
@@ -62,21 +65,22 @@ export default function ForgotPassword() {
         }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Email</label>
           <input
             type="email"
             placeholder="Email"
             name="email"
             ref={register({ required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email && <p className="error">Invalid email</p>}
-          <label>Date of Birth</label>
+          <label htmlFor="email">Email</label>
+          {errors.email && <p>Invalid email</p>}
+
           <input
             type="date"
             name="dateofBirth"
             ref={register({ required: true })}
           />
-          {errors.dateofBirth && <p className="error">Invalid date</p>}
+          <label htmlFor="dateofBirth">Date of Birth</label>
+          {errors.dateofBirth && <p>Invalid date</p>}
           <button>Next</button>
         </form>
       </div>

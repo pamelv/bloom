@@ -49,7 +49,6 @@ export default function ForgotPassword(props) {
       <div id="no-match"></div>
       <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Enter new password</label>
         <input
           type="password"
           placeholder="New password"
@@ -60,6 +59,7 @@ export default function ForgotPassword(props) {
             pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
+        <label htmlFor="password">Enter new password</label>
         {errors.password && (
           <p className="error">
             Password must have 8 characters and contain at least: one upper case
@@ -67,7 +67,7 @@ export default function ForgotPassword(props) {
             character.
           </p>
         )}
-        <label>Confirm new password</label>
+
         <input
           type="password"
           placeholder="Confirm new password"
@@ -78,7 +78,8 @@ export default function ForgotPassword(props) {
             pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
-        {errors.dateofBirth && <p className="error">Invalid entry</p>}
+        <label htmlFor="confirmPassword">Confirm new password</label>
+        {errors.dateofBirth && <p>Invalid entry</p>}
         <div className="flex">
           <button>Submit</button> <div id="login-btn"></div>
         </div>

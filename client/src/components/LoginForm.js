@@ -46,27 +46,26 @@ const LogInForm = (props) => {
   return (
     <div>
       <div id="msg"></div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-          />
-          {errors.email && <p className="error">Invalid email</p>}
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            ref={register({ required: true, minLength: 6 })}
-          />
-          {errors.password && <p className="error">Invalid password</p>}
-          <button>Log In</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+        />
+        <label htmlFor="email">Email</label>
+        {errors.email && <p>Invalid email</p>}
+
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          ref={register({ required: true, minLength: 6 })}
+        />
+        <label htmlFor="password">Password</label>
+        {errors.password && <p>Invalid password</p>}
+        <button>Log In</button>
+      </form>
     </div>
   );
 };

@@ -4,9 +4,7 @@ import API from "../utils/user.api";
 import "./form.css";
 import history from "../history";
 import ReactDOM from "react-dom";
-const inputStyle = {
-  fontSize: "1em",
-};
+
 const radioStyle = {
   fontSize: "1.2em",
   marginLeft: "5px",
@@ -40,8 +38,7 @@ export default function SignUpForm(props) {
   return (
     <div className={props.className}>
       <div id="msg"></div>
-      <form onSubmit={handleSubmit(onSubmit)} style={inputStyle}>
-        <label for="firstname">First Name</label>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
           placeholder="First name"
@@ -49,9 +46,8 @@ export default function SignUpForm(props) {
           id="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
-        {errors.firstname && <p className="error">This field is required</p>}
-
-        <label for="lastname">Last Name</label>
+        <label htmlFor="firstname">First Name</label>
+        {errors.firstname && <p>This field is required</p>}
         <input
           type="text"
           placeholder="Last name"
@@ -59,9 +55,9 @@ export default function SignUpForm(props) {
           id="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
-        {errors.lastname && <p className="error">This field is required</p>}
+        <label htmlFor="lastname">Last Name</label>
+        {errors.lastname && <p>This field is required</p>}
 
-        <label for="email">Email</label>
         <input
           type="email"
           placeholder="Email"
@@ -69,9 +65,9 @@ export default function SignUpForm(props) {
           id="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email && <p className="error">This field is required</p>}
+        <label htmlFor="email">Email</label>
+        {errors.email && <p>This field is required</p>}
 
-        <label for="password">Password</label>
         <input
           type="password"
           placeholder="Password"
@@ -83,6 +79,7 @@ export default function SignUpForm(props) {
             pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
+        <label htmlFor="password">Password</label>
         {errors.password && (
           <p className="error">
             Password must have 8 characters and contain at least: one upper case
@@ -91,7 +88,6 @@ export default function SignUpForm(props) {
           </p>
         )}
 
-        <label for="dateofBirth">Date of Birth</label>
         <input
           type="date"
           placeholder="Date of Birth"
@@ -99,9 +95,9 @@ export default function SignUpForm(props) {
           id="dateofBirth"
           ref={register({ required: true })}
         />
-        {errors.dateofBirth && <p className="error">This field is required</p>}
+        <label htmlFor="dateofBirth">Date of Birth</label>
+        {errors.dateofBirth && <p>This field is required</p>}
 
-        <label for="gender">Gender</label>
         <div className="flex">
           <input
             name="gender"
@@ -129,6 +125,7 @@ export default function SignUpForm(props) {
           />
           <h5 style={radioStyle}>Other</h5>
         </div>
+        <label htmlFor="gender">Gender</label>
         <input type="submit" />
       </form>
     </div>
