@@ -3,6 +3,7 @@ import history from "../history";
 import Grid from "@material-ui/core/Grid";
 import splash from "../img/bloom-splash.gif";
 import "./Home.css";
+
 const splashstyle = {
   width: "80vw",
   position: "absolute",

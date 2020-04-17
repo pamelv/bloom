@@ -23,7 +23,6 @@ export default function AddMood() {
         <Modal.Body>
           <AddMoodForm />
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
     </div>
   );

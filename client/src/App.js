@@ -15,6 +15,7 @@ import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
 import LogMood from "./pages/LogMood";
 import Bookmark from "./pages/Bookmarks";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 class App extends React.Component {
   render() {
