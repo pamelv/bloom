@@ -96,7 +96,7 @@ class LogMood extends React.Component {
           <div
             style={{
               position: "absolute",
-              top: "20%",
+              top: "33%",
               left: "50%",
               transform: "translate(-50%,-50%)",
               textAlign: "center",
@@ -110,14 +110,14 @@ class LogMood extends React.Component {
           <div
             style={{
               position: "absolute",
-              top: "60%",
+              top: "63%",
               left: "50%",
               transform: "translate(-50%,-50%)",
               textAlign: "center",
             }}
             key={this.state.quotes.quoteLink}
           >
-            <h4 style={{ fontSize: "1.5em", fontWeight: 300 }}>
+            <h4 style={{ fontSize: "1.2em", fontWeight: 300 }}>
               {this.state.quotes.quoteText}
             </h4>
             <h6 style={{ fontSize: "1em", fontWeight: 400 }}>
