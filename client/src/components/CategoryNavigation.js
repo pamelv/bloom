@@ -8,6 +8,7 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import SubjectIcon from "@material-ui/icons/Subject";
 import MicIcon from "@material-ui/icons/Mic";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 
 const useStyles = makeStyles({
@@ -49,6 +50,13 @@ export default function CategoryNavigation(props) {
         component={Link}
         to="/poem"
         icon={<SubjectIcon />}
+      />
+      <BottomNavigationAction
+        label="Exercise"
+        value="exercise"
+        component={Link}
+        to="/exercise"
+        icon={<FitnessCenterIcon />}
       />
       <BottomNavigationAction
         label="Podcast"
