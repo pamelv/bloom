@@ -13,6 +13,7 @@ import FaceIcon from "@material-ui/icons/Face";
 import MenuIcon from "@material-ui/icons/Menu";
 import BookIcon from "@material-ui/icons/Book";
 import MoodIcon from "@material-ui/icons/Mood";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles({
@@ -52,7 +53,7 @@ export default function DrawerMenu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button key="user-profile">
+        <ListItem button key="user-profile" href="/profile">
           <ListItemIcon>
             <FaceIcon />
           </ListItemIcon>
@@ -70,6 +71,14 @@ export default function DrawerMenu() {
           </ListItemIcon>
           <ListItemText>Mood</ListItemText>
         </ListItem>
+        <a href="/dashboard">
+          <ListItem button key="user-mood">
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText>Dashboard</ListItemText>
+          </ListItem>
+        </a>
       </List>
       <Divider />
       <List>
