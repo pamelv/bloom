@@ -60,30 +60,27 @@ export default function DrawerMenu() {
           </ListItemIcon>
           <ListItemText>Profile</ListItemText>
         </ListItem>
-        <a href="/bookmark">
-          <ListItem button key="bookmark">
-            <ListItemIcon>
-              <BookIcon />
-            </ListItemIcon>
-            <ListItemText>Bookmark</ListItemText>
-          </ListItem>
-        </a>
-        <a href="/mood">
-          <ListItem button key="user-mood">
-            <ListItemIcon>
-              <MoodIcon />
-            </ListItemIcon>
-            <ListItemText>Mood</ListItemText>
-          </ListItem>
-        </a>
-        <a href="/dashboard">
-          <ListItem button key="user-mood">
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText>Dashboard</ListItemText>
-          </ListItem>
-        </a>
+
+        <ListItem button key="bookmark" component={Link} to="/bookmark">
+          <ListItemIcon>
+            <BookIcon />
+          </ListItemIcon>
+          <ListItemText>Bookmark</ListItemText>
+        </ListItem>
+
+        <ListItem button key="user-mood" component={Link} to="/mood">
+          <ListItemIcon>
+            <MoodIcon />
+          </ListItemIcon>
+          <ListItemText>Mood</ListItemText>
+        </ListItem>
+
+        <ListItem button key="dashboard" component={Link} to="/dashboard">
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText>Dashboard</ListItemText>
+        </ListItem>
       </List>
       <Divider />
       <List>

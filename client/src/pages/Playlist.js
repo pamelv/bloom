@@ -92,8 +92,8 @@ export default class Playlist extends Component {
               />
             </div>
           ))}
-          <CategoryNavigation currentPage="playlist" />
         </div>
+        <CategoryNavigation currentPage="playlist" />
       </div>
     );
   }
