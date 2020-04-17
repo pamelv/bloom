@@ -40,7 +40,7 @@ router.post("/user/:id/exercises", async (req, res) => {
 
 router.get("/user/:id/exercises", async (req, res) => {
   const user = await User.findById(req.params.id).populate("exercises");
-  res.json(user.exercise);
+  res.json(user.exercises);
 });
 
 module.exports = router;

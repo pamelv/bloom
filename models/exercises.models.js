@@ -10,7 +10,7 @@ const ExerciseSchema = new Schema({
     required: true,
   },
   equipment: {
-    type: String,
+    type: [],
     required: true,
   },
 });
