@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
   },
   expand: {
     transform: "rotate(0deg)",
-    marginTop: 0,
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
@@ -124,9 +123,7 @@ export default function RecipeCard(props) {
           <Typography paragraph style={{ color: "black" }}>
             Instructions
           </Typography>
-          <Typography paragraph>
-            {" "}
-            style={{ color: "black" }}
+          <Typography paragraph style={{ color: "black" }}>
             {props.instruction}
           </Typography>
         </CardContent>
