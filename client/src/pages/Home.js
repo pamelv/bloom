@@ -28,9 +28,9 @@ class App extends React.Component {
     this.isLoggedIn();
   }
 
-  // logIn() {
-  //   history.push("/login");
-  // }
+  logIn() {
+    history.push("/login");
+  }
 
   signUp() {
     history.push("/signup");
