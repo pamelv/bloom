@@ -15,6 +15,7 @@ import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
 import LogOut from "./components/Logoutbutton";
 import LogMood from "./pages/LogMood";
+import Bookmark from "./pages/Bookmarks";
 
 class App extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class App extends React.Component {
           <Route exact path="/playlist" component={Playlist} />
           <Route exact path="/podcast" component={Podcast} />
           <Route exact path="/poem" component={Poem} />
+          <Route exact path="/bookmarks" component={Bookmark} />
         </div>
       </Router>
     );

@@ -10,7 +10,10 @@ export default {
   getPodcastSad: function () {
     return axios.get("/api/podcasts/sad");
   },
-  savePodcast:function(podcast){
-    return axios.post("/api/podcast", podcast);
-  }
+  savePodcast: function (id, podcast) {
+    return axios.post(`/api/user/${id}/podcasts`, podcast);
+  },
+  getSavedPodcast: function (id) {
+    return axios.get(`/api/user/${id}/podcasts`);
+  },
 };

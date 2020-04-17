@@ -12,6 +12,7 @@ export default class Recipe extends Component {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       recipes: [],
     };
@@ -57,7 +58,8 @@ export default class Recipe extends Component {
   }
 
   handleFormSave = (recipe) => {
-    API.saveRecipe(recipe).then((response) => {
+    API.saveRecipe(this.state.id, recipe).then((response) => {
+      console.log(recipe);
       console.log("success!");
     });
   };

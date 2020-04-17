@@ -10,6 +10,7 @@ export default class Playlist extends Component {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       playlists: [],
     };
@@ -54,7 +55,7 @@ export default class Playlist extends Component {
   }
 
   handleFormSave = (playlist) => {
-    API.savePlaylist(playlist).then((response) => {
+    API.savePlaylist(this.state.id, playlist).then((response) => {
       console.log("success!");
     });
   };

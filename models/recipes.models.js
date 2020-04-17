@@ -14,13 +14,13 @@ const RecipeSchema = new Schema({
     required: true,
   },
   servings: {
-    type: Number,
+    type: String,
     required: true,
   },
   instructions: {
     type: String,
     required: true,
-  }
+  },
 });
 const Recipe = mongoose.model("Recipe", RecipeSchema);
 module.exports = Recipe;
