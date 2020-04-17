@@ -1,5 +1,9 @@
 import React from "react";
 import history from "../history";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 
 class LogOut extends React.Component {
   constructor(props) {
@@ -29,13 +33,24 @@ class LogOut extends React.Component {
   render() {
     const isLoggedIn = this.state.isLoggedIn;
     return (
-      <button
+      <ListItem
+        button
+        key="logout"
         onClick={this.clearToken}
         style={{ display: isLoggedIn ? "block" : "none" }}
-        // style={{ float: "right", display: isLoggedIn ? "block" : "none" }}
       >
-        Log Out
-      </button>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText>Logout</ListItemText>
+      </ListItem>
+      // <button
+      //   onClick={this.clearToken}
+      //   style={{ display: isLoggedIn ? "block" : "none" }}
+      //   // style={{ float: "right", display: isLoggedIn ? "block" : "none" }}
+      // >
+      //   Log Out
+      // </button>
     );
   }
 }

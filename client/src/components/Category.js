@@ -1,5 +1,7 @@
 import React from "react";
+import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
+import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 const useStyles = makeStyles(() => ({
   category: {
     width: "100%",
@@ -8,7 +10,8 @@ const useStyles = makeStyles(() => ({
     backgroundRepeat: "no-repeat",
     color: "white",
     fontSize: "1.5rem",
-    marginTop: "5px",
+    margin: "5px",
+    borderRadius: 6,
   },
   categoryTitle: {
     position: "absolute",
@@ -22,10 +25,11 @@ export default function Category(props) {
   const classes = useStyles();
   const imgaeURL = props.img;
   console.log(imgaeURL);
+  const shadowStyles = useLightTopShadowStyles({ inactive: true });
   return (
     <a href={props.Linkurl} key={props.title}>
       <div
-        className={classes.category}
+        className={cx(classes.category, shadowStyles.root)}
         style={{ backgroundImage: `url(${imgaeURL})`, backgroundSize: "cover" }}
       >
         <h2 className={classes.categoryTitle}>{props.title}</h2>

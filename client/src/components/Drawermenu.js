@@ -15,7 +15,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import BookIcon from "@material-ui/icons/Book";
 import MoodIcon from "@material-ui/icons/Mood";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+// import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles({
   list: {
@@ -84,13 +84,14 @@ export default function DrawerMenu() {
       </List>
       <Divider />
       <List>
-        <ListItem button key="logout">
-          <Logout />
-          {/* <ListItemIcon>
+        <Logout />
+        {/* <ListItem button key="logout">
+         
+          <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>
-          <ListItemText>Logout</ListItemText> */}
-        </ListItem>
+          <ListItemText>Logout</ListItemText>
+        </ListItem> */}
       </List>
     </div>
   );

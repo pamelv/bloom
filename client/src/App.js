@@ -13,7 +13,7 @@ import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
-import LogOut from "./components/Logoutbutton";
+// import LogOut from "./components/Logoutbutton";
 import LogMood from "./pages/LogMood";
 
 class App extends React.Component {
