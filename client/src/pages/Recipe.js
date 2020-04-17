@@ -75,7 +75,7 @@ export default class Recipe extends Component {
           margin: "0px",
           padding: "0px",
           width: "100vw",
-          position: "fixed",
+          position: "relative",
           background:
             "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
           backgroundSize: "cover",

@@ -83,6 +83,41 @@ export default function RecipeCard(props) {
           heading={props.title}
           body={props.summary}
         />
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton
+          className={cx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+          color="primary"
+        >
+          <ExpandMoreIcon style={{ color: "#C87B94" }} />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph style={{ color: "black" }}>
+            Ingredients:
+          </Typography>
+          <Typography paragraph style={{ color: "black" }}>
+            {props.extendedIngredients.map((ingredient) => {
+              return <li>{ingredient.originalString}</li>;
+            })}
+          </Typography>
+          <Typography paragraph style={{ color: "black" }}>
+            Instructions
+          </Typography>
+          <Typography paragraph>
+            {" "}
+            style={{ color: "black" }}
+            {props.instruction}
+          </Typography>
+        </CardContent>
+      </Collapse>
+      <CardContent>
         <div
           style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}
         >
@@ -97,31 +132,6 @@ export default function RecipeCard(props) {
           </StyledButton>
         </div>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          className={cx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          color="primary"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Ingredients:</Typography>
-          <Typography paragraph>
-            {props.extendedIngredients.map((ingredient) => {
-              return <li>{ingredient.originalString}</li>;
-            })}
-          </Typography>
-          <Typography paragraph>Instructions</Typography>
-          <Typography paragraph>{props.instruction}</Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }
