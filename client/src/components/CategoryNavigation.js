@@ -15,6 +15,8 @@ const useStyles = makeStyles({
     width: "90%",
     position: "fixed",
     bottom: "2px",
+    left: "50%",
+    transform: "translate(-50%,0)",
   },
 });
 
@@ -35,7 +37,7 @@ export default function CategoryNavigation(props) {
     >
       <BottomNavigationAction
         label="Music"
-        value="music"
+        value="playlist"
         component={Link}
         to="/playlist"
         icon={<MusicNoteIcon />}
@@ -56,7 +58,7 @@ export default function CategoryNavigation(props) {
       />
       <BottomNavigationAction
         label="Cooking"
-        value="cooking"
+        value="recipe"
         component={Link}
         to="/recipe"
         icon={<FastfoodIcon />}
