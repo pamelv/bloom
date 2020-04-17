@@ -22,6 +22,7 @@ export default function ForgotPassword() {
       })
       .catch((error) => {
         console.log(error);
+        noMatch();
       });
   };
   const onSubmit = (data) => {
@@ -30,7 +31,9 @@ export default function ForgotPassword() {
 
   const noMatch = (props) => {
     ReactDOM.render(
-      <h4>The email and date of birth entered does not match our records.</h4>,
+      <h4>
+        The email and/or date of birth entered does not match our records.
+      </h4>,
       document.getElementById("msg")
     );
   };
