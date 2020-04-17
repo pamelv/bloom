@@ -61,7 +61,7 @@ export default function DrawerMenu() {
             <ListItemText>Profile</ListItemText>
           </ListItem>
         </a>
-        <a href="">
+        <a href="/bookmark">
           <ListItem button key="bookmark">
             <ListItemIcon>
               <BookIcon />
@@ -69,7 +69,7 @@ export default function DrawerMenu() {
             <ListItemText>Bookmark</ListItemText>
           </ListItem>
         </a>
-        <a href="">
+        <a href="/mood">
           <ListItem button key="user-mood">
             <ListItemIcon>
               <MoodIcon />

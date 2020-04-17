@@ -9,8 +9,6 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
@@ -100,12 +98,6 @@ export default function RecipeCard(props) {
         </div>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
         <IconButton
           className={cx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -113,6 +105,7 @@ export default function RecipeCard(props) {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          color="primary"
         >
           <ExpandMoreIcon />
         </IconButton>

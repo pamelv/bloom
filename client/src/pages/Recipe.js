@@ -4,6 +4,7 @@ import API from "../utils/recipe.api";
 import RecipeCard from "../components/RecipeCollapse";
 import history from "../history";
 import Navbar from "../components/Navbar";
+import Parser from "html-react-parser";
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -98,9 +99,9 @@ export default class Recipe extends Component {
                   title={recipe.title}
                   readyInMinutes={recipe.readyInMinutes}
                   servings={recipe.servings}
-                  summary={recipe.summary}
+                  summary={Parser(recipe.summary)}
                   extendedIngredients={recipe.extendedIngredients}
-                  instruction={recipe.instruction}
+                  instruction={Parser(recipe.instructions)}
                 />
               </div>
             ))}
