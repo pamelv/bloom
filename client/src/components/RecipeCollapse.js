@@ -118,8 +118,8 @@ export default function RecipeCard(props) {
             Ingredients:
           </Typography>
           <Typography paragraph style={{ color: "black" }}>
-            {props.extendedIngredients.map((ingredient) => {
-              return <li>{ingredient.originalString}</li>;
+            {props.extendedIngredients.map((ingredient, index) => {
+              return <li key={index}>{ingredient.originalString}</li>;
             })}
           </Typography>
           <Typography paragraph style={{ color: "black" }}>

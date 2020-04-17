@@ -94,7 +94,7 @@ export default class Recipe extends Component {
             }}
           >
             {this.state.recipes.map((recipe) => (
-              <div className="s12" value="mood" key={recipe.title}>
+              <div className="s12" value="mood" key={recipe.id}>
                 <RecipeCard
                   id={recipe.id}
                   image={recipe.image}
