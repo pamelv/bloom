@@ -62,7 +62,7 @@ class Profile extends React.Component {
         }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
-          <Navbar title="Profile" />
+          <Navbar title="Profile" currentMood={this.state.currentMood} />
           <div
             className="row"
             style={{ display: "flex", justifyContent: "space-between" }}

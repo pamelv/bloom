@@ -84,7 +84,7 @@ export default class Playlist extends Component {
     const showResults = this.state.showResults;
     return (
       <div style={{ width: "100%", boxSizing: "border-box" }}>
-        <Navbar title="Playlist" />
+        <Navbar title="Playlist" currentMood={this.state.currentMood} />
         <div
           style={{
             columnCount: "2",
