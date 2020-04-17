@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 import Logout from "./Logoutbutton";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -53,14 +54,12 @@ export default function DrawerMenu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <a href="/profile">
-          <ListItem button key="user-profile">
-            <ListItemIcon>
-              <FaceIcon />
-            </ListItemIcon>
-            <ListItemText>Profile</ListItemText>
-          </ListItem>
-        </a>
+        <ListItem button key="user-profile" component={Link} to="/profile">
+          <ListItemIcon>
+            <FaceIcon />
+          </ListItemIcon>
+          <ListItemText>Profile</ListItemText>
+        </ListItem>
         <a href="/bookmark">
           <ListItem button key="bookmark">
             <ListItemIcon>

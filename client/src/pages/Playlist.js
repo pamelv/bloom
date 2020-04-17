@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/playlist.api";
 import PlaylistCard from "../components/PlaylistCard";
 import Navbar from "../components/Navbar";
+import CategoryNavigation from "../components/CategoryNavigation";
 import history from "../history";
 
 export default class Playlist extends Component {
@@ -91,29 +92,9 @@ export default class Playlist extends Component {
               />
             </div>
           ))}
+          <CategoryNavigation currentPage="playlist" />
         </div>
       </div>
-      // <div>
-      //   <h5 className="text-center my-5">
-      //     DAILY PLAYLISTS CURATED JUST FOR YOU
-      //   </h5>
-      // </div>
-
-      /* {this.state.playlists.map((playlist) => (
-          <div className="col s12" value="mood" key={playlist.id}>
-            <PlaylistCard
-              id={playlist.id}
-              name={playlist.name}
-              url={playlist.images[0].url}
-              description={playlist.description}
-              extraInfo={`Total Tracks: ${playlist.tracks.total}`}
-              href={playlist.external_urls.spotify}
-              app={playlist.uri}
-              handleFormSave={this.handleFormSave}
-            />
-          </div>
-        ))}
-      </div> */
     );
   }
 }
