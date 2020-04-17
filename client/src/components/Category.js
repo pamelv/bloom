@@ -4,13 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 const useStyles = makeStyles(() => ({
   category: {
-    width: "100%",
+    width: "90%",
     height: "30vh",
     position: "relative",
     backgroundRepeat: "no-repeat",
     color: "white",
     fontSize: "1.5rem",
-    margin: "5px",
+    margin: "auto",
+    marginTop: "1em",
     borderRadius: 6,
   },
   categoryTitle: {
@@ -24,7 +25,6 @@ const useStyles = makeStyles(() => ({
 export default function Category(props) {
   const classes = useStyles();
   const imgaeURL = props.img;
-  console.log(imgaeURL);
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
   return (
     <a href={props.Linkurl} key={props.title}>
