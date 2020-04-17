@@ -3,10 +3,12 @@ import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
+import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 
@@ -21,8 +23,7 @@ const StyledButton = withStyles({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: "300px",
-    maxWidth: "500px",
+    maxWidth: "170px",
     borderRadius: 12,
     margin: " 0 0 1em",
     breakInside: "avoid",
@@ -42,52 +43,34 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1,
   },
 }));
-const peomLine = {
-  fontSize: "1em",
-  lineHeight: 1,
-  color: "black",
-};
 
-export default function PoemForm(props) {
+function ContentCard(props) {
   const styles = useStyles();
-
+  const mediaStyles = useFourThreeCardMediaStyles();
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
   return (
-    <div>
-      <Card className={cx(styles.root, shadowStyles.root)} key={props.title}>
-        <CardContent className={styles.content}>
-          <TextInfoContent
-            classes={textCardContentStyles}
-            style={styles.textContent}
-            overline={props.author}
-            heading={props.title}
-            body={props.lines.map((value, index) => {
-              return (
-                <p style={peomLine} key={index}>
-                  {value}
-                </p>
-                // <li key={index}>
-                //   {value}
-                // </li>
-              );
-            })}
-          />
-          <div
-            style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}
-          >
-            <StyledButton
-              type="submit"
-              className="m-auto"
-              onClick={() => {
-                props.handleFormSave(props);
-              }}
-            >
-              <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
-            </StyledButton>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className={cx(styles.root, shadowStyles.root)} key={props.id}>
+      <CardMedia
+        className={cx(styles.media, mediaStyles.root)}
+        image={props.imgUrl}
+      />
+      <CardContent className={styles.content}>
+        <TextInfoContent
+          classes={textCardContentStyles}
+          style={styles.textContent}
+          overline={props.extraInfo}
+          heading={props.title}
+          body={props.description}
+        />
+        <div style={{ float: "right", minWidth: "5px" }}>
+          <StyledButton>
+            <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
+          </StyledButton>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
+
+export default ContentCard;
