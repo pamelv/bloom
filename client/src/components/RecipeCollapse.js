@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
+import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 
@@ -59,8 +60,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecipeCard(props) {
-  const classes = useStyles();
+  const styles = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const mediaStyles = useFourThreeCardMediaStyles();
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
 
@@ -69,16 +71,16 @@ export default function RecipeCard(props) {
   };
 
   return (
-    <Card className={cx(classes.root, shadowStyles.root)} key={props.id}>
+    <Card className={cx(styles.root, shadowStyles.root)} key={props.id}>
       <CardMedia
-        className={classes.media}
+        className={cx(styles.media, mediaStyles.root)}
         image={props.image}
         title={props.title}
       />
       <CardContent>
         <TextInfoContent
           classes={textCardContentStyles}
-          style={classes.textContent}
+          style={styles.textContent}
           overline={`Prep Time: ${props.readyInMinutes}\n Servings: ${props.servings}`}
           heading={props.title}
           body={props.summary}
@@ -99,8 +101,8 @@ export default function RecipeCard(props) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
-          className={cx(classes.expand, {
-            [classes.expandOpen]: expanded,
+          className={cx(styles.expand, {
+            [styles.expandOpen]: expanded,
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
