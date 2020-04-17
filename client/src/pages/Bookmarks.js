@@ -4,8 +4,10 @@ import PODCAST from "../utils/Podcast.api";
 import POEM from "../utils/poem.api";
 import RECIPE from "../utils/recipe.api";
 import PLAYLIST from "../utils/playlist.api";
+import EXERCISE from "../utils/exercise.api";
 import Card from "../components/Card";
 import history from "../history";
+import Parser from "html-react-parser";
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Bookmark extends React.Component {
       recipes: [],
       playlists: [],
       podcasts: [],
+      exercises: [],
     };
   }
 
@@ -26,6 +29,7 @@ class Bookmark extends React.Component {
     this.getRecipe();
     this.getPlaylist();
     this.getPodcast();
+    this.getExcercise();
   }
 
   getPoems() {
@@ -69,6 +73,19 @@ class Bookmark extends React.Component {
       .then((response) => {
         this.setState({
           podcasts: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  getExcercise() {
+    EXERCISE.getSavedExercise(this.state.id)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          exercises: response.data,
         });
       })
       .catch((error) => {
@@ -137,6 +154,16 @@ class Bookmark extends React.Component {
               imgUrl={podcast.image}
               url={podcast.audio}
               linkName={"Listen Now"}
+            />
+          </div>
+        ))}
+
+        <h3>Exercises</h3>
+        {this.state.exercises.map((exercise) => (
+          <div className="col s12" key={exercise._id}>
+            <Card
+              boldText={exercise.name}
+              body={Parser(exercise.description)}
             />
           </div>
         ))}

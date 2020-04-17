@@ -7,4 +7,7 @@ export default {
   saveExercise: function (id, exercise) {
     return axios.post(`/api/user/${id}/exercises`, exercise);
   },
+  getSavedExercise: function (id) {
+    return axios.get(`/api/user/${id}/exercises`);
+  },
 };

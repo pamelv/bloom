@@ -29,10 +29,10 @@ export default class Exercise extends Component {
       });
   }
 
-  handleFormSave = (event: any, data) => {
-    console.log(data);
-    event.persist();
-    API.saveExercise(this.state.id, data).then((response) => {
+  handleFormSave = (exercise) => {
+    console.log(exercise);
+    // event.persist();
+    API.saveExercise(this.state.id, exercise).then((response) => {
       console.log("success!");
     });
   };
@@ -79,7 +79,7 @@ export default class Exercise extends Component {
                     <button
                       type="submit"
                       className="m-auto"
-                      onClick={(exercise) => {
+                      onClick={() => {
                         this.handleFormSave(exercise);
                       }}
                     >
