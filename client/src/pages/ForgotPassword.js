@@ -38,20 +38,21 @@ export default function ForgotPassword() {
     <div>
       <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Email</label>
         <input
           type="email"
           placeholder="Email"
           name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
+        <label htmlFor="email">Email</label>
         {errors.email && <p>Invalid email</p>}
-        <label>Date of Birth</label>
+
         <input
           type="date"
           name="dateofBirth"
           ref={register({ required: true })}
         />
+        <label htmlFor="dateofBirth">Date of Birth</label>
         {errors.dateofBirth && <p>Invalid date</p>}
         <button>Next</button>
       </form>
