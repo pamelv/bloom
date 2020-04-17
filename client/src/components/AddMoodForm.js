@@ -30,8 +30,9 @@ export default function AddMoodForm() {
         ref={register({ required: true })}
       />
       {errors.emotion && <p>This field is required</p>}
-      <label>Select an emoji:</label>
+
       <div className="flex">
+        <label htmlFor="emoji">Select an emoji:</label>
         <input
           style={{ width: "auto" }}
           name="emoji"
@@ -61,6 +62,7 @@ export default function AddMoodForm() {
         {/* eslint-disable-next-line */}
         <h2>&#128577;</h2>
       </div>
+
       {errors.emoji && <p>This field is required</p>}
       <label>Comments:</label>
       <textarea name="comment" ref={register} />

@@ -33,31 +33,32 @@ export default function SignUpForm(props) {
     <div className={props.className}>
       <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>First Name</label>
         <input
           type="text"
           placeholder="First name"
           name="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
+        <label htmlFor="firstname">First Name</label>
         {errors.firstname && <p>This field is required</p>}
-        <label>Last Name</label>
         <input
           type="text"
           placeholder="Last name"
           name="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
+        <label htmlFor="lastname">Last Name</label>
         {errors.lastname && <p>This field is required</p>}
-        <label>Email</label>
+
         <input
           type="email"
           placeholder="Email"
           name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
+        <label htmlFor="email">Email</label>
         {errors.email && <p>This field is required</p>}
-        <label>Password</label>
+
         <input
           type="password"
           placeholder="Password"
@@ -68,6 +69,7 @@ export default function SignUpForm(props) {
             pattern: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/i,
           })}
         />
+        <label htmlFor="password">Password</label>
         {errors.password && (
           <p>
             Password must have 8 characters and contain at least: one upper case
@@ -75,15 +77,16 @@ export default function SignUpForm(props) {
             character.
           </p>
         )}
-        <label>Date of Birth</label>
+
         <input
           type="date"
           placeholder="Date of Birth"
           name="dateofBirth"
           ref={register({ required: true })}
         />
+        <label htmlFor="dateofBirth">Date of Birth</label>
         {errors.dateofBirth && <p>This field is required</p>}
-        <label>Gender</label>
+
         <div className="flex">
           <input
             name="gender"
@@ -111,6 +114,7 @@ export default function SignUpForm(props) {
           />
           <h5>Other</h5>
         </div>
+        <label htmlFor="gender">Gender</label>
         <input type="submit" />
       </form>
     </div>

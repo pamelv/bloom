@@ -46,21 +46,22 @@ const LogInForm = (props) => {
     <div>
       <div id="msg"></div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Email</label>
         <input
           type="email"
           placeholder="Email"
           name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
+        <label htmlFor="email">Email</label>
         {errors.email && <p>Invalid email</p>}
-        <label>Password</label>
+
         <input
           type="password"
           placeholder="Password"
           name="password"
           ref={register({ required: true, minLength: 6 })}
         />
+        <label htmlFor="password">Password</label>
         {errors.password && <p>Invalid password</p>}
         <button>Log In</button>
       </form>
