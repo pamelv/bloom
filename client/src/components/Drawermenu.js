@@ -61,7 +61,7 @@ export default function DrawerMenu() {
           <ListItemText>Profile</ListItemText>
         </ListItem>
 
-        <ListItem button key="bookmark" component={Link} to="/bookmark">
+        <ListItem button key="bookmark" component={Link} to="/bookmarks">
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>

@@ -5,21 +5,20 @@ const { Schema } = mongoose;
 const PoemSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
 
   author: {
-      type:String,
-      required: true
+    type: String,
+    required: true,
   },
 
   lines: {
-    type:Array,
-    required: true
-}
-
+    type: Array,
+    required: true,
+  },
 });
 
-const Poem = mongoose.model("Poem", PoemSchema);
+const Poem = mongoose.model("Poems", PoemSchema);
 
 module.exports = Poem;

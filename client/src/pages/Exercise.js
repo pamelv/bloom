@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import API from "../utils/exercise.api";
-import ExerciseForm from "../components/ExerciseForm";
 import history from "../history";
-
+import Parser from "html-react-parser";
 
 export default class Exercise extends Component {
   constructor(props) {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       exercises: [],
     };
@@ -16,47 +16,23 @@ export default class Exercise extends Component {
 
   componentDidMount() {
     this.loggedIn();
-
-    if (this.state.currentMood === "Happy") {
-      API.getExercise()
-        .then((response) => {
-          console.log("exercises:", response.data.results);
-          this.setState({
-            exercises: response.data.results
-          });
-        })
-        .catch((error) => {
-          console.log(error);
+    API.getExercise()
+      .then((response) => {
+        console.log("exercises:", response.data.results);
+        this.setState({
+          exercises: response.data.results,
         });
-    } else if (this.state.currentMood === "Bleh") {
-      API.getExercise()
-        .then((response) => {
-          console.log("exercise:", response.data.results);
-          this.setState({
-            exercises: response.data.results,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (this.state.currentMood === "Sad") {
-      API.getExercise()
-        .then((response) => {
-          console.log("exercise:", response.data.results);
-          this.setState({
-            exercises: response.data.results,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-
-    } else console.log("no mood available");
+        console.log(this.state.exercises);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  handleFormSave = (exercise) => {
-    API.saveExercise(exercise).then((response) => {
+  handleFormSave = (event: any, data) => {
+    console.log(data);
+    event.persist();
+    API.saveExercise(this.state.id, data).then((response) => {
       console.log("success!");
     });
   };
@@ -71,12 +47,49 @@ export default class Exercise extends Component {
   render() {
     return (
       <div>
+        <h5 className="text-center my-5">
+          DAILY EXERCISES CURATED JUST FOR YOU
+        </h5>
+
         <div>
-        <h5 className="text-center my-5">DAILY EXERCISES CURATED JUST FOR YOU</h5>
-        <ExerciseForm
-          exercises={this.state.exercises}
-          handleFormSave={this.handleFormSave}
-        />
+          {this.state.exercises.map((exercise) => {
+            return (
+              <div
+                className="card text-center mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg"
+                key={exercise.name}
+              >
+                <div className="card-body">
+                  <div key={exercise.id}>
+                    <h5
+                      className="title mb-4"
+                      style={{ textTransform: "uppercase" }}
+                    >
+                      <b>{exercise.name}</b>
+                    </h5>
+
+                    <div className="my-3">
+                      <h6>Target Muscle: {exercise.category.name}</h6>
+                      <h6>Required Equipment: {exercise.equipment[0].name}</h6>
+                    </div>
+
+                    <div className="my-4">
+                      WORKOUT: {Parser(exercise.description)}
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="m-auto"
+                      onClick={(exercise) => {
+                        this.handleFormSave(exercise);
+                      }}
+                    >
+                      BOOKMARK
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

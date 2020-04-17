@@ -4,18 +4,22 @@ import PlaylistCard from "../components/PlaylistCard";
 import Navbar from "../components/Navbar";
 import CategoryNavigation from "../components/CategoryNavigation";
 import history from "../history";
+import Loader from "react-loader-spinner";
 
 export default class Playlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       playlists: [],
+      showResults: false,
     };
   }
 
   componentDidMount() {
+    this.showResults();
     this.loggedIn();
     if (this.state.currentMood === "Happy") {
       API.getPlaylistHappy()
@@ -53,8 +57,18 @@ export default class Playlist extends Component {
     } else console.log("no mood available");
   }
 
+  showResults() {
+    setTimeout(
+      function () {
+        this.setState({ showResults: true });
+      }.bind(this),
+      3000
+    );
+  }
+
   handleFormSave = (playlist) => {
-    API.savePlaylist(playlist).then((response) => {
+    console.log(playlist);
+    API.savePlaylist(this.state.id, playlist).then((response) => {
       console.log("success!");
     });
   };
@@ -67,6 +81,7 @@ export default class Playlist extends Component {
   }
 
   render() {
+    const showResults = this.state.showResults;
     return (
       <div style={{ width: "100%", boxSizing: "border-box" }}>
         <Navbar title="Playlist" />
@@ -79,20 +94,34 @@ export default class Playlist extends Component {
             marginBottom: "55px",
           }}
         >
-          {this.state.playlists.map((playlist) => (
-            <div className="s12" value="mood" key={playlist.id}>
-              <PlaylistCard
-                id={playlist.id}
-                name={playlist.name}
-                url={playlist.images[0].url}
-                description={playlist.description}
-                extraInfo={`Total Tracks: ${playlist.tracks.total}`}
-                href={playlist.external_urls.spotify}
-                app={playlist.uri}
-                handleFormSave={this.handleFormSave}
-              />
-            </div>
-          ))}
+          <div
+            className={showResults ? "hide" : "show"}
+            style={{ top: "45%", position: "absolute", left: "40%" }}
+          >
+            <Loader
+              type="Circles"
+              color="#FFB383"
+              height={80}
+              width={80}
+              timeout={3000} //3 secs
+            />
+          </div>
+          <div id="results" className={showResults ? "show" : "hide"}>
+            {this.state.playlists.map((playlist) => (
+              <div className="s12" value="mood" key={playlist.id}>
+                <PlaylistCard
+                  id={playlist.id}
+                  name={playlist.name}
+                  url={playlist.images[0].url}
+                  description={playlist.description}
+                  extraInfo={`Total Tracks: ${playlist.tracks.total}`}
+                  href={playlist.external_urls.spotify}
+                  app={playlist.uri}
+                  handleFormSave={this.handleFormSave}
+                />
+              </div>
+            ))}
+          </div>
         </div>
         <CategoryNavigation currentPage="playlist" />
       </div>

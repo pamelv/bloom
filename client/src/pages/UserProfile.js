@@ -1,6 +1,5 @@
 import React from "react";
 import API from "../utils/user.api";
-import QUOTE from "../utils/quote.api";
 import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
 import AddMood from "../components/AddMoodModal";
@@ -20,20 +19,6 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.getUser();
-    this.getQuote();
-  }
-
-  getQuote() {
-    QUOTE.getQuote()
-      .then((response) => {
-        this.setState({
-          quotes: response.data,
-        });
-      })
-
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
   getUser() {

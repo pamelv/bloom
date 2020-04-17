@@ -2,8 +2,8 @@ const router = require("express").Router();
 const unirest = require("unirest");
 require("dotenv").config();
 
-const podcast = require("../../models/podcasts.models");
-const user = require("../../models/users.models");
+const Podcast = require("../../models/podcasts.models");
+const User = require("../../models/users.models");
 
 router.get("/podcasts/happy", (req, res) => {
   console.log("hello");
@@ -63,28 +63,26 @@ router.get("/podcasts/:search", (req, res) => {
     });
 });
 
-router.post("/podcast", (req, res) => {
-  const newPodcast = req.body;
-  console.log("why arent you saving to user?");
-  console.log(newPodcast);
-  podcast
-    .create(newPodcast)
-    // .then((response) => {
-    //   res.json(response);
-    //   });
-    .then(function (podcast) {
-      console.log("this is " + podcast);
-      return user.findOneAndUpdate(
-        {},
-        { $push: { podcasts: podcast._id } },
-        { new: true }
-      );
-    })
-    .then(function (dbUser) {
-      res.json(dbUser);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
+router.get("/podcasts", async (req, res) => {
+  const podcasts = await Podcast.find();
+  res.json(podcasts);
 });
+
+router.post("/user/:id/podcasts", async (req, res) => {
+  try {
+    const podcast = await Podcast.create(req.body);
+    const results = await User.findByIdAndUpdate(req.params.id, {
+      $push: { podcasts: { $each: [podcast._id], $position: 0 } },
+    });
+    res.json(results);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/user/:id/podcasts", async (req, res) => {
+  const user = await User.findById(req.params.id).populate("podcasts");
+  res.json(user.podcasts);
+});
+
 module.exports = router;

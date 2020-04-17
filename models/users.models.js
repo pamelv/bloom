@@ -34,11 +34,11 @@ const UserSchema = new Schema({
     default: Date.now(),
   },
   moods: [{ type: Schema.Types.ObjectId, ref: "Moods" }],
-  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
+  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
   poems: [{ type: Schema.Types.ObjectId, ref: "Poems" }],
   podcasts: [{ type: Schema.Types.ObjectId, ref: "Podcasts" }],
   playlists: [{ type: Schema.Types.ObjectId, ref: "Playlists" }],
-  exercises: [{ type: Schema.Types.ObjectId, ref: "Exercises" }]
+  exercises: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
 });
 
 const Users = mongoose.model("Users", UserSchema);

@@ -45,3 +45,6 @@ textarea {
 .modal .modal-content {
   padding: 10px;
 }
+.MuiButton-outlinedSizeSmall {
+  padding: 3px 6px !important;
+}
