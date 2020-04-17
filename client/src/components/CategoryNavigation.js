@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     bottom: "4px",
     left: "50%",
     transform: "translate(-50%,0)",
+    borderRadius: "10px",
   },
 });
 

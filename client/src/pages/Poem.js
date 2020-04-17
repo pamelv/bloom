@@ -88,7 +88,7 @@ export default class Poem extends Component {
               columnGap: "1em",
               padding: "0.7em",
               height: "100%",
-              marginBottom: "60px",
+              marginBottom: "55px",
             }}
           >
             {this.state.poems.map((poem) => (

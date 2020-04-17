@@ -117,7 +117,7 @@ class LogMood extends React.Component {
             }}
             key={this.state.quotes.quoteLink}
           >
-            <h4 style={{ fontSize: "1.2em", fontWeight: 300 }}>
+            <h4 style={{ fontSize: "1.5em", fontWeight: 300 }}>
               {this.state.quotes.quoteText}
             </h4>
             <h6 style={{ fontSize: "1em", fontWeight: 400 }}>
