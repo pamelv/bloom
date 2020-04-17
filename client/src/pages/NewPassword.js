@@ -28,8 +28,7 @@ export default function NewPassword() {
           left: "50%",
           transform: "translate(-50%,-50%)",
         }}
-      ></div>
-      <div>
+      >
         <NewPw />
       </div>
     </div>
