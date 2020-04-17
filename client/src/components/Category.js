@@ -4,14 +4,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 const useStyles = makeStyles(() => ({
   category: {
-    width: "90%",
+    width: "94%",
     height: "30vh",
     position: "relative",
     backgroundRepeat: "no-repeat",
     color: "white",
     fontSize: "1.5rem",
     margin: "auto",
-    marginTop: "1em",
+    marginTop: "0.5em",
+    marginBottom: "0.5em",
     borderRadius: 6,
   },
   categoryTitle: {

@@ -84,9 +84,8 @@ export default function DrawerMenu() {
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <Logout />
-        </ListItem>
+        <Logout />
+
         {/* <ListItem button key="logout">
          
           <ListItemIcon>

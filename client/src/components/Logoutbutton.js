@@ -39,10 +39,10 @@ class LogOut extends React.Component {
         onClick={this.clearToken}
         style={{ display: isLoggedIn ? "block" : "none" }}
       >
-        <ListItemIcon>
+        <ListItemIcon style={{ float: "left" }}>
           <ExitToAppIcon />
         </ListItemIcon>
-        <ListItemText>Logout</ListItemText>
+        <ListItemText style={{ float: "left" }}>Logout</ListItemText>
       </ListItem>
       // <button
       //   onClick={this.clearToken}
