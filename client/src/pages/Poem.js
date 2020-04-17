@@ -4,6 +4,7 @@ import PoemForm from "../components/PoemForm";
 import history from "../history";
 import Navbar from "../components/Navbar";
 import CategoryNavigation from "../components/CategoryNavigation";
+import Loader from "react-loader-spinner";
 
 export default class Poem extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class Poem extends Component {
   }
 
   componentDidMount() {
+    this.showResults();
     this.loggedIn();
 
     if (this.state.currentMood === "Happy") {
@@ -55,6 +57,15 @@ export default class Poem extends Component {
     } else console.log("no mood available");
   }
 
+  showResults() {
+    setTimeout(
+      function () {
+        this.setState({ showResults: true });
+      }.bind(this),
+      3000
+    );
+  }
+
   handleFormSave = (poem) => {
     API.savePoem(this.state.id, poem).then((response) => {
       console.log("success!");
@@ -69,6 +80,7 @@ export default class Poem extends Component {
   }
 
   render() {
+    const showResults = this.state.showResults;
     return (
       <div
         style={{
@@ -92,16 +104,30 @@ export default class Poem extends Component {
               marginBottom: "55px",
             }}
           >
-            {this.state.poems.map((poem) => (
-              <div className="s12" value="mood" key={poem.title}>
-                <PoemForm
-                  title={poem.title}
-                  lines={poem.lines}
-                  author={poem.author}
-                  handleFormSave={this.handleFormSave}
-                />
-              </div>
-            ))}
+            <div
+              className={showResults ? "hide" : "show"}
+              style={{ top: "45%", position: "fixed", left: "40%" }}
+            >
+              <Loader
+                type="Circles"
+                color="#FFB383"
+                height={80}
+                width={80}
+                timeout={3000} //3 secs
+              />
+            </div>
+            <div id="results" className={showResults ? "show" : "hide"}>
+              {this.state.poems.map((poem) => (
+                <div className="s12" value="mood" key={poem.title}>
+                  <PoemForm
+                    title={poem.title}
+                    lines={poem.lines}
+                    author={poem.author}
+                    handleFormSave={this.handleFormSave}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
           <CategoryNavigation currentPage="poem" />
         </div>

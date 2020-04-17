@@ -78,7 +78,7 @@ export default function PlaylistCard(props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Brower
+                Browser
               </Button>
               <Button
                 href={props.app}

@@ -91,9 +91,7 @@ export default function RecipeCard(props) {
           <StyledButton
             type="submit"
             className="m-auto"
-            onClick={() => {
-              props.handleFormSave(props);
-            }}
+            onClick={props.onClick}
           >
             <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
           </StyledButton>

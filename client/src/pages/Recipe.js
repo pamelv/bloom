@@ -6,6 +6,7 @@ import history from "../history";
 import Navbar from "../components/Navbar";
 import Parser from "html-react-parser";
 import CategoryNavigation from "../components/CategoryNavigation";
+import Loader from "react-loader-spinner";
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class Recipe extends Component {
   }
 
   componentDidMount() {
+    this.showResults();
     this.loggedIn();
 
     if (this.state.currentMood === "Happy") {
@@ -58,11 +60,20 @@ export default class Recipe extends Component {
   }
 
   handleFormSave = (recipe) => {
+    console.log(recipe);
     API.saveRecipe(this.state.id, recipe).then((response) => {
-      console.log(recipe);
       console.log("success!");
     });
   };
+
+  showResults() {
+    setTimeout(
+      function () {
+        this.setState({ showResults: true });
+      }.bind(this),
+      3000
+    );
+  }
 
   loggedIn() {
     // eslint-disable-next-line
@@ -72,6 +83,7 @@ export default class Recipe extends Component {
   }
 
   render() {
+    const showResults = this.state.showResults;
     return (
       <div
         style={{
@@ -95,20 +107,37 @@ export default class Recipe extends Component {
               marginBottom: "55px",
             }}
           >
-            {this.state.recipes.map((recipe) => (
-              <div className="s12" value="mood" key={recipe.title}>
-                <RecipeCard
-                  id={recipe.id}
-                  image={recipe.image}
-                  title={recipe.title}
-                  readyInMinutes={recipe.readyInMinutes}
-                  servings={recipe.servings}
-                  summary={Parser(recipe.summary)}
-                  extendedIngredients={recipe.extendedIngredients}
-                  instruction={Parser(recipe.instructions)}
-                />
-              </div>
-            ))}
+            <div
+              className={showResults ? "hide" : "show"}
+              style={{ top: "45%", position: "fixed", left: "40%" }}
+            >
+              <Loader
+                type="Circles"
+                color="#FFB383"
+                height={80}
+                width={80}
+                timeout={3000} //3 secs
+              />
+            </div>
+            <div id="results" className={showResults ? "show" : "hide"}>
+              {this.state.recipes.map((recipe) => (
+                <div className="s12" value="mood">
+                  <RecipeCard
+                    id={recipe.id}
+                    image={recipe.image}
+                    title={recipe.title}
+                    readyInMinutes={recipe.readyInMinutes}
+                    servings={recipe.servings}
+                    summary={Parser(recipe.summary)}
+                    extendedIngredients={recipe.extendedIngredients}
+                    instruction={Parser(recipe.instructions)}
+                    onClick={() => {
+                      this.handleFormSave(recipe);
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
           <CategoryNavigation currentPage="recipe" />
         </div>

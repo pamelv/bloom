@@ -64,6 +64,7 @@ export default function ForgotPassword() {
           transform: "translate(-50%,-50%)",
         }}
       >
+        <div id="msg"></div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="email"
