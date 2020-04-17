@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: {
     width: "90%",
     position: "fixed",
-    bottom: "2px",
+    bottom: "4px",
     left: "50%",
     transform: "translate(-50%,0)",
   },

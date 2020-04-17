@@ -90,6 +90,7 @@ export default class Recipe extends Component {
               columnGap: "1em",
               padding: "0.7em",
               height: "100%",
+              marginBottom: "60px",
             }}
           >
             {this.state.recipes.map((recipe) => (

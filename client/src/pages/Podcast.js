@@ -76,6 +76,7 @@ export default class Podcast extends Component {
             columnGap: "1em",
             padding: "0.7em",
             height: "100%",
+            marginBottom: "60px",
           }}
         >
           {this.state.podcasts.map((podcast) => (
