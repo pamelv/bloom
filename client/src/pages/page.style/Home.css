@@ -1,0 +1,29 @@
+.moveup {
+  animation: moveup 1s normal ease-in-out;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveup {
+  from {
+    top: 30%;
+  }
+  to {
+    top: 10%;
+  }
+}
+.loginDiv {
+  animation: fadein 1s normal ease-in-out;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadein {
+  from {
+    top: 60%;
+    opacity: 0;
+  }
+  to {
+    top: 65%;
+    opacity: 1;
+  }
+}

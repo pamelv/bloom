@@ -5,6 +5,12 @@ import "./form.css";
 import history from "../history";
 import ReactDOM from "react-dom";
 
+const radioStyle = {
+  fontSize: "1.2em",
+  marginLeft: "5px",
+  marginRight: "10px",
+};
+
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
@@ -37,6 +43,7 @@ export default function SignUpForm(props) {
           type="text"
           placeholder="First name"
           name="firstname"
+          id="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
         <label htmlFor="firstname">First Name</label>
@@ -45,6 +52,7 @@ export default function SignUpForm(props) {
           type="text"
           placeholder="Last name"
           name="lastname"
+          id="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
         <label htmlFor="lastname">Last Name</label>
@@ -54,6 +62,7 @@ export default function SignUpForm(props) {
           type="email"
           placeholder="Email"
           name="email"
+          id="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
         <label htmlFor="email">Email</label>
@@ -63,6 +72,7 @@ export default function SignUpForm(props) {
           type="password"
           placeholder="Password"
           name="password"
+          id="password"
           ref={register({
             required: true,
             minLength: 6,
@@ -71,7 +81,7 @@ export default function SignUpForm(props) {
         />
         <label htmlFor="password">Password</label>
         {errors.password && (
-          <p>
+          <p className="error">
             Password must have 8 characters and contain at least: one upper case
             letter, one lower case letter, one numerical digit, one special
             character.
@@ -82,6 +92,7 @@ export default function SignUpForm(props) {
           type="date"
           placeholder="Date of Birth"
           name="dateofBirth"
+          id="dateofBirth"
           ref={register({ required: true })}
         />
         <label htmlFor="dateofBirth">Date of Birth</label>
@@ -95,7 +106,7 @@ export default function SignUpForm(props) {
             value="Male"
             ref={register}
           />
-          <h5>Male</h5>
+          <h5 style={radioStyle}>Male</h5>
 
           <input
             name="gender"
@@ -104,7 +115,7 @@ export default function SignUpForm(props) {
             value=" Female"
             ref={register}
           />
-          <h5>Female</h5>
+          <h5 style={radioStyle}>Female</h5>
           <input
             name="gender"
             id="other"
@@ -112,7 +123,7 @@ export default function SignUpForm(props) {
             value=" Other"
             ref={register}
           />
-          <h5>Other</h5>
+          <h5 style={radioStyle}>Other</h5>
         </div>
         <label htmlFor="gender">Gender</label>
         <input type="submit" />

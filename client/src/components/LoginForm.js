@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 
 const LogInForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
+
   const submitForm = (data) => {
     API.getToken(data)
       .then((res) => {

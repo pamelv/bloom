@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/playlist.api";
 import PlaylistCard from "../components/PlaylistCard";
+import Navbar from "../components/Navbar";
+import CategoryNavigation from "../components/CategoryNavigation";
 import history from "../history";
 
 export default class Playlist extends Component {
@@ -67,26 +69,33 @@ export default class Playlist extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h5 className="text-center my-5">
-            DAILY PLAYLISTS CURATED JUST FOR YOU
-          </h5>
+      <div style={{ width: "100%", boxSizing: "border-box" }}>
+        <Navbar title="Playlist" />
+        <div
+          style={{
+            columnCount: "2",
+            columnGap: "1em",
+            padding: "0.7em",
+            height: "100%",
+            marginBottom: "55px",
+          }}
+        >
+          {this.state.playlists.map((playlist) => (
+            <div className="s12" value="mood" key={playlist.id}>
+              <PlaylistCard
+                id={playlist.id}
+                name={playlist.name}
+                url={playlist.images[0].url}
+                description={playlist.description}
+                extraInfo={`Total Tracks: ${playlist.tracks.total}`}
+                href={playlist.external_urls.spotify}
+                app={playlist.uri}
+                handleFormSave={this.handleFormSave}
+              />
+            </div>
+          ))}
         </div>
-
-        {this.state.playlists.map((playlist) => (
-          <div className="col s12" value="mood" key={playlist.id}>
-            <PlaylistCard
-              id={playlist.id}
-              name={playlist.name}
-              url={playlist.images[0].url}
-              description={playlist.description}
-              href={playlist.external_urls.spotify}
-              app={playlist.uri}
-              handleFormSave={this.handleFormSave}
-            />
-          </div>
-        ))}
+        <CategoryNavigation currentPage="playlist" />
       </div>
     );
   }

@@ -61,7 +61,7 @@ export default function ForgotPassword(props) {
         />
         <label htmlFor="password">Enter new password</label>
         {errors.password && (
-          <p>
+          <p className="error">
             Password must have 8 characters and contain at least: one upper case
             letter, one lower case letter, one numerical digit, one special
             character.
