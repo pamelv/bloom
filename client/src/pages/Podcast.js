@@ -8,6 +8,7 @@ export default class Podcast extends Component {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       podcasts: [],
     };
@@ -52,7 +53,7 @@ export default class Podcast extends Component {
   }
 
   handleFormSave = (podcast) => {
-    API.savePodcast(podcast).then((response) => {
+    API.savePodcast(this.state.id, podcast).then((response) => {
       console.log("success!");
     });
   };

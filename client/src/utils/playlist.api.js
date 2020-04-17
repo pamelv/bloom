@@ -10,7 +10,10 @@ export default {
   getPlaylistSad: function () {
     return axios.get("/api/playlists/Sad");
   },
-  savePlaylist:function(playlist){
-    return axios.post("/api/playlist", playlist);
-  }
+  savePlaylist: function (id, playlist) {
+    return axios.post(`/api/user/${id}/playlists`, playlist);
+  },
+  getSavedPlaylist: function (id) {
+    return axios.get(`/api/user/${id}/playlists`);
+  },
 };

@@ -55,6 +55,8 @@ class App extends React.Component {
         <a href="/playlist">Playlist</a>
         <br></br>
         <a href="/poem">Poem</a>
+        <br></br>
+        <a href="/exercise">Workout</a>
       </div>
     );
   }

@@ -2,8 +2,8 @@ const router = require("express").Router();
 const axios = require("axios");
 
 // to save to our database
-const poem = require("../../models/poems.models");
-const user = require("../../models/users.models");
+const Poem = require("../../models/poems.models");
+const User = require("../../models/users.models");
 
 router.get("/poem/:title", (req, res) => {
   // console.log('hello');
@@ -17,42 +17,36 @@ router.get("/poem/:title", (req, res) => {
         const outerIndex = Math.floor(Math.random() * response.data.length);
         newArr.push(response.data[outerIndex]);
       }
-      console.log(response.data);
       res.json(newArr);
-
-      // ================SAVE TO DATABASE====================================
-
-      router.post("/poem", (req, res) => {
-        const newPoem = req.body;
-        console.log(newPoem);
-        poem
-          .create(newPoem)
-          //   .then((response) => {
-          //     res.json(response);
-          //   });
-          .then(function (poem) {
-            return user.findOneAndUpdate(
-              {},
-              { $push: { poems: poem._id } },
-              { new: true }
-            );
-          })
-          .then(function (dbUser) {
-            res.json(dbUser);
-          })
-          .catch(function (err) {
-            res.json(err);
-          });
-      });
-
-      // ====================to generate only one poem=====================
-      // const outerIndex =  Math.floor(Math.random() * response.data.length);
-      // res.json(response.data[outerIndex]);
-
-      // ================to generate one line of poem======================
-      // const outerIndex =  Math.floor(Math.random() * response.data.length);
-      // const innerIndex = Math.floor(Math.random() * response.data[outerIndex].lines.length);
-      // res.json(response.data[outerIndex].lines[innerIndex]);
     });
 });
+
+// ================SAVE TO DATABASE====================================
+
+router.get("/poems", async (req, res) => {
+  const poems = await Poem.find();
+  res.json(poems);
+});
+
+router.post("/user/:id/poems", async (req, res) => {
+  try {
+    const poem = await Poem.create(req.body);
+    const results = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { poems: { $each: [poem._id], $position: 0 } },
+      },
+      { new: true }
+    );
+    res.json(results);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/user/:id/poems", async (req, res) => {
+  const user = await User.findById(req.params.id).populate("poems");
+  res.json(user.poems);
+});
+
 module.exports = router;

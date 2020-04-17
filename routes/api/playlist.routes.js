@@ -8,8 +8,8 @@ var spotify = new Spotify({
 });
 
 // to save to our database
-const playlist = require("../../models/playlists.models");
-const user = require("../../models/users.models");
+const Playlist = require("../../models/playlists.models");
+const User = require("../../models/users.models");
 
 router.get("/playlists/happy", (req, res) => {
   console.log("hello");
@@ -65,28 +65,30 @@ router.get("/playlists/:subMood", (req, res) => {
 });
 
 // ==========to save to our db=====================
-router.post("/playlist", (req, res) => {
-  const newPlaylist = req.body;
-  playlist
-    .create(newPlaylist)
-    //   .then((response) => {
-    //     res.json(response);
-    //   });
-    .then(function (playlist) {
-      console.log("this is" + playlist);
-      return user.findOneAndUpdate(
-        {},
-        { $push: { playlists: playlist._id } },
-        { new: true }
-      );
-    })
-    .then(function (dbUser) {
-      console.log(dbUser);
-      res.json(dbUser);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
+router.get("/playlists", async (req, res) => {
+  const playlists = await Playlist.find();
+  res.json(playlists);
+});
+
+router.post("/user/:id/playlists", async (req, res) => {
+  try {
+    const playlist = await Playlist.create(req.body);
+    const results = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { playlists: { $each: [playlist._id], $position: 0 } },
+      },
+      { new: true }
+    );
+    res.json(results);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/user/:id/playlists", async (req, res) => {
+  const user = await User.findById(req.params.id).populate("playlists");
+  res.json(user.playlists);
 });
 
 module.exports = router;

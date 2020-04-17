@@ -8,6 +8,7 @@ export default class Poem extends Component {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      id: localStorage.getItem("id"),
       currentMood: localStorage.getItem("current_mood"),
       poems: [],
     };
@@ -53,7 +54,7 @@ export default class Poem extends Component {
   }
 
   handleFormSave = (poem) => {
-    API.savePoem(poem).then((response) => {
+    API.savePoem(this.state.id, poem).then((response) => {
       console.log("success!");
     });
   };
