@@ -126,15 +126,6 @@ export default function DrawerMenu() {
       <List>
         <Logout />
       </List>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Tell us how you are feeling</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <AddMoodForm />
-        </Modal.Body>
-      </Modal>
     </div>
   );
 
@@ -155,6 +146,14 @@ export default function DrawerMenu() {
           </SwipeableDrawer>
         </React.Fragment>
       ))}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Tell us how you are feeling</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddMoodForm />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
