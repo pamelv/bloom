@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   expand: {
     transform: "rotate(0deg)",
+    marginTop: 0,
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
@@ -83,6 +84,19 @@ export default function RecipeCard(props) {
           heading={props.title}
           body={props.summary}
         />
+        <div
+          style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}
+        >
+          <StyledButton
+            type="submit"
+            className="m-auto"
+            onClick={() => {
+              props.handleFormSave(props);
+            }}
+          >
+            <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
+          </StyledButton>
+        </div>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
@@ -117,21 +131,6 @@ export default function RecipeCard(props) {
           </Typography>
         </CardContent>
       </Collapse>
-      <CardContent>
-        <div
-          style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}
-        >
-          <StyledButton
-            type="submit"
-            className="m-auto"
-            onClick={() => {
-              props.handleFormSave(props);
-            }}
-          >
-            <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
-          </StyledButton>
-        </div>
-      </CardContent>
     </Card>
   );
 }
