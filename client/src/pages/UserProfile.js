@@ -5,6 +5,7 @@ import EmotionCard from "../components/EmotionCard";
 import Moment from "react-moment";
 import AddMood from "../components/AddMoodModal";
 import history from "../history";
+import Navbar from "../components/Navbar";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -64,29 +65,49 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
-        <div
-          className="row"
-          style={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <h2>Hello {this.state.name}!</h2>
-          <AddMood />
-        </div>
-
-        {this.state.emotions.map((emotion) => (
-          <div className="col s12" key={emotion._id}>
-            <EmotionCard
-              date={
-                <Moment format="MMM DD, YYYY @ hh:mm a">
-                  {emotion.emotionCreatedAt}
-                </Moment>
-              }
-              emotion={emotion.emotion}
-              emoji={emotion.emoji}
-              comment={emotion.comment}
-            />
+      <div
+        style={{
+          margin: "0px",
+          padding: "0px",
+          width: "100vw",
+          position: "relative",
+          background:
+            "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
+          backgroundSize: "cover",
+        }}
+      >
+        <div style={{ width: "100%", boxSizing: "border-box" }}>
+          <Navbar title="Profile" />
+          <div
+            className="row"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          ></div>
+          <div
+            style={{
+              columnCount: "1",
+              columnGap: "1em",
+              padding: "0.7em",
+              height: "100%",
+            }}
+          >
+            <h2>Hello {this.state.name}!</h2>
+            <AddMood />
+            {this.state.emotions.map((emotion) => (
+              <div className="col s12" key={emotion._id}>
+                <EmotionCard
+                  date={
+                    <Moment format="MMM DD, YYYY @ hh:mm a">
+                      {emotion.emotionCreatedAt}
+                    </Moment>
+                  }
+                  emotion={emotion.emotion}
+                  emoji={emotion.emoji}
+                  comment={emotion.comment}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     );
   }
