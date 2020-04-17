@@ -25,14 +25,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
   const classes = useStyles();
   var logo = "";
-  if (props.currentMood === "happy") {
+  if (props.currentMood === "Happy") {
     logo = pinkimg;
-  } else if (props.currentMood === "Blahhhh") {
+  } else if (props.currentMood === "Bleh") {
     logo = orangeimg;
   } else {
     logo = blueimg;
   }
   console.log(props.currentMood);
+
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: "white" }}>

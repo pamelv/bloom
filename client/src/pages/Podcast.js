@@ -83,7 +83,7 @@ export default class Podcast extends Component {
     const showResults = this.state.showResults;
     return (
       <div style={{ width: "100%", boxSizing: "border-box" }}>
-        <Navbar title="Podcast" />
+        <Navbar title="Podcast" currentMood={this.state.currentMood} />
         <div
           style={{
             columnCount: "2",
