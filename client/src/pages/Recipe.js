@@ -58,8 +58,8 @@ export default class Recipe extends Component {
   }
 
   handleFormSave = (recipe) => {
+    console.log(recipe);
     API.saveRecipe(this.state.id, recipe).then((response) => {
-      console.log(recipe);
       console.log("success!");
     });
   };
@@ -96,7 +96,7 @@ export default class Recipe extends Component {
             }}
           >
             {this.state.recipes.map((recipe) => (
-              <div className="s12" value="mood" key={recipe.title}>
+              <div className="s12" value="mood">
                 <RecipeCard
                   id={recipe.id}
                   image={recipe.image}
@@ -106,6 +106,9 @@ export default class Recipe extends Component {
                   summary={Parser(recipe.summary)}
                   extendedIngredients={recipe.extendedIngredients}
                   instruction={Parser(recipe.instructions)}
+                  onClick={() => {
+                    this.handleFormSave(recipe);
+                  }}
                 />
               </div>
             ))}

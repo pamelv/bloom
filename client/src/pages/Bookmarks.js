@@ -4,7 +4,7 @@ import PODCAST from "../utils/Podcast.api";
 import POEM from "../utils/poem.api";
 import RECIPE from "../utils/recipe.api";
 import PLAYLIST from "../utils/playlist.api";
-import EmotionCard from "../components/EmotionCard";
+import Card from "../components/Card";
 import history from "../history";
 
 class Bookmark extends React.Component {
@@ -88,7 +88,7 @@ class Bookmark extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        // history.push("/login");
+        history.push("/login");
       });
   }
 
@@ -98,28 +98,46 @@ class Bookmark extends React.Component {
         <h3>Poems</h3>
         {this.state.poems.map((poem) => (
           <div className="col s12" key={poem._id}>
-            <EmotionCard emotion={poem.title} emoji={poem.author} />
+            <Card
+              smallText={poem.author}
+              boldText={poem.title}
+              body={poem.lines}
+            />
           </div>
         ))}
-
         <h3>Recipes</h3>
         {this.state.recipes.map((recipe) => (
           <div className="col s12" key={recipe._id}>
-            <EmotionCard emotion={recipe.title} />
+            <Card
+              boldText={recipe.title}
+              body={recipe.instructions}
+              imgUrl={recipe.image}
+            />
           </div>
         ))}
 
         <h3>Playlists</h3>
         {this.state.playlists.map((playlist) => (
           <div className="col s12" key={playlist._id}>
-            <EmotionCard emotion={playlist.name} />
+            <Card
+              boldText={playlist.name}
+              body={playlist.description}
+              imgUrl={playlist.url}
+              url={playlist.href}
+              linkName={"Listen Now"}
+            />
           </div>
         ))}
 
         <h3>Podcasts</h3>
         {this.state.podcasts.map((podcast) => (
           <div className="col s12" key={podcast._id}>
-            <EmotionCard emotion={podcast.title_original} />
+            <Card
+              boldText={podcast.podcast_title_original}
+              imgUrl={podcast.image}
+              url={podcast.audio}
+              linkName={"Listen Now"}
+            />
           </div>
         ))}
       </div>

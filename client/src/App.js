@@ -13,7 +13,6 @@ import UserProfile from "./pages/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Dashboard from "./pages/Dashboard";
-import LogOut from "./components/Logoutbutton";
 import LogMood from "./pages/LogMood";
 import Bookmark from "./pages/Bookmarks";
 
@@ -22,11 +21,6 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="App">
-          {/* <LogOut /> */}
-          {/* <h1>
-            <a href="/">BLOOM</a>
-          </h1> */}
-
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={LogIn} />

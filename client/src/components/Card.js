@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function EmotionCard(props) {
+export default function BookmarkCard(props) {
   const styles = useStyles();
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
@@ -37,16 +37,20 @@ export default function EmotionCard(props) {
     <div>
       <Card className={cx(styles.root, shadowStyles.root)} key={props.date}>
         <CardContent className={styles.content}>
+          {
+            //eslint-disable-next-line
+          }
+          <img src={props.imgUrl} style={{ width: "50%" }} />
           <TextInfoContent
             classes={textCardContentStyles}
             style={styles.textContent}
-            overline={props.emotion}
-            heading={props.emoji}
-            body={props.comment}
+            overline={props.smallText}
+            heading={props.boldText}
+            body={props.body}
           />
-          <span className="time" style={{ float: "right" }}>
-            {props.date}
-          </span>
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
+            {props.linkName}
+          </a>
         </CardContent>
       </Card>
     </div>

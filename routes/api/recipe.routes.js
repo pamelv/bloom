@@ -72,7 +72,7 @@ router.post("/user/:id/recipes", async (req, res) => {
     const results = await User.findByIdAndUpdate(req.params.id, {
       $push: { recipes: { $each: [recipe._id], $position: 0 } },
     });
-    res.json(results);
+    res.send(results);
   } catch (err) {
     res.json(err);
   }

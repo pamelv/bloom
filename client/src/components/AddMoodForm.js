@@ -30,37 +30,38 @@ export default function AddMoodForm() {
         ref={register({ required: true })}
       />
       {errors.emotion && <p>This field is required</p>}
-
-      <div className="flex">
+      <div>
         <label htmlFor="emoji">Select an emoji:</label>
-        <input
-          style={{ width: "auto" }}
-          name="emoji"
-          type="radio"
-          eslint-disable-next-line
-          value="&#128513;"
-          ref={register({ required: true })}
-        />
-        {/* eslint-disable-next-line */}
-        <h2>&#128513;</h2>
-        <input
-          style={{ width: "auto" }}
-          name="emoji"
-          type="radio"
-          value="&#128528;"
-          ref={register({ required: true })}
-        />
-        {/* eslint-disable-next-line */}
-        <h2>&#128528;</h2>
-        <input
-          style={{ width: "auto" }}
-          name="emoji"
-          type="radio"
-          value="&#128577;"
-          ref={register({ required: true })}
-        />
-        {/* eslint-disable-next-line */}
-        <h2>&#128577;</h2>
+        <div className="flex">
+          <input
+            style={{ width: "auto" }}
+            name="emoji"
+            type="radio"
+            eslint-disable-next-line
+            value="&#128513;"
+            ref={register({ required: true })}
+          />
+          {/* eslint-disable-next-line */}
+          <h2>&#128513;</h2>
+          <input
+            style={{ width: "auto" }}
+            name="emoji"
+            type="radio"
+            value="&#128528;"
+            ref={register({ required: true })}
+          />
+          {/* eslint-disable-next-line */}
+          <h2>&#128528;</h2>
+          <input
+            style={{ width: "auto" }}
+            name="emoji"
+            type="radio"
+            value="&#128577;"
+            ref={register({ required: true })}
+          />
+          {/* eslint-disable-next-line */}
+          <h2>&#128577;</h2>
+        </div>
       </div>
 
       {errors.emoji && <p>This field is required</p>}
