@@ -111,11 +111,21 @@ class Bookmark extends React.Component {
     return (
       <div>
         <Navbar title="Bookmark" currentMood={this.state.currentMood} />
-        <div>
+        <div
+          style={{
+            padding: "0.7em",
+            height: "100%",
+            paddingTop: "65px",
+          }}
+        >
           <h3>Poems</h3>
-          <div>
+          <div style={{ overflow: "hidden" }}>
             {this.state.poems.map((poem) => (
-              <div className="col s12" key={poem._id}>
+              <div
+                className="col s12"
+                key={poem._id}
+                style={{ display: "flex", overflowX: "auto" }}
+              >
                 <Card
                   smallText={poem.author}
                   boldText={poem.title}
