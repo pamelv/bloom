@@ -91,7 +91,7 @@ export default function ExerciseCard(props) {
               type="submit"
               className="m-auto"
               onClick={() => {
-                this.handleFormSave(props);
+                props.handleFormSave(props);
               }}
             >
               <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />

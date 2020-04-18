@@ -118,7 +118,7 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
-          <h3>Poems</h3>
+          <h3 style={{ fontSize: "1.5 em" }}>Poems</h3>
           <div
             style={{
               overflowX: "scroll",
@@ -130,7 +130,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "inline-block", whiteSpace: "pre" }}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
               >
                 <Card
                   smallText={poem.author}
@@ -140,18 +140,29 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <h3>Recipes</h3>
-          {this.state.recipes.map((recipe) => (
-            <div className="col s12" key={recipe._id}>
-              <Card
-                boldText={recipe.title}
-                body={recipe.instructions}
-                imgUrl={recipe.image}
-              />
-            </div>
-          ))}
-
-          <h3>Playlists</h3>
+          <h3 style={{ fontSize: "1.5 em" }}>Recipes</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.recipes.map((recipe) => (
+              <div
+                className="col s12"
+                key={recipe._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <Card
+                  boldText={recipe.title}
+                  body={recipe.instructions}
+                  imgUrl={recipe.image}
+                />
+              </div>
+            ))}
+          </div>
+          <h3 style={{ fontSize: "1.5 em" }}>Playlists</h3>
           {this.state.playlists.map((playlist) => (
             <div className="col s12" key={playlist._id}>
               <Card
@@ -164,7 +175,7 @@ class Bookmark extends React.Component {
             </div>
           ))}
 
-          <h3>Podcasts</h3>
+          <h3 style={{ fontSize: "1.5 em" }}>Podcasts</h3>
           {this.state.podcasts.map((podcast) => (
             <div className="col s12" key={podcast._id}>
               <Card
@@ -176,15 +187,27 @@ class Bookmark extends React.Component {
             </div>
           ))}
 
-          <h3>Exercises</h3>
-          {this.state.exercises.map((exercise) => (
-            <div className="col s12" key={exercise._id}>
-              <Card
-                boldText={exercise.name}
-                body={Parser(exercise.description)}
-              />
-            </div>
-          ))}
+          <h3 style={{ fontSize: "1.5 em" }}>Exercises</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.exercises.map((exercise) => (
+              <div
+                className="col s12"
+                key={exercise._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <Card
+                  boldText={exercise.name}
+                  body={Parser(exercise.description)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
