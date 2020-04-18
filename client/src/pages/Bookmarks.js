@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar";
 import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
 import BookmarkPlaylistCard from "../components/BookmarkPlaylistCard";
 import BookmarkPodcastCard from "../components/BookmarkPodcastCard";
+import BookmarkBottomNav from "../components/BookmarkBottomNav";
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -129,9 +130,42 @@ class Bookmark extends React.Component {
           style={{
             padding: "0.7em",
             height: "100%",
-            paddingTop: "65px",
+            paddingBottom: "60px",
           }}
         >
+          <div style={{ height: "30px" }} id="playlist"></div>
+          {/* Playlist Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.playlists.map((playlist) => (
+              <div
+                className="col s12"
+                key={playlist._id}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
+              >
+                <BookmarkPlaylistCard
+                  id={playlist._id}
+                  name={playlist.name}
+                  description={playlist.description}
+                  url={playlist.url}
+                  href={playlist.href}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div style={{ height: "30px" }} id="poem"></div>
+          {/* Poem Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
           <div
             style={{
@@ -144,7 +178,11 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
               >
                 <Card
                   smallText={poem.author}
@@ -154,6 +192,65 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
+          <div style={{ height: "30px" }} id="exercise"></div>
+          {/* exercise Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.exercises.map((exercise) => (
+              <div
+                className="col s12"
+                key={exercise._id}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
+              >
+                <Card
+                  boldText={exercise.name}
+                  body={Parser(exercise.description)}
+                />
+              </div>
+            ))}
+          </div>
+          <div style={{ height: "30px" }} id="podcast"></div>
+          {/* Podcast Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.podcasts.map((podcast) => (
+              <div
+                className="col s12"
+                key={podcast._id}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
+              >
+                <BookmarkPodcastCard
+                  id={podcast._id}
+                  name={podcast.podcast_title_original}
+                  description={podcast.description}
+                  url={podcast.image}
+                  href={podcast.audio}
+                />
+              </div>
+            ))}
+          </div>
+          <div style={{ height: "30px" }} id="recipe"></div>
+          {/* recipe Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
           <div
             style={{
@@ -166,7 +263,12 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={recipe._id}
-                style={{ whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
+                // style={{ whiteSpace: "normal" }}
               >
                 <BookmarkRecipeCard
                   smallText={`Prep Time: ${recipe.readyInMinutes}`}
@@ -184,65 +286,8 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
-          <div
-            style={{
-              overflowX: "scroll",
-              flexDirection: "row",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {this.state.playlists.map((playlist) => (
-              <div
-                className="col s12"
-                key={playlist._id}
-                style={{ whiteSpace: "normal" }}
-              >
-                <BookmarkPlaylistCard
-                  id={playlist._id}
-                  name={playlist.name}
-                  description={playlist.description}
-                  url={playlist.url}
-                  href={playlist.href}
-                />
-              </div>
-            ))}
-          </div>
-          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
-          {this.state.podcasts.map((podcast) => (
-            <div className="col s12" key={podcast._id}>
-              <BookmarkPodcastCard
-                id={podcast._id}
-                name={podcast.podcast_title_original}
-                description={podcast.description}
-                url={podcast.image}
-                href={podcast.audio}
-              />
-            </div>
-          ))}
-
-          <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
-          <div
-            style={{
-              overflowX: "scroll",
-              flexDirection: "row",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {this.state.exercises.map((exercise) => (
-              <div
-                className="col s12"
-                key={exercise._id}
-                style={{ whiteSpace: "normal" }}
-              >
-                <Card
-                  boldText={exercise.name}
-                  body={Parser(exercise.description)}
-                />
-              </div>
-            ))}
-          </div>
         </div>
+        <BookmarkBottomNav />
       </div>
     );
   }
