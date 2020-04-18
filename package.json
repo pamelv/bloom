@@ -4,7 +4,7 @@
   "description": "You can use the [editor on GitHub](https://github.com/pamelv/bloom/edit/master/README.md) to maintain and preview the content for your website in Markdown files.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js", 
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",

@@ -7,6 +7,10 @@ import Navbar from "../components/Navbar";
 import Parser from "html-react-parser";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Loader from "react-loader-spinner";
+import toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css'; // optional styles
+
+
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -59,6 +63,7 @@ export default class Recipe extends Component {
   handleFormSave = (recipe) => {
     console.log(recipe);
     API.saveRecipe(recipe, this.state.token).then((response) => {});
+
   };
 
   showResults() {
@@ -128,6 +133,9 @@ export default class Recipe extends Component {
                     instruction={Parser(recipe.instructions)}
                     onClick={() => {
                       this.handleFormSave(recipe);
+                      toaster.notify('Bookmark saved!', {
+                        duration: 2000
+                      })
                     }}
                   />
                 </div>
