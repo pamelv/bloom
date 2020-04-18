@@ -3,6 +3,7 @@ import SignupForm from "../components/SignUpForm";
 import pink from "../img/bloom_pink.gif";
 import blue from "../img/blue.gif";
 import orange from "../img/bloom_orange.gif";
+import history from "../history";
 
 const infoDiv = {
   backgroundColor: "#ded6ce",
@@ -40,6 +41,12 @@ class Signup extends React.Component {
   render() {
     const msgDisplay = this.state.showMsg;
     const formDisplay = this.state.showForm;
+    const forgotPassword = () => {
+      history.push("./forgotpassword");
+    };
+    const movetoLogin = () => {
+      history.push("./login");
+    };
 
     return (
       <div>
@@ -112,6 +119,16 @@ class Signup extends React.Component {
             }}
           >
             <SignupForm />
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+              }}
+            >
+              <button onClick={forgotPassword}>Forgot Password</button>
+              <button onClick={movetoLogin}>Log In</button>
+            </div>
           </div>
         </div>
       </div>
