@@ -8,17 +8,6 @@ const jwt = require("jsonwebtoken");
 const Recipe = require("../../models/recipes.models");
 const User = require("../../models/users.models");
 
-// =================5 RANDOM RECIPES=====================
-router.get("/recipe", (req, res) => {
-  // console.log("hello", apiKey);
-
-  axios
-    .get(`https://api.spoonacular.com/recipes/random?number=5&apiKey=${apiKey}`)
-    .then((response) => {
-      res.json(response.data);
-    });
-});
-
 // ===================5 HAPPY RECIPES=====================
 
 router.get("/recipe/happy", (req, res) => {
@@ -67,7 +56,7 @@ router.get("/recipes", async (req, res) => {
   res.json(recipes);
 });
 
-router.post("/user/:id/recipes", authenticateToken, async (req, res) => {
+router.post("/recipe", authenticateToken, async (req, res) => {
   try {
     const recipe = await Recipe.create(req.body);
     const results = await User.findByIdAndUpdate(
@@ -82,7 +71,7 @@ router.post("/user/:id/recipes", authenticateToken, async (req, res) => {
   }
 });
 
-router.get("/user/:id/recipes", authenticateToken, async (req, res) => {
+router.get("/recipe", authenticateToken, async (req, res) => {
   const user = await User.findById({ _id: req.userId.user }).populate(
     "recipes"
   );

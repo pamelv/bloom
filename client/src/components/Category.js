@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 export default function Category(props) {
   const classes = useStyles();
   const imgaeURL = props.img;
-  console.log(imgaeURL);
+
   return (
     <a href={props.Linkurl} key={props.title}>
       <div

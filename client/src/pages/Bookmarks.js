@@ -33,7 +33,7 @@ class Bookmark extends React.Component {
   }
 
   getPoems() {
-    POEM.getSavedPoem(this.state.id, this.state.token)
+    POEM.getSavedPoem(this.state.token)
       .then((response) => {
         this.setState({
           poems: response.data,
@@ -45,7 +45,7 @@ class Bookmark extends React.Component {
   }
 
   getRecipe() {
-    RECIPE.getSavedRecipe(this.state.id, this.state.token)
+    RECIPE.getSavedRecipe(this.state.token)
       .then((response) => {
         this.setState({
           recipes: response.data,
@@ -57,7 +57,7 @@ class Bookmark extends React.Component {
   }
 
   getPlaylist() {
-    PLAYLIST.getSavedPlaylist(this.state.id, this.state.token)
+    PLAYLIST.getSavedPlaylist(this.state.token)
       .then((response) => {
         this.setState({
           playlists: response.data,
@@ -69,7 +69,7 @@ class Bookmark extends React.Component {
   }
 
   getPodcast() {
-    PODCAST.getSavedPodcast(this.state.id, this.state.token)
+    PODCAST.getSavedPodcast(this.state.token)
       .then((response) => {
         this.setState({
           podcasts: response.data,
@@ -81,9 +81,8 @@ class Bookmark extends React.Component {
   }
 
   getExcercise() {
-    EXERCISE.getSavedExercise(this.state.id, this.state.token)
+    EXERCISE.getSavedExercise(this.state.token)
       .then((response) => {
-        console.log(response);
         this.setState({
           exercises: response.data,
         });
@@ -100,8 +99,6 @@ class Bookmark extends React.Component {
         this.setState({ name: res.data.firstname });
         localStorage.setItem("id", res.data._id);
         this.setState({ id: res.data._id });
-        console.log(this.state.name);
-        console.log(this.state.id);
       })
       .catch((error) => {
         console.log(error);

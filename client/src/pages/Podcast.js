@@ -24,7 +24,6 @@ export default class Podcast extends Component {
     if (this.state.currentMood === "Happy") {
       API.getPodcastHappy()
         .then((response) => {
-          console.log("podcast:", response.data);
           this.setState({
             podcasts: response.data,
           });
@@ -35,7 +34,6 @@ export default class Podcast extends Component {
     } else if (this.state.currentMood === "Bleh") {
       API.getPodcastBleh()
         .then((response) => {
-          console.log("podcast:", response.data);
           this.setState({
             podcasts: response.data,
           });
@@ -46,7 +44,6 @@ export default class Podcast extends Component {
     } else if (this.state.currentMood === "Sad") {
       API.getPodcastSad()
         .then((response) => {
-          console.log("podcast:", response.data);
           this.setState({
             podcasts: response.data,
           });
@@ -58,11 +55,7 @@ export default class Podcast extends Component {
   }
 
   handleFormSave = (podcast) => {
-    API.savePodcast(this.state.id, podcast, this.state.token).then(
-      (response) => {
-        console.log("success!");
-      }
-    );
+    API.savePodcast(podcast, this.state.token).then((response) => {});
   };
 
   showResults() {

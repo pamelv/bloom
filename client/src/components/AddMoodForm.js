@@ -9,12 +9,8 @@ export default function AddMoodForm() {
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     API.addMood(id, data, token)
       .then((res) => {
-        console.log("mood added");
-        console.log(data);
-        console.log(res);
         localStorage.setItem("mood", data.emoji);
         history.push("/dashboard");
       })

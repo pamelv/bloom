@@ -26,7 +26,6 @@ export default function SignUpForm(props) {
       });
   };
   const onSubmit = (data) => {
-    console.log(data);
     submitForm(data);
   };
   const userExist = (props) => {

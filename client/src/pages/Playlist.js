@@ -24,7 +24,6 @@ export default class Playlist extends Component {
     if (this.state.currentMood === "Happy") {
       API.getPlaylistHappy()
         .then((response) => {
-          console.log("playlist:", response.data);
           this.setState({
             playlists: response.data,
           });
@@ -35,7 +34,6 @@ export default class Playlist extends Component {
     } else if (this.state.currentMood === "Bleh") {
       API.getPlaylistBleh()
         .then((response) => {
-          console.log("playlist:", response.data);
           this.setState({
             playlists: response.data,
           });
@@ -46,7 +44,6 @@ export default class Playlist extends Component {
     } else if (this.state.currentMood === "Sad") {
       API.getPlaylistSad()
         .then((response) => {
-          console.log("playlist:", response.data);
           this.setState({
             playlists: response.data,
           });
@@ -68,11 +65,7 @@ export default class Playlist extends Component {
 
   handleFormSave = (playlist) => {
     console.log(playlist);
-    API.savePlaylist(this.state.id, playlist, this.state.token).then(
-      (response) => {
-        console.log("success!");
-      }
-    );
+    API.savePlaylist(playlist, this.state.token).then((response) => {});
   };
 
   loggedIn() {

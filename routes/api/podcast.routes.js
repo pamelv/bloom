@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const unirest = require("unirest");
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const Podcast = require("../../models/podcasts.models");
 const User = require("../../models/users.models");
@@ -68,21 +69,38 @@ router.get("/podcasts", async (req, res) => {
   res.json(podcasts);
 });
 
-router.post("/user/:id/podcasts", async (req, res) => {
+router.post("/podcast", async (req, res) => {
   try {
     const podcast = await Podcast.create(req.body);
-    const results = await User.findByIdAndUpdate(req.params.id, {
-      $push: { podcasts: { $each: [podcast._id], $position: 0 } },
-    });
+    const results = await User.findByIdAndUpdate(
+      { _id: req.userId.user },
+      {
+        $push: { podcasts: { $each: [podcast._id], $position: 0 } },
+      }
+    );
     res.json(results);
   } catch (err) {
     res.json(err);
   }
 });
 
-router.get("/user/:id/podcasts", async (req, res) => {
-  const user = await User.findById(req.params.id).populate("podcasts");
+router.get("/podcast", authenticateToken, async (req, res) => {
+  const user = await User.findById({ _id: req.userId.user }).populate(
+    "podcasts"
+  );
   res.json(user.podcasts);
 });
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, userId) => {
+    if (err) return res.sendStatus(403);
+    req.userId = userId;
+    next();
+  });
+}
 
 module.exports = router;

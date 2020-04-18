@@ -32,7 +32,6 @@ export default function Navbar(props) {
   } else {
     logo = blueimg;
   }
-  console.log(props.currentMood);
 
   return (
     <div className={classes.root}>
