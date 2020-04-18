@@ -12,6 +12,7 @@ import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
+import "./content.css";
 
 const StyledButton = withStyles({
   root: {

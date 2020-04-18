@@ -9,6 +9,7 @@ import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
+import "./content.css";
 // import Parser from "html-react-parser";
 
 const StyledButton = withStyles({
