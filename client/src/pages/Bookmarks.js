@@ -55,6 +55,7 @@ class Bookmark extends React.Component {
         this.setState({
           recipes: response.data,
         });
+        console.log(this.state.recipes);
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +80,6 @@ class Bookmark extends React.Component {
         this.setState({
           podcasts: response.data,
         });
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -144,7 +144,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{ whiteSpace: "normal" }}
               >
                 <Card
                   smallText={poem.author}
@@ -166,12 +166,18 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={recipe._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{ whiteSpace: "normal" }}
               >
                 <BookmarkRecipeCard
                   smallText={`Prep Time: ${recipe.readyInMinutes}`}
                   boldText={recipe.title}
-                  body={Parser(recipe.instructions)}
+                  body={Parser(`${recipe.instructions}`, {
+                    replace: (domNode) => {
+                      if (!domNode) {
+                        return recipe.instructions;
+                      }
+                    },
+                  })}
                   imgUrl={recipe.image}
                   id={recipe.id}
                 />
@@ -190,7 +196,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={playlist._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{ whiteSpace: "normal" }}
               >
                 <BookmarkPlaylistCard
                   id={playlist._id}
@@ -227,7 +233,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={exercise._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{ whiteSpace: "normal" }}
               >
                 <Card
                   boldText={exercise.name}
