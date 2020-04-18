@@ -3,7 +3,6 @@ import history from "../history";
 import Grid from "@material-ui/core/Grid";
 import splash from "../img/bloom-splash.gif";
 import "./Home.css";
-
 const splashstyle = {
   width: "80vw",
   position: "absolute",
@@ -63,7 +62,10 @@ class App extends React.Component {
           </Grid>
           <Grid>
             <button
-              style={{ display: "inline-block" }}
+              style={{
+                display: "inline-block",
+                marginTop: "40px",
+              }}
               id="signup"
               onClick={this.signUp}
             >

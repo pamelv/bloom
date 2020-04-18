@@ -59,7 +59,18 @@ class LogIn extends React.Component {
           }}
         >
           <LogInForm />
-          <button onClick={this.forgotPassword}>Forgot Password</button>
+          <div
+            style={{
+              width: "70VW",
+              position: "absolute",
+              maxWidth: "500px",
+              margin: "auto",
+              left: "50%",
+              transform: "translate(-50%,0)",
+            }}
+          >
+            <button onClick={this.forgotPassword}>Forgot Password</button>
+          </div>
         </div>
       </div>
     );

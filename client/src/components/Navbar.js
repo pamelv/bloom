@@ -35,7 +35,7 @@ export default function Navbar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "white" }}>
+      <AppBar position="fixed" style={{ backgroundColor: "white" }}>
         <Toolbar
           style={{
             flex: 1,

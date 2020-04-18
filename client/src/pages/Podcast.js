@@ -86,6 +86,7 @@ export default class Podcast extends Component {
             padding: "0.7em",
             height: "100%",
             marginBottom: "55px",
+            paddingTop: "65px",
           }}
         >
           <div

@@ -100,6 +100,7 @@ export default class Recipe extends Component {
               padding: "0.7em",
               height: "100%",
               paddingBottom: "55px",
+              paddingTop: "65px",
             }}
           >
             <div

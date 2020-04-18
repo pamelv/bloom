@@ -6,30 +6,31 @@ const categories = [
   {
     title: "Music",
     imageUrl: "https://srblaw.co.nz/sites/default/files/music.jpg",
-    route:"/playlist",
+    route: "/playlist",
   },
   {
     title: "Poem",
     imageUrl:
       "https://thewritelife.com/wp-content/uploads/2019/08/How-to-format-a-book.jpg",
-      route:"/poem",
+    route: "/poem",
   },
-  // {
-  //   title: "Workout",
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-  // },
+  {
+    title: "Workout",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+    route: "/exercise",
+  },
   {
     title: "Podcast",
     imageUrl:
       "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-      route:"/podcast",
+    route: "/podcast",
   },
   {
     title: "Cooking",
     imageUrl:
       "https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-      route:"/recipe",
+    route: "/recipe",
   },
 ];
 
@@ -79,9 +80,13 @@ class App extends React.Component {
     return (
       <div>
         <Navbar title="Dashboard" currentMood={this.state.currentMood} />
-        <div>
+        <div style={{ marginTop: "60px" }}>
           {categories.map((category) => (
-            <Category img={category.imageUrl} title={category.title} Linkurl={category.route}/>
+            <Category
+              img={category.imageUrl}
+              title={category.title}
+              Linkurl={category.route}
+            />
           ))}
         </div>
       </div>
