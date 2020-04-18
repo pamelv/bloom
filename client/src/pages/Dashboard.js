@@ -80,7 +80,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar title="Dashboard" currentMood={this.state.currentMood} />
-        <div>
+        <div style={{ marginTop: "60px" }}>
           {categories.map((category) => (
             <Category
               img={category.imageUrl}

@@ -119,7 +119,11 @@ export default class Recipe extends Component {
                 timeout={3000} //3 secs
               />
             </div>
-            <div id="results" className={showResults ? "show" : "hide"}>
+            <div
+              id="results"
+              className={showResults ? "show" : "hide"}
+              style={{ marginTop: "60px" }}
+            >
               {this.state.recipes.map((recipe) => (
                 <div className="s12" value="mood">
                   <RecipeCard

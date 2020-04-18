@@ -105,7 +105,11 @@ export default class Podcast extends Component {
               timeout={3000} //3 secs
             />
           </div>
-          <div id="results" className={showResults ? "show" : "hide"}>
+          <div
+            id="results"
+            className={showResults ? "show" : "hide"}
+            style={{ marginTop: "60px" }}
+          >
             {this.state.podcasts.map((podcast) => (
               <div className="s12" value="mood" key={podcast.id}>
                 <PodcastCard

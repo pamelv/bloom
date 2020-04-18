@@ -43,35 +43,35 @@ export default function CategoryNavigation(props) {
       onChange={handleChange}
       className={cx(classes.root, shadowStyles.root)}
     >
-      <tyledNavigationButton
+      <StyledNavigationButton
         label="Music"
         value="playlist"
         component={Link}
         to="/playlist"
         icon={<MusicNoteIcon />}
       />
-      <tyledNavigationButton
+      <StyledNavigationButton
         label="Poem"
         value="poem"
         component={Link}
         to="/poem"
         icon={<SubjectIcon />}
       />
-      <tyledNavigationButton
+      <StyledNavigationButton
         label="Exercise"
         value="exercise"
         component={Link}
         to="/exercise"
         icon={<FitnessCenterIcon />}
       />
-      <tyledNavigationButton
+      <StyledNavigationButton
         label="Podcast"
         value="podcast"
         component={Link}
         to="/podcast"
         icon={<MicIcon />}
       />
-      <tyledNavigationButton
+      <StyledNavigationButton
         label="Cooking"
         value="recipe"
         component={Link}

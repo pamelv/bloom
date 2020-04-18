@@ -95,7 +95,11 @@ export default class Exercise extends Component {
                 timeout={3000} //3 secs
               />
             </div>
-            <div id="results" className={showResults ? "show" : "hide"}>
+            <div
+              id="results"
+              className={showResults ? "show" : "hide"}
+              style={{ marginTop: "60px" }}
+            >
               {this.state.exercises.map((exercise) => (
                 <div className="s12" value="mood" key={exercise.title}>
                   <ExerciseCard
