@@ -1,5 +1,6 @@
 import React from "react";
 import Parser from 'html-react-parser';
+import Toaster from '../components/Toaster';
 
 export default function RecipeForm(props) {
   return (
@@ -32,6 +33,7 @@ export default function RecipeForm(props) {
 
             <button type="submit" className="m-auto" onClick={() => {
                 props.handleFormSave(recipe);
+                props.Toaster();
               }}>
                 BOOKMARK
             </button>
