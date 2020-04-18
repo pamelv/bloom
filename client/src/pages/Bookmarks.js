@@ -130,7 +130,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "inline-block" }}
+                style={{ display: "inline-block", whiteSpace: "pre" }}
               >
                 <Card
                   smallText={poem.author}
