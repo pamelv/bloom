@@ -122,7 +122,6 @@ class Bookmark extends React.Component {
           <div
             style={{
               overflowX: "scroll",
-              overflowY: "hidden",
               whiteSpace: "nowrap",
             }}
           >
