@@ -62,7 +62,7 @@ class App extends React.Component {
           </Grid>
           <Grid>
             <button
-              style={{ display: "inline-block" }}
+              style={{ display: "inline-block", marginTop: "40px" }}
               id="signup"
               onClick={this.signUp}
             >
