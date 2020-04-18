@@ -9,6 +9,8 @@ import Card from "../components/Card";
 import history from "../history";
 import Parser from "html-react-parser";
 import Navbar from "../components/Navbar";
+import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
+import PlaylistCard from "../components/PlaylistCard";
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -118,7 +120,7 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
-          <h3 style={{ fontSize: "1.5 em" }}>Poems</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
           <div
             style={{
               overflowX: "scroll",
@@ -140,7 +142,7 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <h3 style={{ fontSize: "1.5 em" }}>Recipes</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
           <div
             style={{
               overflowX: "scroll",
@@ -154,28 +156,31 @@ class Bookmark extends React.Component {
                 key={recipe._id}
                 style={{ display: "inline-block", whiteSpace: "normal" }}
               >
-                <Card
+                <BookmarkRecipeCard
+                  smallText={`Prep Time: ${recipe.readyInMinutes}`}
                   boldText={recipe.title}
-                  body={recipe.instructions}
+                  body={Parser(recipe.instructions)}
                   imgUrl={recipe.image}
+                  id={recipe.id}
                 />
               </div>
             ))}
           </div>
-          <h3 style={{ fontSize: "1.5 em" }}>Playlists</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
           {this.state.playlists.map((playlist) => (
             <div className="col s12" key={playlist._id}>
-              <Card
-                boldText={playlist.name}
-                body={playlist.description}
-                imgUrl={playlist.url}
-                url={playlist.href}
-                linkName={"Listen Now"}
+              <PlaylistCard
+                id={playlist._id}
+                name={playlist.name}
+                description={playlist.description}
+                url={playlist.url}
+                href={playlist.href}
+                app={playlist.uri}
               />
             </div>
           ))}
 
-          <h3 style={{ fontSize: "1.5 em" }}>Podcasts</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
           {this.state.podcasts.map((podcast) => (
             <div className="col s12" key={podcast._id}>
               <Card
@@ -187,7 +192,7 @@ class Bookmark extends React.Component {
             </div>
           ))}
 
-          <h3 style={{ fontSize: "1.5 em" }}>Exercises</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
           <div
             style={{
               overflowX: "scroll",
