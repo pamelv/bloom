@@ -127,7 +127,10 @@ class Signup extends React.Component {
                 justifyContent: "space-between",
               }}
             >
-              <button style={{ display: "inline-block" }} onClick={movetoLogin}>
+              <button
+                style={{ display: "inline-block", color: "#c1bcb8" }}
+                onClick={movetoLogin}
+              >
                 LOGIN
               </button>
             </div>

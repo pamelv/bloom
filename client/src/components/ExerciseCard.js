@@ -63,20 +63,21 @@ export default function ExerciseCard(props) {
             style={styles.textContent}
             overline={`Target Muscle: ${props.category}`}
             heading={props.name}
-            body={Parser(
-              <div>
-                <div
-                  style={{
-                    fontWeight: 400,
-                    fontSize: "1.2em",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Required Equipment: {props.equipment}
-                </div>
-                <div style={styles.description}>{props.description}</div>
-              </div>
-            )}
+            body={props.description}
+            // body={Parser(
+            //   <div>
+            //     <div
+            //       style={{
+            //         fontWeight: 400,
+            //         fontSize: "1.2em",
+            //         marginBottom: "10px",
+            //       }}
+            //     >
+            //       Required Equipment: {props.equipment}
+            //     </div>
+            //     <div style={styles.description}>{props.description}</div>
+            //   </div>
+            // )}
           />
           <div
             style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}

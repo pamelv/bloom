@@ -2,6 +2,7 @@ import React from "react";
 import cx from "clsx";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
@@ -21,6 +22,11 @@ const useStyles = makeStyles({
     borderRadius: "10px",
   },
 });
+const StyledNavigationButton = withStyles({
+  root: {
+    minWidth: "10px",
+  },
+})(BottomNavigationAction);
 
 export default function CategoryNavigation(props) {
   const classes = useStyles();
@@ -37,35 +43,35 @@ export default function CategoryNavigation(props) {
       onChange={handleChange}
       className={cx(classes.root, shadowStyles.root)}
     >
-      <BottomNavigationAction
+      <tyledNavigationButton
         label="Music"
         value="playlist"
         component={Link}
         to="/playlist"
         icon={<MusicNoteIcon />}
       />
-      <BottomNavigationAction
+      <tyledNavigationButton
         label="Poem"
         value="poem"
         component={Link}
         to="/poem"
         icon={<SubjectIcon />}
       />
-      <BottomNavigationAction
+      <tyledNavigationButton
         label="Exercise"
         value="exercise"
         component={Link}
         to="/exercise"
         icon={<FitnessCenterIcon />}
       />
-      <BottomNavigationAction
+      <tyledNavigationButton
         label="Podcast"
         value="podcast"
         component={Link}
         to="/podcast"
         icon={<MicIcon />}
       />
-      <BottomNavigationAction
+      <tyledNavigationButton
         label="Cooking"
         value="recipe"
         component={Link}

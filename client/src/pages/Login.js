@@ -58,9 +58,11 @@ class LogIn extends React.Component {
               transform: "translate(-50%,0)",
             }}
           >
-            <button onClick={this.forgotPassword}>Forgot Password</button>
+            <button style={{ color: "#c1bcb8" }} onClick={this.forgotPassword}>
+              Forgot Password
+            </button>
             <button
-              style={{ display: "inline-block" }}
+              style={{ display: "inline-block", color: "#c1bcb8" }}
               id="signup"
               onClick={this.signUp}
             >
