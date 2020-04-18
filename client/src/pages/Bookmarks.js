@@ -18,6 +18,7 @@ class Bookmark extends React.Component {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      currentMood: localStorage.getItem("current_mood"),
       id: localStorage.getItem("id"),
       poems: [],
       recipes: [],

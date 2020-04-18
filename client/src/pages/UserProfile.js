@@ -75,20 +75,22 @@ class Profile extends React.Component {
           >
             <h2>Hello {this.state.name}!</h2>
             <AddMood />
-            {this.state.emotions.map((emotion) => (
-              <div className="col s12" key={emotion._id}>
-                <EmotionCard
-                  date={
-                    <Moment format="MMM DD, YYYY @ hh:mm a">
-                      {emotion.emotionCreatedAt}
-                    </Moment>
-                  }
-                  emotion={emotion.emotion}
-                  emoji={emotion.emoji}
-                  comment={emotion.comment}
-                />
-              </div>
-            ))}
+            <div style={{ marginTop: "10px" }}>
+              {this.state.emotions.map((emotion) => (
+                <div className="col s12" key={emotion._id}>
+                  <EmotionCard
+                    date={
+                      <Moment format="MMM DD, YYYY @ hh:mm a">
+                        {emotion.emotionCreatedAt}
+                      </Moment>
+                    }
+                    emotion={emotion.emotion}
+                    emoji={emotion.emoji}
+                    comment={emotion.comment}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
