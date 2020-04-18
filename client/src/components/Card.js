@@ -6,11 +6,16 @@ import CardContent from "@material-ui/core/CardContent";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: "300px",
-    maxWidth: "500px",
+    // maxWidth: "500px",
     borderRadius: 12,
     margin: " 0 0 1em",
     breakInside: "avoid",
@@ -26,12 +31,27 @@ const useStyles = makeStyles(() => ({
     marginBottom: 0,
     lineHeight: 1,
   },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
+  },
 }));
 
 export default function BookmarkCard(props) {
   const styles = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <div>
@@ -40,18 +60,34 @@ export default function BookmarkCard(props) {
           {
             //eslint-disable-next-line
           }
-          <img src={props.imgUrl} style={{ width: "50%" }} />
+
           <TextInfoContent
             classes={textCardContentStyles}
             style={styles.textContent}
             overline={props.smallText}
             heading={props.boldText}
-            body={props.body}
           />
-          <a href={props.url} target="_blank" rel="noopener noreferrer">
-            {props.linkName}
-          </a>
         </CardContent>
+        <CardActions disableSpacing>
+          <IconButton
+            className={cx(styles.expand, {
+              [styles.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+            color="primary"
+          >
+            <ExpandMoreIcon style={{ color: "#C87B94" }} />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph style={{ color: "black" }}>
+              {props.body}
+            </Typography>
+          </CardContent>
+        </Collapse>
       </Card>
     </div>
   );
