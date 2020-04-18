@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
+  heading: {
+    fontSize: "1 em",
+    lineHeight: 1,
+  },
 }));
 
 export default function BookmarkCard(props) {
@@ -62,7 +66,7 @@ export default function BookmarkCard(props) {
           }
 
           <TextInfoContent
-            classes={textCardContentStyles}
+            classes={cx(styles.heading, textCardContentStyles)}
             style={styles.textContent}
             overline={props.smallText}
             heading={props.boldText}
