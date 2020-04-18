@@ -10,7 +10,8 @@ import history from "../history";
 import Parser from "html-react-parser";
 import Navbar from "../components/Navbar";
 import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
-import PlaylistCard from "../components/PlaylistCard";
+import BookmarkPlaylistCard from "../components/BookmarkPlaylistCard";
+import BookmarkPodcastCard from "../components/BookmarkPodcastCard";
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -167,27 +168,38 @@ class Bookmark extends React.Component {
             ))}
           </div>
           <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
-          {this.state.playlists.map((playlist) => (
-            <div className="col s12" key={playlist._id}>
-              <PlaylistCard
-                id={playlist._id}
-                name={playlist.name}
-                description={playlist.description}
-                url={playlist.url}
-                href={playlist.href}
-                app={playlist.uri}
-              />
-            </div>
-          ))}
-
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.playlists.map((playlist) => (
+              <div
+                className="col s12"
+                key={playlist._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <BookmarkPlaylistCard
+                  id={playlist._id}
+                  name={playlist.name}
+                  description={playlist.description}
+                  url={playlist.url}
+                  href={playlist.href}
+                />
+              </div>
+            ))}
+          </div>
           <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
           {this.state.podcasts.map((podcast) => (
             <div className="col s12" key={podcast._id}>
-              <Card
-                boldText={podcast.podcast_title_original}
-                imgUrl={podcast.image}
-                url={podcast.audio}
-                linkName={"Listen Now"}
+              <BookmarkPodcastCard
+                id={podcast._id}
+                name={podcast.podcast_title_original}
+                description={podcast.description}
+                url={podcast.image}
+                href={podcast.audio}
               />
             </div>
           ))}
