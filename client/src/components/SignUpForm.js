@@ -26,12 +26,14 @@ export default function SignUpForm(props) {
       });
   };
   const onSubmit = (data) => {
-    console.log(data);
     submitForm(data);
   };
   const userExist = (props) => {
     ReactDOM.render(
-      <h4>A user with this email already exist. Please try to login.</h4>,
+      <h5>
+        A user with this email already exist. Please try to{" "}
+        <a href="/login">login</a>.
+      </h5>,
       document.getElementById("msg")
     );
   };

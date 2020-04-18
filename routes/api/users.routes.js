@@ -14,13 +14,15 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({
     email: req.body.email,
   });
-  if (Bcrypt.compareSync(req.body.password, user.password)) {
-    const userId = { user: user._id };
-    const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "1hr",
-    });
-    res.json({ accessToken: accessToken });
-  } else res.send(401);
+  if (user != null) {
+    if (Bcrypt.compareSync(req.body.password, user.password)) {
+      const userId = { user: user._id };
+      const accessToken = jwt.sign(userId, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "1hr",
+      });
+      res.json({ accessToken: accessToken });
+    } else res.sendStatus(401);
+  } else res.sendStatus(404);
 });
 
 router.get("/user", authenticateToken, async (req, res) => {
@@ -52,11 +54,12 @@ router.get("/users/:email", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
 //find active user
-router.get("/user/:id", async (req, res) => {
-  const user = await User.findById(req.body.id);
-  res.json(user);
-});
+// router.get("/user/:id", async (req, res) => {
+//   const user = await User.findById(req.body.id);
+//   res.json(user);
+// });
 
 //for forgot password
 router.put("/user/:id", async (req, res) => {
@@ -73,19 +76,23 @@ router.put("/user/:id", async (req, res) => {
 });
 
 //get moods to uses schema
-router.get("/user/:id/moods", async (req, res) => {
-  const user = await User.findById(req.params.id).populate("moods");
+router.get("/user/:id/moods", authenticateToken, async (req, res) => {
+  const user = await User.findById({ _id: req.userId.user }).populate("moods");
   res.json(user.moods);
 });
 
 //post new mood to uses schema
-router.post("/user/:id/moods", async (req, res) => {
+router.post("/user/:id/moods", authenticateToken, async (req, res) => {
   try {
+    console.log(req.userId.user);
     const mood = await Moods.create(req.body);
-    const results = await Users.findByIdAndUpdate(req.params.id, {
-      $push: { moods: { $each: [mood._id], $position: 0 } },
-    });
-    res.json(results);
+    const results = await User.findByIdAndUpdate(
+      { _id: req.userId.user },
+      {
+        $push: { moods: { $each: [mood._id], $position: 0 } },
+      }
+    );
+    res.send(results);
   } catch (err) {
     res.json(err);
   }

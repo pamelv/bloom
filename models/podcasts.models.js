@@ -22,7 +22,6 @@ const PodcastSchema = new Schema({
   audio: {
     type: String,
     required: true,
-    unique: true,
   },
 });
 

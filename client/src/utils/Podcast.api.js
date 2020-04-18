@@ -10,10 +10,14 @@ export default {
   getPodcastSad: function () {
     return axios.get("/api/podcasts/sad");
   },
-  savePodcast: function (id, podcast) {
-    return axios.post(`/api/user/${id}/podcasts`, podcast);
+  savePodcast: function (podcast, token) {
+    return axios.post(`/api/podcast`, podcast, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  getSavedPodcast: function (id) {
-    return axios.get(`/api/user/${id}/podcasts`);
+  getSavedPodcast: function (token) {
+    return axios.get(`/api/podcast`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
 };

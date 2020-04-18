@@ -4,10 +4,7 @@ import history from "../history";
 import pink from "../img/bloom_pink.gif";
 import blue from "../img/blue.gif";
 import orange from "../img/bloom_orange.gif";
-
-// const forgotPassword = () => {
-//   history.push("./forgotpassword");
-// };
+import API from "../utils/user.api";
 
 class LogIn extends React.Component {
   constructor(props) {
@@ -16,12 +13,26 @@ class LogIn extends React.Component {
       token: localStorage.getItem("token"),
     };
   }
+  componentDidMount() {
+    this.findUser();
+  }
+
+  findUser() {
+    API.getUser(this.state.token)
+      .then((res) => {
+        if (res.status === 200) {
+          history.push("./profile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   forgotPassword() {
     history.push("./forgotpassword");
   }
-  signUp() {
-    history.push("/signup");
-  }
+
   render() {
     return (
       <div>
@@ -42,7 +53,7 @@ class LogIn extends React.Component {
           style={{
             width: "70VW",
             position: "absolute",
-            top: "50%",
+            top: "55%",
             left: "50%",
             transform: "translate(-50%,-50%)",
           }}

@@ -10,15 +10,12 @@ import orange from "../img/bloom_orange.gif";
 export default function ForgotPassword() {
   const { register, handleSubmit, errors } = useForm();
   const submitForm = (data) => {
-    console.log(data);
     API.findUserByEmail(data.email)
       .then((res) => {
         if (
           (data.email === res.data.email) &
           (Date.parse(res.data.dateofBirth) === Date.parse(data.dateofBirth))
         ) {
-          console.log(res);
-          console.log("match");
           localStorage.setItem("id", res.data._id);
           history.push("/newpassword");
         } else noMatch();

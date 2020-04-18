@@ -23,14 +23,11 @@ class Profile extends React.Component {
   }
 
   getUser() {
-    console.log(this.state.token);
     API.getUser(this.state.token)
       .then((res) => {
         this.setState({ name: res.data.firstname });
         localStorage.setItem("id", res.data._id);
         this.setState({ id: res.data._id });
-        console.log(this.state.name);
-        console.log(this.state.id);
         this.userMood(this.state.id);
       })
       .catch((error) => {
@@ -39,7 +36,7 @@ class Profile extends React.Component {
       });
   }
   userMood(id) {
-    API.getMood(id)
+    API.getMood(id, this.state.token)
       .then((res) => {
         var results = res.data;
         this.setState({ emotions: results });
