@@ -49,15 +49,15 @@ class Profile extends React.Component {
   render() {
     return (
       <div
-        style={{
-          margin: "0px",
-          padding: "0px",
-          width: "100vw",
-          position: "relative",
-          background:
-            "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
-          backgroundSize: "cover",
-        }}
+      // style={{
+      //   margin: "0px",
+      //   padding: "0px",
+      //   width: "100vw",
+      //   position: "relative",
+      //   background:
+      //     "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
+      //   backgroundSize: "cover",
+      // }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
           <Navbar title="Profile" currentMood={this.state.currentMood} />
