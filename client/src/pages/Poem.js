@@ -24,7 +24,6 @@ export default class Poem extends Component {
     if (this.state.currentMood === "Happy") {
       API.getPoemHappy()
         .then((response) => {
-          console.log("poems:", response.data);
           this.setState({
             poems: response.data,
           });
@@ -35,7 +34,6 @@ export default class Poem extends Component {
     } else if (this.state.currentMood === "Bleh") {
       API.getPoemBleh()
         .then((response) => {
-          console.log("poems:", response.data);
           this.setState({
             poems: response.data,
           });
@@ -46,7 +44,6 @@ export default class Poem extends Component {
     } else if (this.state.currentMood === "Sad") {
       API.getPoemSad()
         .then((response) => {
-          console.log("poems:", response.data);
           this.setState({
             poems: response.data,
           });
@@ -67,9 +64,7 @@ export default class Poem extends Component {
   }
 
   handleFormSave = (poem) => {
-    API.savePoem(this.state.id, poem).then((response) => {
-      console.log("success!");
-    });
+    API.savePoem(poem, this.state.token).then((response) => {});
   };
 
   loggedIn() {

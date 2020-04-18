@@ -6,6 +6,7 @@ const PlaylistSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   url: {
     type: String,
@@ -13,7 +14,6 @@ const PlaylistSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   href: {
     type: String,

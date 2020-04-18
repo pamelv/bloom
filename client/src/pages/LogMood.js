@@ -48,15 +48,11 @@ class LogMood extends React.Component {
   }
 
   getUser() {
-    console.log(this.state.token);
     API.getUser(this.state.token)
       .then((res) => {
-        console.log(res.data);
         this.setState({ name: res.data.firstname });
         localStorage.setItem("id", res.data._id);
         this.setState({ id: res.data._id });
-        console.log(this.state.name);
-        console.log(this.state.id);
       })
       .catch((error) => {
         console.log(error);

@@ -26,7 +26,6 @@ export default class Recipe extends Component {
     if (this.state.currentMood === "Happy") {
       API.getRecipeHappy()
         .then((response) => {
-          console.log("recipe:", response.data.recipes);
           this.setState({
             recipes: response.data.recipes,
           });
@@ -37,7 +36,6 @@ export default class Recipe extends Component {
     } else if (this.state.currentMood === "Bleh") {
       API.getRecipeBleh()
         .then((response) => {
-          console.log("recipe:", response.data.recipes);
           this.setState({
             recipes: response.data.recipes,
           });
@@ -48,7 +46,6 @@ export default class Recipe extends Component {
     } else if (this.state.currentMood === "Sad") {
       API.getRecipeSad()
         .then((response) => {
-          console.log("recipe:", response.data.recipes);
           this.setState({
             recipes: response.data.recipes,
           });
@@ -61,9 +58,7 @@ export default class Recipe extends Component {
 
   handleFormSave = (recipe) => {
     console.log(recipe);
-    API.saveRecipe(this.state.id, recipe).then((response) => {
-      console.log("success!");
-    });
+    API.saveRecipe(recipe, this.state.token).then((response) => {});
   };
 
   showResults() {

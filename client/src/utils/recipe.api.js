@@ -1,10 +1,6 @@
 import axios from "axios";
 
 export default {
-  getRecipe: function () {
-    return axios.get("/api/recipe");
-  },
-
   getRecipeHappy: function () {
     return axios.get("/api/recipe/happy");
   },
@@ -17,10 +13,14 @@ export default {
     return axios.get("/api/recipe/bleh");
   },
 
-  saveRecipe: function (id, recipe) {
-    return axios.post(`/api/user/${id}/recipes`, recipe);
+  saveRecipe: function (recipe, token) {
+    return axios.post(`/api/recipe`, recipe, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  getSavedRecipe: function (id) {
-    return axios.get(`/api/user/${id}/recipes`);
+  getSavedRecipe: function (token) {
+    return axios.get(`/api/recipe`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
 };

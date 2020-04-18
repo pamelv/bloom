@@ -16,10 +16,10 @@ const LogInForm = (props) => {
         window.location.reload();
       })
       .catch((error) => {
-        if (error === 500) {
+        if (error.response.status === 404) {
           var user = "No user";
-        }
-        errorMsg(user);
+          errorMsg(user);
+        } else errorMsg(user);
       });
   };
   const onSubmit = (data) => {
@@ -29,15 +29,15 @@ const LogInForm = (props) => {
   const errorMsg = (props) => {
     if (props === "No user") {
       ReactDOM.render(
-        <h4>
+        <h5>
           No existing user with email entered. Please{" "}
           <a href="/signup">sign up</a> for an account.
-        </h4>,
+        </h5>,
         document.getElementById("msg")
       );
     } else if (props === undefined) {
       ReactDOM.render(
-        <h4>Invalid password entered, please try again.</h4>,
+        <h5>Invalid password entered, please try again.</h5>,
         document.getElementById("msg")
       );
     }

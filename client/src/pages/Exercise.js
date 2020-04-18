@@ -18,11 +18,9 @@ export default class Exercise extends Component {
     this.loggedIn();
     API.getExercise()
       .then((response) => {
-        console.log("exercises:", response.data.results);
         this.setState({
           exercises: response.data.results,
         });
-        console.log(this.state.exercises);
       })
       .catch((error) => {
         console.log(error);
@@ -30,11 +28,7 @@ export default class Exercise extends Component {
   }
 
   handleFormSave = (exercise) => {
-    console.log(exercise);
-    // event.persist();
-    API.saveExercise(this.state.id, exercise).then((response) => {
-      console.log("success!");
-    });
+    API.saveExercise(exercise, this.state.token).then((response) => {});
   };
 
   loggedIn() {

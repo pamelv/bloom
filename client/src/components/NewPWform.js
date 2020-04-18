@@ -10,7 +10,6 @@ export default function ForgotPassword(props) {
     if (data.password === data.confirmPassword) {
       API.updatePw(id, data)
         .then((res) => {
-          console.log("EURIKA");
           success();
         })
         .catch((error) => {
