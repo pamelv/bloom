@@ -7,8 +7,6 @@ const Podcast = require("../../models/podcasts.models");
 const User = require("../../models/users.models");
 
 router.get("/podcasts/happy", (req, res) => {
-  console.log("hello");
-
   unirest
     .get(
       "https://listen-api.listennotes.com/api/v2/search?q=productive&sort_by_date=0&type=episode&offset=0&len_min=10&len_max=30&genre_ids=144%2C88%2C122%2C100%2C133&published_after=1546318800000&only_in=title%2Cdescription&language=English&safe_mode=1"
@@ -20,8 +18,6 @@ router.get("/podcasts/happy", (req, res) => {
     });
 });
 router.get("/podcasts/bleh", (req, res) => {
-  console.log("hello");
-
   unirest
     .get(
       "https://listen-api.listennotes.com/api/v2/search?q=motivation&sort_by_date=0&type=episode&offset=0&len_min=10&len_max=30&genre_ids=144%2C88%2C122%2C100%2C133&published_after=1546318800000&only_in=title%2Cdescription&language=English&safe_mode=1"
@@ -34,8 +30,6 @@ router.get("/podcasts/bleh", (req, res) => {
 });
 
 router.get("/podcasts/sad", (req, res) => {
-  console.log("hello");
-
   unirest
     .get(
       "https://listen-api.listennotes.com/api/v2/search?q=motivation&sort_by_date=0&type=episode&offset=0&len_min=10&len_max=30&genre_ids=144%2C88%2C122%2C100%2C133&published_after=1546318800000&only_in=title%2Cdescription&language=English&safe_mode=1"
@@ -48,7 +42,6 @@ router.get("/podcasts/sad", (req, res) => {
 });
 
 router.get("/podcasts/:search", (req, res) => {
-  console.log("hello");
   var paramSearch = req.params.search;
   console.log(paramSearch);
   var search = paramSearch.split("-").join("%20");
@@ -69,7 +62,7 @@ router.get("/podcasts", async (req, res) => {
   res.json(podcasts);
 });
 
-router.post("/podcast", async (req, res) => {
+router.post("/podcast", authenticateToken, async (req, res) => {
   try {
     const podcast = await Podcast.create(req.body);
     const results = await User.findByIdAndUpdate(
@@ -85,6 +78,7 @@ router.post("/podcast", async (req, res) => {
 });
 
 router.get("/podcast", authenticateToken, async (req, res) => {
+  console.log("hello from the console");
   const user = await User.findById({ _id: req.userId.user }).populate(
     "podcasts"
   );
