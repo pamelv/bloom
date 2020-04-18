@@ -8,24 +8,6 @@ import EXERCISE from "../utils/exercise.api";
 import Card from "../components/Card";
 import history from "../history";
 import Parser from "html-react-parser";
-import Navbar from "../components/Navbar";
-import cx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  slideContainer: {
-    width: "100%",
-    overflow: "hidden",
-  },
-  slideContent: {
-    display: "flex",
-    overflowX: "auto",
-    scrollSnapType: "x mandatory",
-  },
-}));
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -125,70 +107,63 @@ class Bookmark extends React.Component {
   }
 
   render() {
-    const styles = useStyles();
     return (
       <div>
-        <Navbar title="Dashboard" currentMood={this.state.currentMood} />
-        <div style={{ marginTop: "60px" }}>
-          <h3>Poems</h3>
-          <div className={cx("s12", styles.slideContainer)}>
-            {this.state.poems.map((poem) => (
-              <div className={styles.slideContent} key={poem._id}>
-                <Card
-                  smallText={poem.author}
-                  boldText={poem.title}
-                  body={poem.lines}
-                />
-              </div>
-            ))}
+        <h3>Poems</h3>
+        {this.state.poems.map((poem) => (
+          <div className="col s12" key={poem._id}>
+            <Card
+              smallText={poem.author}
+              boldText={poem.title}
+              body={poem.lines}
+            />
           </div>
+        ))}
+        <h3>Recipes</h3>
+        {this.state.recipes.map((recipe) => (
+          <div className="col s12" key={recipe._id}>
+            <Card
+              boldText={recipe.title}
+              body={recipe.instructions}
+              imgUrl={recipe.image}
+            />
+          </div>
+        ))}
 
-          <h3>Recipes</h3>
-          {this.state.recipes.map((recipe) => (
-            <div className="col s12" key={recipe._id}>
-              <Card
-                boldText={recipe.title}
-                body={recipe.instructions}
-                imgUrl={recipe.image}
-              />
-            </div>
-          ))}
+        <h3>Playlists</h3>
+        {this.state.playlists.map((playlist) => (
+          <div className="col s12" key={playlist._id}>
+            <Card
+              boldText={playlist.name}
+              body={playlist.description}
+              imgUrl={playlist.url}
+              url={playlist.href}
+              linkName={"Listen Now"}
+            />
+          </div>
+        ))}
 
-          <h3>Playlists</h3>
-          {this.state.playlists.map((playlist) => (
-            <div className="col s12" key={playlist._id}>
-              <Card
-                boldText={playlist.name}
-                body={playlist.description}
-                imgUrl={playlist.url}
-                url={playlist.href}
-                linkName={"Listen Now"}
-              />
-            </div>
-          ))}
+        <h3>Podcasts</h3>
+        {this.state.podcasts.map((podcast) => (
+          <div className="col s12" key={podcast._id}>
+            <Card
+              boldText={podcast.podcast_title_original}
+              imgUrl={podcast.image}
+              url={podcast.audio}
+              linkName={"Listen Now"}
+            />
+          </div>
+        ))}
 
-          <h3>Podcasts</h3>
-          {this.state.podcasts.map((podcast) => (
-            <div className="col s12" key={podcast._id}>
-              <Card
-                boldText={podcast.podcast_title_original}
-                imgUrl={podcast.image}
-                url={podcast.audio}
-                linkName={"Listen Now"}
-              />
-            </div>
-          ))}
-
-          <h3>Exercises</h3>
-          {this.state.exercises.map((exercise) => (
-            <div className="col s12" key={exercise._id}>
-              <Card
-                boldText={exercise.name}
-                body={Parser(exercise.description)}
-              />
-            </div>
-          ))}
-        </div>
+        <h3>Exercises</h3>
+        {this.state.exercises.map((exercise) => (
+          <div className="col s12" key={exercise._id}>
+            <Card
+              boldText={exercise.name}
+              body={Parser(exercise.description)}
+            />
+          </div>
+        ))}
       </div>
     );
   }
