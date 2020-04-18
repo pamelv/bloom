@@ -130,7 +130,6 @@ class Bookmark extends React.Component {
           style={{
             padding: "0.7em",
             height: "100%",
-            paddingTop: "65px",
             paddingBottom: "60px",
           }}
         >
