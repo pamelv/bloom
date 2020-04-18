@@ -131,6 +131,7 @@ class Bookmark extends React.Component {
             padding: "0.7em",
             height: "100%",
             paddingTop: "65px",
+            paddingBottom: "60px",
           }}
         >
           <div style={{ height: "30px" }} id="playlist">
