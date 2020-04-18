@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     scrollSnapType: "x mandatory",
   },
 }));
-const styles = useStyles();
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -126,6 +125,7 @@ class Bookmark extends React.Component {
   }
 
   render() {
+    const styles = useStyles();
     return (
       <div>
         <Navbar title="Dashboard" currentMood={this.state.currentMood} />
