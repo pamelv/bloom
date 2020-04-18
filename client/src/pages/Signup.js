@@ -124,10 +124,18 @@ class Signup extends React.Component {
                 position: "absolute",
                 left: "50%",
                 transform: "translate(-50%,-50%)",
+                justifyContent: "space-between",
               }}
             >
-              <button onClick={forgotPassword}>Forgot Password</button>
-              <button onClick={movetoLogin}>Log In</button>
+              <button
+                style={{ display: "inline-block" }}
+                onClick={forgotPassword}
+              >
+                Forgot Password
+              </button>
+              <button style={{ display: "inline-block" }} onClick={movetoLogin}>
+                Log In
+              </button>
             </div>
           </div>
         </div>
