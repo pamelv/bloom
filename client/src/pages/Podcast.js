@@ -77,49 +77,61 @@ export default class Podcast extends Component {
   render() {
     const showResults = this.state.showResults;
     return (
-      <div style={{ width: "100%", boxSizing: "border-box" }}>
-        <Navbar title="Podcast" currentMood={this.state.currentMood} />
-        <div
-          style={{
-            columnCount: "2",
-            columnGap: "1em",
-            padding: "0.7em",
-            height: "100%",
-            marginBottom: "55px",
-            paddingTop: "65px",
-          }}
-        >
+      <div
+        style={{
+          margin: "0px",
+          padding: "0px",
+          width: "100vw",
+          position: "relative",
+          background:
+            "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
+          backgroundSize: "cover",
+        }}
+      >
+        <div style={{ width: "100%", boxSizing: "border-box" }}>
+          <Navbar title="Podcast" currentMood={this.state.currentMood} />
           <div
-            className={showResults ? "hide" : "show"}
-            style={{ top: "45%", position: "absolute", left: "40%" }}
+            style={{
+              columnCount: "2",
+              columnGap: "1em",
+              padding: "0.7em",
+              height: "100%",
+              marginBottom: "55px",
+              paddingTop: "65px",
+            }}
           >
-            <Loader
-              type="Circles"
-              color="#FFB383"
-              height={80}
-              width={80}
-              timeout={3000} //3 secs
-            />
-          </div>
-          <div id="results" className={showResults ? "show" : "hide"}>
-            {this.state.podcasts.map((podcast) => (
-              <div className="s12" value="mood" key={podcast.id}>
-                <PodcastCard
-                  id={podcast.id}
-                  title_original={podcast.title_original}
-                  image={podcast.image}
-                  podcast_title_original={podcast.podcast_title_original}
-                  audio_length_sec={podcast.audio_length_sec}
-                  audio={podcast.audio}
-                  // link="#"
+            <div
+              className={showResults ? "hide" : "show"}
+              style={{ top: "45%", position: "absolute", left: "40%" }}
+            >
+              <Loader
+                type="Circles"
+                color="#FFB383"
+                height={80}
+                width={80}
+                timeout={3000} //3 secs
+              />
+            </div>
+            <div id="results" className={showResults ? "show" : "hide"}>
+              {this.state.podcasts.map((podcast) => (
+                <div className="s12" value="mood" key={podcast.id}>
+                  <PodcastCard
+                    id={podcast.id}
+                    title_original={podcast.title_original}
+                    image={podcast.image}
+                    podcast_title_original={podcast.podcast_title_original}
+                    audio_length_sec={podcast.audio_length_sec}
+                    audio={podcast.audio}
+                    // link="#"
 
-                  handleFormSave={this.handleFormSave}
-                />
-              </div>
-            ))}
+                    handleFormSave={this.handleFormSave}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+          <CategoryNavigation currentPage="podcast" />
         </div>
-        <CategoryNavigation currentPage="podcast" />
       </div>
     );
   }
