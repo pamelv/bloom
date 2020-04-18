@@ -133,10 +133,10 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
+          <div style={{ height: "65px" }} id="playlist"></div>
           {/* Playlist Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
           <div
-            id="playlist"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -147,7 +147,11 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={playlist._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
               >
                 <BookmarkPlaylistCard
                   id={playlist._id}
@@ -160,10 +164,10 @@ class Bookmark extends React.Component {
             ))}
           </div>
 
+          <div style={{ height: "65px" }} id="poem"></div>
           {/* Poem Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
           <div
-            id="poem"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -174,7 +178,11 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
               >
                 <Card
                   smallText={poem.author}
@@ -184,11 +192,10 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-
+          <div style={{ height: "65px" }} id="exercise"></div>
           {/* exercise Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
           <div
-            id="exercise"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -199,7 +206,11 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={exercise._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
               >
                 <Card
                   boldText={exercise.name}
@@ -208,11 +219,10 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-
+          <div style={{ height: "65px" }} id="podcast"></div>
           {/* Podcast Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
           <div
-            id="podcast"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -220,7 +230,15 @@ class Bookmark extends React.Component {
             }}
           >
             {this.state.podcasts.map((podcast) => (
-              <div className="col s12" key={podcast._id}>
+              <div
+                className="col s12"
+                key={podcast._id}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
+              >
                 <BookmarkPodcastCard
                   id={podcast._id}
                   name={podcast.podcast_title_original}
@@ -231,11 +249,10 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-
+          <div style={{ height: "65px" }} id="recipe"></div>
           {/* recipe Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
           <div
-            id="recipe"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -246,7 +263,11 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={recipe._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "normal",
+                  verticalAlign: "top",
+                }}
                 // style={{ whiteSpace: "normal" }}
               >
                 <BookmarkRecipeCard
