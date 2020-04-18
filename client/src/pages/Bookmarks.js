@@ -119,12 +119,18 @@ class Bookmark extends React.Component {
           }}
         >
           <h3>Poems</h3>
-          <div style={{ overflow: "hidden" }}>
+          <div
+            style={{
+              overflowX: "scroll",
+              overflowY: "hidden",
+              whiteSpace: "nowrap",
+            }}
+          >
             {this.state.poems.map((poem) => (
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "flex", overflowX: "auto" }}
+                style={{ display: "inline-block" }}
               >
                 <Card
                   smallText={poem.author}
