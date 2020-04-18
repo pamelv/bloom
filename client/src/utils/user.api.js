@@ -17,11 +17,15 @@ export default {
   findUserByEmail: function (email) {
     return axios.get("/api/users/" + email);
   },
-  getMood: function (id) {
-    return axios.get(`/api/user/${id}/moods`);
+  getMood: function (id, token) {
+    return axios.get(`/api/user/${id}/moods`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  addMood: function (id, data) {
-    return axios.post("/api/user/" + id + "/moods", data);
+  addMood: function (id, data, token) {
+    return axios.post("/api/user/" + id + "/moods", data, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
   updatePw: function (id, data) {
     return axios.put("/api/user/" + id, data);

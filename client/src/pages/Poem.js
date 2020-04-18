@@ -67,7 +67,7 @@ export default class Poem extends Component {
   }
 
   handleFormSave = (poem) => {
-    API.savePoem(this.state.id, poem).then((response) => {
+    API.savePoem(this.state.id, poem, this.state.token).then((response) => {
       console.log("success!");
     });
   };

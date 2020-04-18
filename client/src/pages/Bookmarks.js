@@ -33,7 +33,7 @@ class Bookmark extends React.Component {
   }
 
   getPoems() {
-    POEM.getSavedPoem(this.state.id)
+    POEM.getSavedPoem(this.state.id, this.state.token)
       .then((response) => {
         this.setState({
           poems: response.data,
@@ -45,7 +45,7 @@ class Bookmark extends React.Component {
   }
 
   getRecipe() {
-    RECIPE.getSavedRecipe(this.state.id)
+    RECIPE.getSavedRecipe(this.state.id, this.state.token)
       .then((response) => {
         this.setState({
           recipes: response.data,
@@ -57,7 +57,7 @@ class Bookmark extends React.Component {
   }
 
   getPlaylist() {
-    PLAYLIST.getSavedPlaylist(this.state.id)
+    PLAYLIST.getSavedPlaylist(this.state.id, this.state.token)
       .then((response) => {
         this.setState({
           playlists: response.data,
@@ -69,7 +69,7 @@ class Bookmark extends React.Component {
   }
 
   getPodcast() {
-    PODCAST.getSavedPodcast(this.state.id)
+    PODCAST.getSavedPodcast(this.state.id, this.state.token)
       .then((response) => {
         this.setState({
           podcasts: response.data,
@@ -81,7 +81,7 @@ class Bookmark extends React.Component {
   }
 
   getExcercise() {
-    EXERCISE.getSavedExercise(this.state.id)
+    EXERCISE.getSavedExercise(this.state.id, this.state.token)
       .then((response) => {
         console.log(response);
         this.setState({

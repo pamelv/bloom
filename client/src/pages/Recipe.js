@@ -61,7 +61,7 @@ export default class Recipe extends Component {
 
   handleFormSave = (recipe) => {
     console.log(recipe);
-    API.saveRecipe(this.state.id, recipe).then((response) => {
+    API.saveRecipe(this.state.id, recipe, this.state.token).then((response) => {
       console.log("success!");
     });
   };

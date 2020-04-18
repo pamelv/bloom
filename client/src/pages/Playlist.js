@@ -68,9 +68,11 @@ export default class Playlist extends Component {
 
   handleFormSave = (playlist) => {
     console.log(playlist);
-    API.savePlaylist(this.state.id, playlist).then((response) => {
-      console.log("success!");
-    });
+    API.savePlaylist(this.state.id, playlist, this.state.token).then(
+      (response) => {
+        console.log("success!");
+      }
+    );
   };
 
   loggedIn() {

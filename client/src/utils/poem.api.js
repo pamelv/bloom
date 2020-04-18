@@ -13,10 +13,14 @@ export default {
     return axios.get("/api/poem/life");
   },
 
-  savePoem: function (id, poem) {
-    return axios.post(`/api/user/${id}/poems`, poem);
+  savePoem: function (id, poem, token) {
+    return axios.post(`/api/user/${id}/poems`, poem, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  getSavedPoem: function (id) {
-    return axios.get(`/api/user/${id}/poems`);
+  getSavedPoem: function (id, token) {
+    return axios.get(`/api/user/${id}/poems`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
 };

@@ -32,9 +32,11 @@ export default class Exercise extends Component {
   handleFormSave = (exercise) => {
     console.log(exercise);
     // event.persist();
-    API.saveExercise(this.state.id, exercise).then((response) => {
-      console.log("success!");
-    });
+    API.saveExercise(this.state.id, exercise, this.state.token).then(
+      (response) => {
+        console.log("success!");
+      }
+    );
   };
 
   loggedIn() {

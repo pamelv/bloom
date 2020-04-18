@@ -17,10 +17,14 @@ export default {
     return axios.get("/api/recipe/bleh");
   },
 
-  saveRecipe: function (id, recipe) {
-    return axios.post(`/api/user/${id}/recipes`, recipe);
+  saveRecipe: function (id, recipe, token) {
+    return axios.post(`/api/user/${id}/recipes`, recipe, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  getSavedRecipe: function (id) {
-    return axios.get(`/api/user/${id}/recipes`);
+  getSavedRecipe: function (id, token) {
+    return axios.get(`/api/user/${id}/recipes`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
 };

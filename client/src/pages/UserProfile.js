@@ -39,7 +39,7 @@ class Profile extends React.Component {
       });
   }
   userMood(id) {
-    API.getMood(id)
+    API.getMood(id, this.state.token)
       .then((res) => {
         var results = res.data;
         this.setState({ emotions: results });

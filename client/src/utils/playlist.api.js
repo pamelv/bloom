@@ -10,10 +10,14 @@ export default {
   getPlaylistSad: function () {
     return axios.get("/api/playlists/Sad");
   },
-  savePlaylist: function (id, playlist) {
-    return axios.post(`/api/user/${id}/playlists`, playlist);
+  savePlaylist: function (id, playlist, token) {
+    return axios.post(`/api/user/${id}/playlists`, playlist, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
-  getSavedPlaylist: function (id) {
-    return axios.get(`/api/user/${id}/playlists`);
+  getSavedPlaylist: function (id, token) {
+    return axios.get(`/api/user/${id}/playlists`, {
+      headers: { Authorization: "Bearer " + token },
+    });
   },
 };

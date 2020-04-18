@@ -5,10 +5,12 @@ import history from "../history";
 
 export default function AddMoodForm() {
   const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    API.addMood(id, data)
+    API.addMood(id, data, token)
       .then((res) => {
         console.log("mood added");
         console.log(data);

@@ -58,9 +58,11 @@ export default class Podcast extends Component {
   }
 
   handleFormSave = (podcast) => {
-    API.savePodcast(this.state.id, podcast).then((response) => {
-      console.log("success!");
-    });
+    API.savePodcast(this.state.id, podcast, this.state.token).then(
+      (response) => {
+        console.log("success!");
+      }
+    );
   };
 
   showResults() {

@@ -16,10 +16,10 @@ const LogInForm = (props) => {
         window.location.reload();
       })
       .catch((error) => {
-        if (error === 500) {
+        if (error.response.status === 404) {
           var user = "No user";
-        }
-        errorMsg(user);
+          errorMsg(user);
+        } else errorMsg(user);
       });
   };
   const onSubmit = (data) => {
