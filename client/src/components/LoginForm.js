@@ -64,7 +64,7 @@ const LogInForm = (props) => {
         />
         <label htmlFor="password">Password</label>
         {errors.password && <p>Invalid password</p>}
-        <button style={{ color: "#c1bcb8" }}>Log In</button>
+        <button>Log In</button>
       </form>
     </div>
   );

@@ -102,6 +102,7 @@ export default class Poem extends Component {
               padding: "0.7em",
               height: "100%",
               paddingBottom: "55px",
+              paddingTop: "65px",
             }}
           >
             <div
@@ -116,11 +117,7 @@ export default class Poem extends Component {
                 timeout={3000} //3 secs
               />
             </div>
-            <div
-              id="results"
-              className={showResults ? "show" : "hide"}
-              style={{ marginTop: "60px" }}
-            >
+            <div id="results" className={showResults ? "show" : "hide"}>
               {this.state.poems.map((poem) => (
                 <div className="s12" value="mood" key={poem.title}>
                   <PoemForm

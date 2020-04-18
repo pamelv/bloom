@@ -9,7 +9,7 @@ import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
-import Parser from "html-react-parser";
+// import Parser from "html-react-parser";
 
 const StyledButton = withStyles({
   root: {
@@ -19,6 +19,10 @@ const StyledButton = withStyles({
     textTransform: "capitalize",
   },
 })(Button);
+
+const InfoContent = withStyles({
+  body: { color: "black" },
+})(TextInfoContent);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +62,7 @@ export default function ExerciseCard(props) {
     <div>
       <Card className={cx(styles.root, shadowStyles.root)} key={props.id}>
         <CardContent className={styles.content}>
-          <TextInfoContent
+          <InfoContent
             classes={textCardContentStyles}
             style={styles.textContent}
             overline={`Target Muscle: ${props.category}`}
