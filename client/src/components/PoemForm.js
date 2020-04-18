@@ -9,6 +9,9 @@ import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
+import toaster from 'toasted-notes';
+// import 'toasted-notes/src/styles.css'; // optional styles
+import "../pages/toaster.css";
 
 const StyledButton = withStyles({
   root: {
@@ -81,6 +84,10 @@ export default function PoemForm(props) {
               className="m-auto"
               onClick={() => {
                 props.handleFormSave(props);
+                toaster.notify('Bookmark saved!', {
+                  position:"bottom",
+                  duration: 2000
+                })
               }}
             >
               <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
