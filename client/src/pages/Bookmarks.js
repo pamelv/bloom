@@ -133,9 +133,11 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
-          <div style={{ height: "65px" }} id="playlist"></div>
+          <div style={{ height: "30px" }} id="playlist">
+            <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
+          </div>
           {/* Playlist Bookmark */}
-          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
+
           <div
             style={{
               overflowX: "scroll",
@@ -164,7 +166,7 @@ class Bookmark extends React.Component {
             ))}
           </div>
 
-          <div style={{ height: "65px" }} id="poem"></div>
+          <div style={{ height: "30px" }} id="poem"></div>
           {/* Poem Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
           <div
@@ -192,7 +194,7 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <div style={{ height: "65px" }} id="exercise"></div>
+          <div style={{ height: "30px" }} id="exercise"></div>
           {/* exercise Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
           <div
@@ -219,7 +221,7 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <div style={{ height: "65px" }} id="podcast"></div>
+          <div style={{ height: "30px" }} id="podcast"></div>
           {/* Podcast Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
           <div
@@ -249,7 +251,7 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <div style={{ height: "65px" }} id="recipe"></div>
+          <div style={{ height: "30px" }} id="recipe"></div>
           {/* recipe Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
           <div
