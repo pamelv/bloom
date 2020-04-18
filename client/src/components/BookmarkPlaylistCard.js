@@ -14,7 +14,6 @@ import "./content.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "170px",
     borderRadius: 12,
     margin: " 0 0 1em",
     breakInside: "avoid",
@@ -32,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   textContent: {
     marginBottom: 0,
     lineHeight: 1,
-    color: "firebrick",
   },
 }));
 export default function PlaylistCard(props) {
@@ -54,9 +52,7 @@ export default function PlaylistCard(props) {
             heading={props.name}
             body={props.description}
           />
-          <div
-            style={{ float: "right", minWidth: "150px", marginBottom: "10px" }}
-          >
+          <div style={{ float: "right", marginBottom: "10px" }}>
             <ButtonGroup
               size="small"
               style={{ color: "#9CCED5", marginRight: "5px" }}
