@@ -134,11 +134,9 @@ class Bookmark extends React.Component {
             paddingBottom: "60px",
           }}
         >
-          <div style={{ height: "30px" }} id="playlist">
-            <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
-          </div>
+          <div style={{ height: "30px" }} id="playlist"></div>
           {/* Playlist Bookmark */}
-
+          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
           <div
             style={{
               overflowX: "scroll",
