@@ -8,6 +8,7 @@
     display: flex;
     padding: 1rem;
     padding-left: 21px;
+    bottom:65px;
     box-shadow: rgba(52, 58, 64, 0.15) 0px 1px 10px 0px,
       rgba(52, 58, 64, 0.1) 0px 6px 12px 0px,
       rgba(52, 58, 64, 0.12) 0px 6px 15px -2px;

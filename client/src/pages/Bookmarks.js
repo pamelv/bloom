@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar";
 import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
 import BookmarkPlaylistCard from "../components/BookmarkPlaylistCard";
 import BookmarkPodcastCard from "../components/BookmarkPodcastCard";
+import BookmarkBottomNav from "../components/BookmarkBottomNav";
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class Bookmark extends React.Component {
         this.setState({
           recipes: response.data,
         });
+        console.log(this.state.recipes);
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +81,6 @@ class Bookmark extends React.Component {
         this.setState({
           podcasts: response.data,
         });
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -132,54 +133,10 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
-          <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
-          <div
-            style={{
-              overflowX: "scroll",
-              flexDirection: "row",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {this.state.poems.map((poem) => (
-              <div
-                className="col s12"
-                key={poem._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
-              >
-                <Card
-                  smallText={poem.author}
-                  boldText={poem.title}
-                  body={poem.lines}
-                />
-              </div>
-            ))}
-          </div>
-          <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
-          <div
-            style={{
-              overflowX: "scroll",
-              flexDirection: "row",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {this.state.recipes.map((recipe) => (
-              <div
-                className="col s12"
-                key={recipe._id}
-                style={{ display: "inline-block", whiteSpace: "normal" }}
-              >
-                <BookmarkRecipeCard
-                  smallText={`Prep Time: ${recipe.readyInMinutes}`}
-                  boldText={recipe.title}
-                  body={Parser(recipe.instructions)}
-                  imgUrl={recipe.image}
-                  id={recipe.id}
-                />
-              </div>
-            ))}
-          </div>
+          {/* Playlist Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
           <div
+            id="playlist"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -202,21 +159,36 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
-          {this.state.podcasts.map((podcast) => (
-            <div className="col s12" key={podcast._id}>
-              <BookmarkPodcastCard
-                id={podcast._id}
-                name={podcast.podcast_title_original}
-                description={podcast.description}
-                url={podcast.image}
-                href={podcast.audio}
-              />
-            </div>
-          ))}
 
+          {/* Poem Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
+          <div
+            id="poem"
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.poems.map((poem) => (
+              <div
+                className="col s12"
+                key={poem._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <Card
+                  smallText={poem.author}
+                  boldText={poem.title}
+                  body={poem.lines}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* exercise Bookmark */}
           <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
           <div
+            id="exercise"
             style={{
               overflowX: "scroll",
               flexDirection: "row",
@@ -236,7 +208,65 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
+
+          {/* Podcast Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
+          <div
+            id="podcast"
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.podcasts.map((podcast) => (
+              <div className="col s12" key={podcast._id}>
+                <BookmarkPodcastCard
+                  id={podcast._id}
+                  name={podcast.podcast_title_original}
+                  description={podcast.description}
+                  url={podcast.image}
+                  href={podcast.audio}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* recipe Bookmark */}
+          <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
+          <div
+            id="recipe"
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.recipes.map((recipe) => (
+              <div
+                className="col s12"
+                key={recipe._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+                // style={{ whiteSpace: "normal" }}
+              >
+                <BookmarkRecipeCard
+                  smallText={`Prep Time: ${recipe.readyInMinutes}`}
+                  boldText={recipe.title}
+                  body={Parser(`${recipe.instructions}`, {
+                    replace: (domNode) => {
+                      if (!domNode) {
+                        return recipe.instructions;
+                      }
+                    },
+                  })}
+                  imgUrl={recipe.image}
+                  id={recipe.id}
+                />
+              </div>
+            ))}
+          </div>
         </div>
+        <BookmarkBottomNav />
       </div>
     );
   }

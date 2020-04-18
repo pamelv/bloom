@@ -6,6 +6,7 @@ import ExerciseCard from "../components/ExerciseCard";
 import Parser from "html-react-parser";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Loader from "react-loader-spinner";
+import toaster from "toasted-notes";
 
 export default class Exercise extends Component {
   constructor(props) {
@@ -104,7 +105,13 @@ export default class Exercise extends Component {
                     category={exercise.category.name}
                     equipment={exercise.equipment[0].name}
                     description={Parser(exercise.description)}
-                    handleFormSave={this.handleFormSave}
+                    onClick={() => {
+                      this.handleFormSave(exercise);
+                      toaster.notify("Bookmark saved!", {
+                        position: "bottom",
+                        duration: 2000,
+                      });
+                    }}
                   />
                 </div>
               ))}
