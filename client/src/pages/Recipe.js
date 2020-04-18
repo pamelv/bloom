@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Parser from "html-react-parser";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Loader from "react-loader-spinner";
-import toaster from 'toasted-notes';
+import toaster from "toasted-notes";
 // import 'toasted-notes/src/styles.css'; // optional styles
 import "./toaster.css";
 
@@ -108,7 +108,12 @@ export default class Recipe extends Component {
           >
             <div
               className={showResults ? "hide" : "show"}
-              style={{ top: "45%", position: "fixed", left: "40%" }}
+              style={{
+                top: "50%",
+                position: "fixed",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+              }}
             >
               <Loader
                 type="Circles"
@@ -132,10 +137,10 @@ export default class Recipe extends Component {
                     instruction={Parser(recipe.instructions)}
                     onClick={() => {
                       this.handleFormSave(recipe);
-                      toaster.notify('Bookmark saved!', {
-                        position:"bottom",
-                        duration: 2000
-                      })
+                      toaster.notify("Bookmark saved!", {
+                        position: "bottom",
+                        duration: 2000,
+                      });
                     }}
                   />
                 </div>

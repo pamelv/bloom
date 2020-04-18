@@ -9,12 +9,16 @@ import Card from "../components/Card";
 import history from "../history";
 import Parser from "html-react-parser";
 import Navbar from "../components/Navbar";
+import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
+import BookmarkPlaylistCard from "../components/BookmarkPlaylistCard";
+import BookmarkPodcastCard from "../components/BookmarkPodcastCard";
 
 class Bookmark extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       token: localStorage.getItem("token"),
+      currentMood: localStorage.getItem("current_mood"),
       id: localStorage.getItem("id"),
       poems: [],
       recipes: [],
@@ -109,7 +113,17 @@ class Bookmark extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+      // style={{
+      //   margin: "0px",
+      //   padding: "0px",
+      //   width: "100vw",
+      //   position: "relative",
+      //   background:
+      //     "linear-gradient(351deg, rgba(200,123,148,1) 0%, rgba(156,206,213,1) 50%, rgba(251,168,134,1) 100%)",
+      //   backgroundSize: "cover",
+      // }}
+      >
         <Navbar title="Bookmark" currentMood={this.state.currentMood} />
         <div
           style={{
@@ -118,10 +132,11 @@ class Bookmark extends React.Component {
             paddingTop: "65px",
           }}
         >
-          <h3>Poems</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Poems</h3>
           <div
             style={{
               overflowX: "scroll",
+              flexDirection: "row",
               whiteSpace: "nowrap",
             }}
           >
@@ -129,7 +144,7 @@ class Bookmark extends React.Component {
               <div
                 className="col s12"
                 key={poem._id}
-                style={{ display: "inline-block" }}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
               >
                 <Card
                   smallText={poem.author}
@@ -139,51 +154,88 @@ class Bookmark extends React.Component {
               </div>
             ))}
           </div>
-          <h3>Recipes</h3>
-          {this.state.recipes.map((recipe) => (
-            <div className="col s12" key={recipe._id}>
-              <Card
-                boldText={recipe.title}
-                body={recipe.instructions}
-                imgUrl={recipe.image}
-              />
-            </div>
-          ))}
-
-          <h3>Playlists</h3>
-          {this.state.playlists.map((playlist) => (
-            <div className="col s12" key={playlist._id}>
-              <Card
-                boldText={playlist.name}
-                body={playlist.description}
-                imgUrl={playlist.url}
-                url={playlist.href}
-                linkName={"Listen Now"}
-              />
-            </div>
-          ))}
-
-          <h3>Podcasts</h3>
+          <h3 style={{ fontSize: "2 rem" }}>Recipes</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.recipes.map((recipe) => (
+              <div
+                className="col s12"
+                key={recipe._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <BookmarkRecipeCard
+                  smallText={`Prep Time: ${recipe.readyInMinutes}`}
+                  boldText={recipe.title}
+                  body={Parser(recipe.instructions)}
+                  imgUrl={recipe.image}
+                  id={recipe.id}
+                />
+              </div>
+            ))}
+          </div>
+          <h3 style={{ fontSize: "2 rem" }}>Playlists</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.playlists.map((playlist) => (
+              <div
+                className="col s12"
+                key={playlist._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <BookmarkPlaylistCard
+                  id={playlist._id}
+                  name={playlist.name}
+                  description={playlist.description}
+                  url={playlist.url}
+                  href={playlist.href}
+                />
+              </div>
+            ))}
+          </div>
+          <h3 style={{ fontSize: "2 rem" }}>Podcasts</h3>
           {this.state.podcasts.map((podcast) => (
             <div className="col s12" key={podcast._id}>
-              <Card
-                boldText={podcast.podcast_title_original}
-                imgUrl={podcast.image}
-                url={podcast.audio}
-                linkName={"Listen Now"}
+              <BookmarkPodcastCard
+                id={podcast._id}
+                name={podcast.podcast_title_original}
+                description={podcast.description}
+                url={podcast.image}
+                href={podcast.audio}
               />
             </div>
           ))}
 
-          <h3>Exercises</h3>
-          {this.state.exercises.map((exercise) => (
-            <div className="col s12" key={exercise._id}>
-              <Card
-                boldText={exercise.name}
-                body={Parser(exercise.description)}
-              />
-            </div>
-          ))}
+          <h3 style={{ fontSize: "2 rem" }}>Exercises</h3>
+          <div
+            style={{
+              overflowX: "scroll",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {this.state.exercises.map((exercise) => (
+              <div
+                className="col s12"
+                key={exercise._id}
+                style={{ display: "inline-block", whiteSpace: "normal" }}
+              >
+                <Card
+                  boldText={exercise.name}
+                  body={Parser(exercise.description)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

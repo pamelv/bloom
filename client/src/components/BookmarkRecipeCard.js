@@ -1,26 +1,37 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import cx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import TextInfoContent from "@mui-treasury/components/content/textInfo";
+import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
+import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
+import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import TextInfoContent from "@mui-treasury/components/content/textInfo";
-import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
-import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    minWidth: "300px",
+    // maxWidth: "500px",
+    borderRadius: 12,
+    margin: " 0 0 1em",
+    breakInside: "avoid",
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+  content: {
+    padding: "10px",
+    paddingBottom: "0px !important",
+  },
+  "content:last-child": {
+    paddingBottom: "0px",
+  },
+  textContent: {
+    marginBottom: 0,
+    lineHeight: 1,
   },
   expand: {
     transform: "rotate(0deg)",
@@ -32,66 +43,64 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
-  avatar: {
-    backgroundColor: red[500],
+  heading: {
+    fontSize: "1 em",
+    lineHeight: 1,
   },
 }));
 
-export default function RecipeReviewCard(props) {
-  const classes = useStyles();
+export default function BookmarkCard(props) {
+  const styles = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const textCardContentStyles = useBlogTextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles({ inactive: true });
+  const mediaStyles = useFourThreeCardMediaStyles();
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={cx(classes.root, shadowStyles.root)} key={props.id}>
-      <CardMedia
-        className={classes.media}
-        image={props.image}
-        title={props.name}
-      />
-      <CardContent>
-        <TextInfoContent
-          classes={textCardContentStyles}
-          style={classes.textContent}
-          overline={`Prep Time: ${props.readyInMinutes}\n Servings: ${props.servings}`}
-          heading={props.title}
+    <div>
+      <Card className={cx(styles.root, shadowStyles.root)} key={props.id}>
+        <CardMedia
+          className={cx(styles.media, mediaStyles.root)}
+          image={props.imgUrl}
+          title={props.boldText}
         />
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          className={cx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          color="primary"
-        >
-          <ExpandMoreIcon style={{ color: "#C87B94" }} />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph style={{ color: "black" }}>
-            Ingredients:
-          </Typography>
-          <Typography paragraph style={{ color: "black" }}>
-            {props.extendedIngredients.map((ingredient, index) => {
-              return <li key={index}>{ingredient.originalString}</li>;
-            })}
-          </Typography>
-          <Typography paragraph style={{ color: "black" }}>
-            Instructions
-          </Typography>
-          <Typography paragraph style={{ color: "black" }}>
-            {props.instruction}
-          </Typography>
+        <CardContent className={styles.content}>
+          {
+            //eslint-disable-next-line
+          }
+
+          <TextInfoContent
+            classes={cx(styles.heading, textCardContentStyles)}
+            style={styles.textContent}
+            overline={props.smallText}
+            heading={props.boldText}
+          />
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <IconButton
+            className={cx(styles.expand, {
+              [styles.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+            color="primary"
+          >
+            <ExpandMoreIcon style={{ color: "#C87B94" }} />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph style={{ color: "black" }}>
+              {props.body}
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </div>
   );
 }
