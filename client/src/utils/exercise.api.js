@@ -2,15 +2,15 @@ import axios from "axios";
 
 export default {
   getExercise: function () {
-    return axios.get("/api/exercise");
+    return axios.get("/api/exercisedata");
   },
-  saveExercise: function (id, exercise, token) {
-    return axios.post(`/api/user/${id}/exercises`, exercise, {
+  saveExercise: function (exercise, token) {
+    return axios.post(`/api/exercise`, exercise, {
       headers: { Authorization: "Bearer " + token },
     });
   },
-  getSavedExercise: function (id, token) {
-    return axios.get(`/api/user/${id}/exercises`, {
+  getSavedExercise: function (token) {
+    return axios.get(`/api/exercise`, {
       headers: { Authorization: "Bearer " + token },
     });
   },

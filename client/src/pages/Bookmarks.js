@@ -93,7 +93,6 @@ class Bookmark extends React.Component {
   }
 
   getUser() {
-    console.log(this.state.token);
     API.getUser(this.state.token)
       .then((res) => {
         this.setState({ name: res.data.firstname });

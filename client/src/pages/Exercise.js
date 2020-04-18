@@ -28,11 +28,7 @@ export default class Exercise extends Component {
   }
 
   handleFormSave = (exercise) => {
-    API.saveExercise(
-      this.state.id,
-      exercise,
-      this.state.token
-    ).then((response) => {});
+    API.saveExercise(exercise, this.state.token).then((response) => {});
   };
 
   loggedIn() {
