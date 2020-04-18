@@ -9,6 +9,7 @@ import BookmarksTwoToneIcon from "@material-ui/icons/BookmarksTwoTone";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/blog";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
+import Parser from "html-react-parser";
 
 const StyledButton = withStyles({
   root: {
@@ -41,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
     lineHeight: 1,
   },
+  description: {
+    fontSize: "1em",
+    lineHeight: 1,
+    color: "black",
+  },
 }));
 
 export default function ExerciseCard(props) {
@@ -55,9 +61,22 @@ export default function ExerciseCard(props) {
           <TextInfoContent
             classes={textCardContentStyles}
             style={styles.textContent}
-            overline={`Target Muscle: ${props.category} \n Required Equipment: ${props.equipment}`}
+            overline={`Target Muscle: ${props.category}`}
             heading={props.name}
-            body={props.description}
+            body={Parser(
+              <div>
+                <div
+                  style={{
+                    fontWeight: 400,
+                    fontSize: "1.2em",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Required Equipment: {props.equipment}
+                </div>
+                <div style={styles.description}>{props.description}</div>
+              </div>
+            )}
           />
           <div
             style={{ float: "right", marginBottom: "10px", marginRight: "5px" }}
