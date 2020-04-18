@@ -102,7 +102,12 @@ export default class Podcast extends Component {
           >
             <div
               className={showResults ? "hide" : "show"}
-              style={{ top: "45%", position: "absolute", left: "40%" }}
+              style={{
+                top: "50%",
+                position: "fixed",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+              }}
             >
               <Loader
                 type="Circles"
