@@ -9,6 +9,13 @@ import Card from "../components/Card";
 import history from "../history";
 import Parser from "html-react-parser";
 import Navbar from "../components/Navbar";
+import PlaylistCard from "../components/PlaylistCard";
+import BookmarkRecipeCard from "../components/BookmarkRecipeCard";
+
+const slideContainer = {
+  width: "100%",
+  overflow: "hidden",
+};
 
 class Bookmark extends React.Component {
   constructor(props) {
@@ -114,7 +121,7 @@ class Bookmark extends React.Component {
     return (
       <div>
         <Navbar title="Dashboard" currentMood={this.state.currentMood} />
-        <div>
+        <div style={{ marginTop: "60px" }}>
           <h3>Poems</h3>
           {this.state.poems.map((poem) => (
             <div className="col s12" key={poem._id}>
@@ -126,28 +133,42 @@ class Bookmark extends React.Component {
             </div>
           ))}
           <h3>Recipes</h3>
-          {this.state.recipes.map((recipe) => (
-            <div className="col s12" key={recipe._id}>
-              <Card
-                boldText={recipe.title}
-                body={recipe.instructions}
-                imgUrl={recipe.image}
-              />
-            </div>
-          ))}
+          <div className={slideContainer}>
+            {this.state.recipes.map((recipe) => (
+              <div className="s12" value="mood" key={recipe.id}>
+                <BookmarkRecipeCard
+                  id={recipe.id}
+                  image={recipe.image}
+                  title={recipe.title}
+                  readyInMinutes={recipe.readyInMinutes}
+                  servings={recipe.servings}
+                  extendedIngredients={recipe.extendedIngredients}
+                  instruction={Parser(recipe.instructions)}
+                  // onClick={() => {
+                  //   this.handleFormSave(recipe);
+                  // }}
+                />
+              </div>
+            ))}
+          </div>
 
           <h3>Playlists</h3>
-          {this.state.playlists.map((playlist) => (
-            <div className="col s12" key={playlist._id}>
-              <Card
-                boldText={playlist.name}
-                body={playlist.description}
-                imgUrl={playlist.url}
-                url={playlist.href}
-                linkName={"Listen Now"}
-              />
-            </div>
-          ))}
+          <div className={slideContainer}>
+            {this.state.playlists.map((playlist) => (
+              <div className="s12" value="mood" key={playlist.id}>
+                <PlaylistCard
+                  id={playlist.id}
+                  name={playlist.name}
+                  url={playlist.images[0].url}
+                  description={playlist.description}
+                  extraInfo={`Total Tracks: ${playlist.tracks.total}`}
+                  href={playlist.external_urls.spotify}
+                  app={playlist.uri}
+                  // handleFormSave={this.handleFormSave}
+                />
+              </div>
+            ))}
+          </div>
 
           <h3>Podcasts</h3>
           {this.state.podcasts.map((podcast) => (
