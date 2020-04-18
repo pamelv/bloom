@@ -11,6 +11,9 @@ import { useBlogTextInfoContentStyles } from "@mui-treasury/styles/textInfoConte
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
 import "./content.css";
 // import Parser from "html-react-parser";
+import toaster from 'toasted-notes';
+// import 'toasted-notes/src/styles.css'; // optional styles
+import "../pages/toaster.css";
 
 const StyledButton = withStyles({
   root: {
@@ -92,6 +95,10 @@ export default function ExerciseCard(props) {
               className="m-auto"
               onClick={() => {
                 this.handleFormSave(props);
+                toaster.notify('Bookmark saved!', {
+                  position:"bottom",
+                  duration: 2000
+                })
               }}
             >
               <BookmarksTwoToneIcon style={{ color: "#C87B94" }} />
