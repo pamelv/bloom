@@ -30,4 +30,14 @@ export default {
   updatePw: function (id, data) {
     return axios.put("/api/user/" + id, data);
   },
+
+  deleteMood: function (token, data) {
+    return axios.delete("/api/moods", {
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      data: { id: data },
+    });
+  },
 };
