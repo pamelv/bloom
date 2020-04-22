@@ -68,7 +68,7 @@ export default class Exercise extends Component {
         }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
-          <Navbar title="Workout" currentMood={this.state.currentMood} />
+          <Navbar title="Exercise" currentMood={this.state.currentMood} />
           <div
             style={{
               columnCount: "1",

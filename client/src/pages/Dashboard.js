@@ -15,7 +15,7 @@ const categories = [
     route: "/poem",
   },
   {
-    title: "Workout",
+    title: "Exercise",
     imageUrl:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
     route: "/exercise",

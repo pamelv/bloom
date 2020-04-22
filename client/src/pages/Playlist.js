@@ -90,7 +90,7 @@ export default class Playlist extends Component {
         }}
       >
         <div style={{ width: "100%", boxSizing: "border-box" }}>
-          <Navbar title="Playlist" currentMood={this.state.currentMood} />
+          <Navbar title="Music" currentMood={this.state.currentMood} />
           <div
             style={{
               columnCount: "2",

@@ -103,6 +103,13 @@ router.get("/moods", async (req, res) => {
   res.json(moods);
 });
 
+router.delete("/moods", authenticateToken, async (req, res) => {
+  var id = req.body.id;
+  console.log(id);
+  const results = await Moods.findByIdAndDelete(id);
+  res.send(results);
+});
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];

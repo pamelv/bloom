@@ -15,6 +15,7 @@ class Profile extends React.Component {
       name: "",
       id: "",
       emotions: [],
+      clickedEmotion: "",
     };
   }
 
@@ -22,6 +23,9 @@ class Profile extends React.Component {
     this.getUser();
   }
 
+  componentDidUpdate() {
+    this.deleteMood();
+  }
   getUser() {
     API.getUser(this.state.token)
       .then((res) => {
@@ -45,6 +49,20 @@ class Profile extends React.Component {
         console.log(error);
       });
   }
+
+  deleteMood() {
+    console.log(this.state.clickedEmotion);
+    API.deleteMood(this.state.token, this.state.clickedEmotion).then(
+      (response) => {
+        console.log(response);
+        window.location.reload();
+      }
+    );
+  }
+
+  handleClick = (emotion) => {
+    this.setState({ clickedEmotion: emotion._id });
+  };
 
   render() {
     return (
@@ -87,6 +105,7 @@ class Profile extends React.Component {
                     emotion={emotion.emotion}
                     emoji={emotion.emoji}
                     comment={emotion.comment}
+                    handleClick={() => this.handleClick(emotion)}
                   />
                 </div>
               ))}
