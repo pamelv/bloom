@@ -135,7 +135,9 @@ class Bookmark extends React.Component {
         >
           <div style={{ height: "30px" }} id="playlist"></div>
           {/* Playlist Bookmark */}
+
           <h3 style={{ fontSize: "2 rem" }}>Music</h3>
+
           <div
             style={{
               overflowX: "scroll",
@@ -194,7 +196,9 @@ class Bookmark extends React.Component {
           </div>
           <div style={{ height: "30px" }} id="exercise"></div>
           {/* exercise Bookmark */}
+
           <h3 style={{ fontSize: "2 rem" }}>Exercise</h3>
+
           <div
             style={{
               overflowX: "scroll",
@@ -221,7 +225,9 @@ class Bookmark extends React.Component {
           </div>
           <div style={{ height: "30px" }} id="podcast"></div>
           {/* Podcast Bookmark */}
+
           <h3 style={{ fontSize: "2 rem" }}>Podcast</h3>
+
           <div
             style={{
               overflowX: "scroll",
@@ -251,7 +257,9 @@ class Bookmark extends React.Component {
           </div>
           <div style={{ height: "30px" }} id="recipe"></div>
           {/* recipe Bookmark */}
+
           <h3 style={{ fontSize: "2 rem" }}>Cooking</h3>
+
           <div
             style={{
               overflowX: "scroll",
