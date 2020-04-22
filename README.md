@@ -18,7 +18,7 @@ Each mood selection would render a specific profile and dashboard that are custo
 
 ### Images
 
-<img src="./Screenshots/Logmood.png">
+![Alt Text](./Screenshots/Logmood.png)
 <img src="./Screenshots/Moodlog.png">
 <img src="./Screenshots/Content-playlist.png">
 <img src="./Screenshots/Bookmark.png">
