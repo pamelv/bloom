@@ -36,7 +36,17 @@ export default function EmotionCard(props) {
   return (
     <div>
       <Card className={cx(styles.root, shadowStyles.root)} key={props.date}>
-        <button onClick={props.handleClick}>X</button>
+        <button
+          style={{
+            float: "right",
+            backgroundColor: "#eee",
+            padding: "5px 10px",
+            marginRight: "10px",
+          }}
+          onClick={props.handleClick}
+        >
+          X
+        </button>
         <CardContent className={styles.content}>
           <TextInfoContent
             classes={textCardContentStyles}
